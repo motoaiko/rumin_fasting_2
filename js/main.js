@@ -231,7 +231,7 @@ if (instagramTrack) {
 }
 
 // ========================================
-// お客様の声スライダー（手動・PC3枚/スマホ1枚）
+// お客様の声スライダー（手動・PC3枚/スマホ1枚センター）
 // ========================================
 
 var voiceTrack = document.getElementById('voiceTrack');
@@ -250,9 +250,9 @@ if (voiceTrack && voicePrev && voiceNext) {
   // ----------------------------------------
   function updateVoiceVisible() {
     if (window.innerWidth <= 768) {
-      voiceVisible = 1; // スマホ：1枚表示
+      voiceVisible = 1;
     } else {
-      voiceVisible = 3; // PC：3枚表示
+      voiceVisible = 3;
     }
   }
 
@@ -261,14 +261,50 @@ if (voiceTrack && voicePrev && voiceNext) {
   // ----------------------------------------
   function moveVoice() {
 
-    // gap はSCSSと合わせる（PC:24px / スマホ:16px）
-    var gap = window.innerWidth <= 768 ? 16 : 24;
+    var isMobile  = window.innerWidth <= 768;
+    var gap       = isMobile ? 16 : 24;
+    var cardWidth = voiceCards[0].offsetWidth;
+    var offset    = 0;
 
-    // カード1枚の実際の幅 + gap で1ステップ分の移動距離を計算する
-    var cardWidth = voiceCards[0].offsetWidth + gap;
+    if (isMobile) {
+
+      // ----------------------------------------
+      // スマホ：センターモード
+      // index=0 のときは offset=0（padding-leftがそのまま左余白）
+      // index>=1 のときはカードが画面中央に来るよう計算する
+      // ----------------------------------------
+
+      if (voiceIndex === 0) {
+
+        offset = 0;
+
+      } else {
+
+        var viewportWidth = voiceTrack.parentElement.offsetWidth;
+
+        // トラックのpadding-leftを実際のpx値で取得する
+        var trackPaddingLeft = parseFloat(
+          window.getComputedStyle(voiceTrack).paddingLeft
+        );
+
+        // カードを中央に置くための左余白
+        var centerOffset = (viewportWidth - cardWidth) / 2;
+
+        offset = (cardWidth + gap) * voiceIndex - centerOffset + trackPaddingLeft;
+      }
+
+    } else {
+
+      // ----------------------------------------
+      // PC：通常モード（カード1枚ずつ左端から順に表示）
+      // カード幅はCSSの calc((100% - 48px) / 3) で決まるため
+      // offsetWidth で実際の幅を取得して計算する
+      // ----------------------------------------
+      offset = (cardWidth + gap) * voiceIndex;
+    }
 
     // トラックをずらす
-    voiceTrack.style.transform = 'translateX(-' + (voiceIndex * cardWidth) + 'px)';
+    voiceTrack.style.transform = 'translateX(-' + offset + 'px)';
 
     // 「前へ」ボタンの活性・非活性
     if (voiceIndex === 0) {
@@ -310,7 +346,7 @@ if (voiceTrack && voicePrev && voiceNext) {
   // ----------------------------------------
   var voiceTouchStartX = 0;
   var voiceTouchEndX   = 0;
-  var voiceThreshold   = 50; // 50px以上動いたときだけスワイプと判定
+  var voiceThreshold   = 50;
 
   voiceTrack.addEventListener('touchstart', function(e) {
     voiceTouchStartX = e.touches[0].clientX;
@@ -320,17 +356,14 @@ if (voiceTrack && voicePrev && voiceNext) {
     voiceTouchEndX = e.changedTouches[0].clientX;
     var diff = voiceTouchEndX - voiceTouchStartX;
 
-    // しきい値より小さい動きは無視する
     if (Math.abs(diff) < voiceThreshold) return;
 
     if (diff < 0) {
-      // 左スワイプ → 次へ
       if (voiceIndex < voiceTotal - voiceVisible) {
         voiceIndex = voiceIndex + 1;
         moveVoice();
       }
     } else {
-      // 右スワイプ → 前へ
       if (voiceIndex > 0) {
         voiceIndex = voiceIndex - 1;
         moveVoice();
@@ -339,7 +372,7 @@ if (voiceTrack && voicePrev && voiceNext) {
   });
 
   // ----------------------------------------
-  // 画面リサイズ時にインデックスと表示枚数をリセットする
+  // 画面リサイズ時にリセットする
   // ----------------------------------------
   window.addEventListener('resize', function() {
     voiceIndex = 0;

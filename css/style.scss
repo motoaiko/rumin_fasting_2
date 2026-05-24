@@ -1134,7 +1134,7 @@ Utilities
 
 		font-family: $font-serif-en;
 		font-size: 40px;
-		color: $color-gold-light;
+		color: $color-gold;
 
 		transition: color 0.3s ease;
 		&:hover {
@@ -1202,13 +1202,11 @@ Utilities
 
 	// --- 各画像アイテム ---
 	&__item {
-		// ★ 幅を変えたいときはここだけ変更する
-		width: 200px;
+		width: 250px;
 		flex-shrink: 0;
 
 		@include mobile {
-			width: 150px;
-		}
+			width: 200px;		}
 
 		img {
 			width: 100%;
@@ -1226,189 +1224,192 @@ Utilities
 // ========================================
 
 .voice {
-	background-color: $color-bg-alt;
+background-color: $color-bg-alt;
 
-	// --- 見出しエリア ---
-	&__header {
-		margin-bottom: 56px;
+// --- 見出しエリア ---
+&__header {
+	margin-bottom: 56px;
 
-		@include mobile {
-			margin-bottom: 40px;
-		}
+	@include mobile {
+		margin-bottom: 40px;
 	}
+}
 
-	&__title {
-		font-family: $font-serif-ja;
-		letter-spacing: 0.12em;
+&__title {
+	font-family: $font-serif-ja;
+	letter-spacing: 0.12em;
+}
+
+&__lead {
+	color: $color-text-sub;
+
+	@include mobile {
+		padding: 0;
 	}
+}
 
-	&__lead {
-		color: $color-text-sub;
-
-		@include mobile {
-			text-align: center;
-		}
-	}
-
-	/* ----------------------------------------
-	スライダーエリア（矢印 + カード）
+/* ----------------------------------------
+スライダーエリア（矢印 + カード）
 ---------------------------------------- */
 
-	&__slider-area {
+&__slider-area {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+
+	@include mobile {
+		gap: 8px;
+	}
+}
+
+// スライダーの見える範囲（はみ出た部分を隠す）
+&__viewport {
+	flex: 1;
+	overflow: hidden;
+	min-width: 0;
+	
+	// PC：paddingなし（カード幅をviewport幅で正確に3等分するため）
+	padding: 0;	
+	@include mobile {
+		// スマホ：矢印ボタンの外側まで広げて画面を贅沢に使う
+		// 矢印ボタン分（24px + gap8px）を負のmarginで打ち消す
+		padding: 0;
+		margin: 0 -32px; // 矢印エリアの幅ぶんだけ左右に広げる
+		overflow: hidden;
+	}	}
+
+// カードを横一列に並べるトラック（JS で左右に動かす）
+&__track {
+	display: flex;
+	gap: 24px;
+	transition: transform 0.4s ease;
+	
+	@include mobile {
+		gap: 16px;
+		padding-left: 11%; // 右側のチラ見え幅（約11%）と揃える
+	}	}
+
+/* ----------------------------------------
+各カード
+---------------------------------------- */
+
+&__card {
+	// PC：viewportの幅をgap2つ分引いてぴったり3等分
+	flex: 0 0 calc((100% - 48px) / 3); // 48px = gap24px × 2	
+	background-color: $color-white;
+	border: 1px solid $color-border;
+	padding: 32px 28px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	
+	@include mobile {
+		flex: 0 0 80%;
+		padding: 24px 20px;
+	}
+	
+	// --- カード上部：お悩み見出し ---
+	&-tag {
+		font-family: $font-sans-ja;
+		font-size: $font-size-mobile; // 14px
+		font-weight: 700;
+		color: $color-text;
+		line-height: 1.6;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid $color-border;
+	}
+
+	// --- カード中部：感想本文 ---
+	&-body {
+		font-family: $font-sans-ja;
+		font-size: $font-size-mobile; // 14px
+		color: $color-text-sub;
+		line-height: 1.9;
+		flex: 1;
+		margin-bottom: 28px;
+	}
+
+	// --- カード下部：プロフィールエリア ---
+	&-profile {
 		display: flex;
 		align-items: center;
-		gap: 16px;
-
-		@include mobile {
-			gap: 8px;
+		justify-content: space-around;
+	}
+	&-avatar {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		overflow: hidden;
+		img {
+			object-fit: cover;
 		}
 	}
 
-	// スライダーの見える範囲（はみ出た部分を隠す）
-	&__viewport {
-		flex: 1; // 矢印に挟まれた残りの幅をすべて使う
-		overflow: hidden;
-		min-width: 0;
-		padding: 0 5%;
-		
-		@include mobile {
-			padding: 0 8%; // スマホは少し多めに覗かせる
-		  }// flex の子要素が縮まない問題を防ぐ
+	&-attr {
+		font-family: $font-sans-ja;
+		font-size: $font-size-small;
+		color: $color-text-sub;
+		letter-spacing: 0.05em;
+	}
 	}
 
-	// カードを横一列に並べるトラック（JS で左右に動かす）
-	&__track {
+	/* ----------------------------------------
+矢印ボタン
+---------------------------------------- */
+
+	&__btn {
+		// デフォルトのボタンスタイルをリセット
+		appearance: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+
+		// サイズ・見た目
+		flex-shrink: 0;
+		width: 36px;
+		height: 36px;
 		display: flex;
-		gap: 24px;
-		transition: transform 0.4s ease;
+		align-items: center;
+		justify-content: center;
+
+		// 矢印の文字
+		font-family: $font-serif-en; // 明朝体で繊細な印象に
+		font-size: 40px;
+		font-weight: 300;
+		color: $color-gold;
+		line-height: 1;
+
+		transition: color 0.25s ease;
+
+		&:hover {
+			color: $color-gold;
+		}
+
+		// 端まで来たとき（disabled）は薄く
+		&:disabled {
+			opacity: 0.2;
+			cursor: default;
+			pointer-events: none;
+		}
 
 		@include mobile {
-			gap: 16px;
+			font-size: 24px;
+			width: 24px;
 		}
 	}
 
 	/* ----------------------------------------
-	各カード
+注釈テキスト
 ---------------------------------------- */
 
-	&__card {
-		// PC：3枚表示 / スマホ：1枚表示
-		// gap 24px × 2枚分 ÷ 3枚 = 16px を引いた幅
-		flex: 0 0 calc(33.33% - 16px);
-		background-color: $color-white;
-		border: 1px solid $color-border;
-		padding: 32px 28px;
-		display: flex;
-		flex-direction: column;
-		border-radius: 5px;
-
-		@include mobile {
-			flex: 0 0 100%;
-			padding: 24px 20px;
-		}
-
-		// --- カード上部：お悩み見出し ---
-		&-tag {
-			font-family: $font-sans-ja;
-			font-size: $font-size-mobile; // 14px
-			font-weight: 700;
-			color: $color-text;
-			line-height: 1.6;
-			padding-bottom: 20px;
-			margin-bottom: 20px;
-			border-bottom: 1px solid $color-border;
-		}
-
-		// --- カード中部：感想本文 ---
-		&-body {
-			font-family: $font-sans-ja;
-			font-size: $font-size-mobile; // 14px
-			color: $color-text-sub;
-			line-height: 1.9;
-			flex: 1;
-			margin-bottom: 28px;
-		}
-
-		// --- カード下部：プロフィールエリア ---
-		&-profile {
-			display: flex;
-			align-items: center;
-			justify-content: space-around;
-		}
-		&-avatar {
-			width: 80px;
-			height: 80px;
-			border-radius: 50%;
-			flex-shrink: 0;
-			overflow: hidden;
-			img {
-				object-fit: cover;
-			}
-		}
-
-		&-attr {
-			font-family: $font-sans-ja;
-			font-size: $font-size-small;
-			color: $color-text-sub;
-			letter-spacing: 0.05em;
-		}
-		}
-
-		/* ----------------------------------------
-	矢印ボタン
----------------------------------------- */
-
-		&__btn {
-			// デフォルトのボタンスタイルをリセット
-			appearance: none;
-			background: none;
-			border: none;
-			cursor: pointer;
-
-			// サイズ・見た目
-			flex-shrink: 0;
-			width: 36px;
-			height: 36px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			// 矢印の文字
-			font-family: $font-serif-en; // 明朝体で繊細な印象に
-			font-size: 32px;
-			font-weight: 300;
-			color: $color-gold-light;
-			line-height: 1;
-
-			transition: color 0.25s ease;
-
-			&:hover {
-				color: $color-gold;
-			}
-
-			// 端まで来たとき（disabled）は薄く
-			&:disabled {
-				opacity: 0.2;
-				cursor: default;
-				pointer-events: none;
-			}
-
-			@include mobile {
-				font-size: 24px;
-				width: 24px;
-			}
-		}
-
-		/* ----------------------------------------
-	注釈テキスト
----------------------------------------- */
-
-		&__note {
-			text-align: center;
-			font-family: $font-sans-ja;
-			font-size: $font-size-small; // 12px
-			color: $color-text-sub;
-			margin-top: 32px;
-			letter-spacing: 0.05em;
-		}
+	&__note {
+		text-align: center;
+		font-family: $font-sans-ja;
+		font-size: $font-size-small; // 12px
+		color: $color-text-sub;
+		margin-top: 32px;
+		letter-spacing: 0.05em;
 	}
+}
