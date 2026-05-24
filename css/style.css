@@ -1181,11 +1181,7 @@ Utilities
 .results__stat-unit {
   font-size: 16px;
   margin-left: 3px;
-}
-@media (max-width: 768px) {
-  .results__stat-unit {
-    display: inline-block;
-  }
+  display: inline-block;
 }
 .results__stat-label {
   font-family: "Noto Sans JP", sans-serif;

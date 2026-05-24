@@ -1053,9 +1053,7 @@ Utilities
 	&__stat-unit {
 		font-size: 16px;
 		margin-left: 3px;
-		@include mobile {
-			display: inline-block; 
-		}
+		display: inline-block;
 	}
 
 	&__stat-label {
