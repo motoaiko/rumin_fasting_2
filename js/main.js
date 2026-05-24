@@ -229,3 +229,126 @@ if (instagramTrack) {
   });
 
 }
+
+// ========================================
+// お客様の声スライダー（手動・PC3枚/スマホ1枚）
+// ========================================
+
+var voiceTrack = document.getElementById('voiceTrack');
+var voicePrev  = document.getElementById('voicePrev');
+var voiceNext  = document.getElementById('voiceNext');
+
+if (voiceTrack && voicePrev && voiceNext) {
+
+  var voiceIndex   = 0;
+  var voiceCards   = voiceTrack.querySelectorAll('.voice__card');
+  var voiceTotal   = voiceCards.length; // 6枚
+  var voiceVisible = 3;
+
+  // ----------------------------------------
+  // 表示枚数を画面幅に応じて切り替える
+  // ----------------------------------------
+  function updateVoiceVisible() {
+    if (window.innerWidth <= 768) {
+      voiceVisible = 1; // スマホ：1枚表示
+    } else {
+      voiceVisible = 3; // PC：3枚表示
+    }
+  }
+
+  // ----------------------------------------
+  // スライドを動かす関数
+  // ----------------------------------------
+  function moveVoice() {
+
+    // gap はSCSSと合わせる（PC:24px / スマホ:16px）
+    var gap = window.innerWidth <= 768 ? 16 : 24;
+
+    // カード1枚の実際の幅 + gap で1ステップ分の移動距離を計算する
+    var cardWidth = voiceCards[0].offsetWidth + gap;
+
+    // トラックをずらす
+    voiceTrack.style.transform = 'translateX(-' + (voiceIndex * cardWidth) + 'px)';
+
+    // 「前へ」ボタンの活性・非活性
+    if (voiceIndex === 0) {
+      voicePrev.setAttribute('disabled', 'true');
+    } else {
+      voicePrev.removeAttribute('disabled');
+    }
+
+    // 「次へ」ボタンの活性・非活性
+    if (voiceIndex >= voiceTotal - voiceVisible) {
+      voiceNext.setAttribute('disabled', 'true');
+    } else {
+      voiceNext.removeAttribute('disabled');
+    }
+  }
+
+  // ----------------------------------------
+  // 「前へ」ボタンのクリック処理
+  // ----------------------------------------
+  voicePrev.addEventListener('click', function() {
+    if (voiceIndex > 0) {
+      voiceIndex = voiceIndex - 1;
+      moveVoice();
+    }
+  });
+
+  // ----------------------------------------
+  // 「次へ」ボタンのクリック処理
+  // ----------------------------------------
+  voiceNext.addEventListener('click', function() {
+    if (voiceIndex < voiceTotal - voiceVisible) {
+      voiceIndex = voiceIndex + 1;
+      moveVoice();
+    }
+  });
+
+  // ----------------------------------------
+  // スワイプ操作（スマホ対応）
+  // ----------------------------------------
+  var voiceTouchStartX = 0;
+  var voiceTouchEndX   = 0;
+  var voiceThreshold   = 50; // 50px以上動いたときだけスワイプと判定
+
+  voiceTrack.addEventListener('touchstart', function(e) {
+    voiceTouchStartX = e.touches[0].clientX;
+  });
+
+  voiceTrack.addEventListener('touchend', function(e) {
+    voiceTouchEndX = e.changedTouches[0].clientX;
+    var diff = voiceTouchEndX - voiceTouchStartX;
+
+    // しきい値より小さい動きは無視する
+    if (Math.abs(diff) < voiceThreshold) return;
+
+    if (diff < 0) {
+      // 左スワイプ → 次へ
+      if (voiceIndex < voiceTotal - voiceVisible) {
+        voiceIndex = voiceIndex + 1;
+        moveVoice();
+      }
+    } else {
+      // 右スワイプ → 前へ
+      if (voiceIndex > 0) {
+        voiceIndex = voiceIndex - 1;
+        moveVoice();
+      }
+    }
+  });
+
+  // ----------------------------------------
+  // 画面リサイズ時にインデックスと表示枚数をリセットする
+  // ----------------------------------------
+  window.addEventListener('resize', function() {
+    voiceIndex = 0;
+    updateVoiceVisible();
+    moveVoice();
+  });
+
+  // 最初に1回実行して初期状態を整える
+  updateVoiceVisible();
+  moveVoice();
+
+}
