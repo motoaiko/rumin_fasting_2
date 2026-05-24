@@ -48,37 +48,25 @@ faqQuestions.forEach(function (question) {
 // ビフォーアフタースライダー（統合画像・1枚ずつ表示）
 // ========================================
 
-// 必要な要素を取得する
 var sliderTrack = document.getElementById('resultsSliderTrack');
 var prevBtn     = document.getElementById('resultsPrev');
 var nextBtn     = document.getElementById('resultsNext');
 
-// スライダーが存在するページでだけ動かす
 if (sliderTrack && prevBtn && nextBtn) {
 
-  // 現在表示している枚数のインデックス（0始まり）
   var currentIndex = 0;
+  var slides       = sliderTrack.querySelectorAll('.results__slide');
+  var totalSlides  = slides.length;
 
-  // スライドの総枚数を取得する
-  var slides     = sliderTrack.querySelectorAll('.results__slide');
-  var totalSlides = slides.length; // 8枚
-
-  // ----------------------------------------
-  // スライドを動かす関数
-  // ----------------------------------------
   function moveSlider() {
-
-    // インデックス × 100% 分だけトラックを左にずらす
     sliderTrack.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
 
-    // 「前へ」ボタンの活性・非活性を切り替える
     if (currentIndex === 0) {
       prevBtn.setAttribute('disabled', 'true');
     } else {
       prevBtn.removeAttribute('disabled');
     }
 
-    // 「次へ」ボタンの活性・非活性を切り替える
     if (currentIndex === totalSlides - 1) {
       nextBtn.setAttribute('disabled', 'true');
     } else {
@@ -86,9 +74,6 @@ if (sliderTrack && prevBtn && nextBtn) {
     }
   }
 
-  // ----------------------------------------
-  // 「前へ」ボタンのクリック処理
-  // ----------------------------------------
   prevBtn.addEventListener('click', function() {
     if (currentIndex > 0) {
       currentIndex = currentIndex - 1;
@@ -96,9 +81,6 @@ if (sliderTrack && prevBtn && nextBtn) {
     }
   });
 
-  // ----------------------------------------
-  // 「次へ」ボタンのクリック処理
-  // ----------------------------------------
   nextBtn.addEventListener('click', function() {
     if (currentIndex < totalSlides - 1) {
       currentIndex = currentIndex + 1;
@@ -106,7 +88,42 @@ if (sliderTrack && prevBtn && nextBtn) {
     }
   });
 
-  // 最初に1回実行して初期状態を整える（先頭は「前へ」を非活性に）
   moveSlider();
+
+  // ========================================
+  // スワイプ（タッチ）操作の追加
+  // ========================================
+
+  var touchStartX    = 0;
+  var touchEndX      = 0;
+  var swipeThreshold = 50; // 50px以上の移動でスワイプと判定
+
+  sliderTrack.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  });
+
+  sliderTrack.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].clientX;
+
+    var diffX = touchEndX - touchStartX;
+
+    if (Math.abs(diffX) < swipeThreshold) {
+      return; // 移動が少なすぎる場合は何もしない
+    }
+
+    if (diffX < 0) {
+      // 左スワイプ → 次へ
+      if (currentIndex < totalSlides - 1) {
+        currentIndex = currentIndex + 1;
+        moveSlider();
+      }
+    } else {
+      // 右スワイプ → 前へ
+      if (currentIndex > 0) {
+        currentIndex = currentIndex - 1;
+        moveSlider();
+      }
+    }
+  });
 
 }
