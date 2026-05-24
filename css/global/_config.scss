@@ -1,0 +1,25 @@
+/* =========================
+   レスポンシブ
+   ========================= */
+
+/* スマホ */
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+/* タブレット※スマホを含むよ*/
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+/* PC */
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
