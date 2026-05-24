@@ -11,8 +11,8 @@ $color-bg-alt: #f3ede6; // セクション背景の淡いベージュ
 $color-white: #ffffff;
 $color-gold: #b89a6a; // アクセントのゴールド（真鍮系）
 $color-gold-light: #d4b896; // ラインや薄いアクセント用の明るめゴールド
-$color-header: #907B5B; // ヘッダーテキスト
-$color-text: #4A4A4A; // メインテキストのダークブラウン
+$color-header: #907b5b; // ヘッダーテキスト
+$color-text: #4a4a4a; // メインテキストのダークブラウン
 $color-text-sub: #7a6a5a; // サブテキスト・説明文のミドルブラウン
 $color-border: #d9cfc5; // ボーダー・区切り線の薄いベージュ
 
@@ -41,7 +41,8 @@ $section-padding-sp: 60px;
 /* =============================================
 共通設定
 ============================================= */
-body, html {
+body,
+html {
 	font-family: $font-sans-ja;
 	background: $color-bg;
 	color: $color-text;
@@ -61,58 +62,68 @@ body, html {
 sectionの共通設定
 ============================================= */
 .l-common {
-	padding: $section-padding 0	;
+	padding: $section-padding 0;
 	@include mobile {
-		padding: $section-padding-sp 0;		
-  }
+		padding: $section-padding-sp 0;
+	}
 }
 
 .wrapper {
-max-width: $max-width;
-margin: 0 auto;
-padding: 0 40px;
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: 0 40px;
 
-@include mobile {
-padding: 0 16px;
-}
-}
-
-.common__header {
-    text-align: center;
-    margin-bottom: 40px;
+	@include mobile {
+		padding: 0 16px;
+	}
 }
 
 // 英字タイトル用のスタイル
-.common__header-title--en {
-	font-family: $font-serif-en;
-	color: $color-gold;
-	letter-spacing: 0.15em;
-	margin-bottom: 12px;
-	font-size: $font-size-base;
-}
+.common {
+	&__header {
+		text-align: center;
+		margin-bottom: 40px;
+	}
 
-.common__header-title {
-font-family: $font-serif-ja;
-color: $color-header;
-font-size: $font-size-xlarge;
-font-weight: 400;
-margin-bottom: 16px;
-line-height: 1.5;
-letter-spacing: 0.1em;
-}
-.common__footer {
-	text-align: center;
-}
-.common__footer-text {
-	font-size: $font-size-base;
-	color: $color-text-sub;
-	line-height: 2;
-}
-.common__read {
-	text-align: center;
-    margin-bottom: 40px;
-}
+	&__header-title--en {
+		font-family: $font-serif-en;
+		color: $color-gold;
+		letter-spacing: 0.15em;
+		margin-bottom: 12px;
+		font-size: $font-size-base;
+	}
 
+	&__header-title {
+		font-family: $font-serif-ja;
+		color: $color-header;
+		font-size: $font-size-xlarge;
+		font-weight: 400;
+		margin-bottom: 16px;
+		line-height: 1.5;
+		letter-spacing: 0.1em;
+
+		@include mobile {
+			font-size: 20px;
+			letter-spacing: 0.05em;
+		}
+	}
+
+	&__footer {
+		text-align: center;
+	}
+
+	&__footer-text {
+		font-size: $font-size-base;
+		color: $color-text-sub;
+		line-height: 2;
+	}
+
+	&__read {
+		text-align: center;
+		margin-bottom: 40px;
+		padding: 0 16px;
+	}
+}
 
 /* =============================================
 Utilities
@@ -192,55 +203,50 @@ Utilities
 	z-index: 100;
 	background-color: $color-white;
 	border-bottom: 1px solid $color-border;
-}
 
-.header__inner {
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 0 40px;
-	height: 70px;
+	&__inner {
+		max-width: $max-width;
+		margin: 0 auto;
+		padding: 0 40px;
+		height: 70px;
 
-	// --- PC：ロゴ・ナビ・ボタンを横並び ---
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 24px;
+		// --- PC：ロゴ・ナビ・ボタンを横並び ---
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+
+		@include mobile {
+			padding: 0 20px;
+		}
+	}
+
+	&__logo {
+		font-family: $font-serif-en;
+		font-size: $font-size-xlarge;
+		font-weight: 400;
+		color: $color-text;
+		letter-spacing: 0.1em;
+		white-space: nowrap;
+	}
+
+	&__nav-list {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	&__nav-link {
+		color: $color-text-sub;
+		letter-spacing: 0.06em;
+	}
 
 	@include mobile {
-		padding: 0 20px;
-	}
-}
-
-// --- ロゴ ---
-.header__logo {
-	font-family: $font-serif-en;
-	font-size: $font-size-xlarge;
-	font-weight: 400;
-	color: $color-text;
-	letter-spacing: 0.1em;
-	white-space: nowrap;
-}
-
-// --- ナビゲーションリスト ---
-.header__nav-list {
-	display: flex;
-	align-items: center;
-	gap: 24px;
-}
-
-.header__nav-link {
-	color: $color-text-sub;
-	letter-spacing: 0.06em;
-}
-
-// ========================================
-// スマホ用：ヘッダー
-// ========================================
-@include mobile {
-	// ナビとボタンをスマホでは非表示（ハンバーガー実装時に対応）
-	.header__nav,
-	.btn--header {
-		display: none;
+		// ナビとボタンをスマホでは非表示（ハンバーガー実装時に対応）
+		&__nav,
+		.btn--header {
+			display: none;
+		}
 	}
 }
 
@@ -252,70 +258,68 @@ Utilities
 	// ヘッダー固定分の余白
 	padding-top: 70px;
 	background-color: $color-bg;
-}
 
-.hero__inner {
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 80px 40px;
-	display: flex;
-	align-items: center;
-	gap: 60px;
+	&__inner {
+		max-width: $max-width;
+		margin: 0 auto;
+		padding: 80px 40px;
+		display: flex;
+		align-items: center;
+		gap: 60px;
 
-	@include mobile {
-		padding: 48px 20px 60px;
-		flex-direction: column-reverse; 
-		gap: 36px;
+		@include mobile {
+			padding: 48px 20px 60px;
+			flex-direction: column-reverse;
+			gap: 36px;
+		}
+	}
+
+	// --- 左：テキストエリア ---
+	&__text {
+		flex: 1;
+	}
+
+	&__tag {
+		font-size: $font-size-base;
+		color: $color-text-sub;
+		letter-spacing: 0.1em;
+		margin-bottom: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 8px;
+
+		&::before {
+			content: '';
+			width: 40px;
+			height: 1px;
+			background-color: $color-gold;
+		}
+	}
+
+	&__title {
+		font-family: $font-serif-ja;
+		font-size: 40px;
+		font-weight: 400;
+		line-height: 1.6;
+		margin-bottom: 24px;
+
+		@include mobile {
+			font-size: 24px;
+		}
+	}
+
+	&__desc {
+		color: $color-text-sub;
+		line-height: 1.9;
+		margin-bottom: 40px;
+	}
+
+	// --- 右：画像エリア ---
+	&__image {
+		flex: 1;
 	}
 }
-
-// --- 左：テキストエリア ---
-.hero__text {
-	flex: 1;
-}
-
-.hero__tag {
-	font-size: $font-size-base;
-	color: $color-text-sub;
-	letter-spacing: 0.1em;
-	margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-
-  &::before {
-    content: '';
-    width: 40px;
-    height: 1px;
-    background-color: $color-gold;
-  }
-}
-
-.hero__title {
-	font-family: $font-serif-ja;
-	font-size: 40px;
-	font-weight: 400;
-	line-height: 1.6;
-	margin-bottom: 24px;
-
-	@include mobile {
-		font-size: 24px;
-	}
-}
-
-.hero__desc {
-	color: $color-text-sub;
-	line-height: 1.9;
-	margin-bottom: 40px;
-}
-
-// --- 右：画像エリア ---
-.hero__image {
-	flex: 1;
-}
-
-
 
 // ========================================
 // Aboutセクション（運営者ストーリー）
@@ -324,122 +328,124 @@ Utilities
 .about {
 	background-color: $color-bg-alt;
 
-}
+	&__inner {
+		max-width: $max-width;
+		margin: 0 auto;
+		padding: 0 40px;
 
-.about__inner {
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 0 40px;
+		// --- PC：左プロフィール・右ストーリーを横並び ---
+		display: flex;
+		align-items: flex-start;
+		gap: 80px;
 
-	// --- PC：左プロフィール・右ストーリーを横並び ---
-	display: flex;
-	align-items: flex-start;
-	gap: 80px;
-
-	@include mobile {
-		padding: 0 20px;
-		flex-direction: column; // 縦並びに切り替え
-		gap: 48px;
+		@include mobile {
+			padding: 0 20px;
+			flex-direction: column; // 縦並びに切り替え
+			gap: 48px;
+		}
 	}
-}
 
-// --- 左：プロフィールエリア ---
-.about__profile {
-	flex: 0 0 260px; // 幅固定・縮まない
-	width: 260px;
+	// --- 左：プロフィールエリア ---
+	&__profile {
+		flex: 0 0 260px; // 幅固定・縮まない
+		width: 260px;
 
-	@include mobile {
-		flex: none;
-		width: 100%;
+		@include mobile {
+			flex: none;
+			width: 100%;
+		}
 	}
-}
 
-// プロフィール丸画像
-.about__profile-image {
-	width: 160px;
-	height: 160px;
-	border-radius: 50%;
-	background-color: $color-border;
-	margin: 0 auto 24px;
-	border: 3px solid $color-gold-light;
-}
+	// プロフィール丸画像
+	&__profile-image {
+		width: 160px;
+		height: 160px;
+		border-radius: 50%;
+		background-color: $color-border;
+		margin: 0 auto 24px;
+		border: 3px solid $color-gold-light;
+	}
 
-// プロフィールテキスト群
-.about__profile-text {
-	text-align: center;
-}
+	// プロフィールテキスト群
+	&__profile-text {
+		text-align: center;
+	}
 
-.about__profile-role {
-  font-size: $font-size-small;
-	color: $color-text-sub;
-	margin-bottom: 4px;
-}
+	&__profile-role {
+		font-size: $font-size-small;
+		color: $color-text-sub;
+		margin-bottom: 4px;
+	}
 
-.about__profile-name {
-	font-family: $font-serif-ja;
-	font-size: $font-size-large;
-	font-weight: 400;
-	margin-bottom: 16px;
-}
+	&__profile-name {
+		font-family: $font-serif-ja;
+		font-size: 20px;
+		font-weight: 400;
+		margin-bottom: 16px;
+	}
 
-.about__profile-list {
-	text-align: center;
-    color: #7a6a5a;
-    line-height: 2;
-    margin-bottom: 16px;
-    padding-left: 4px;
-    font-size: $font-size-mobile;}
+	&__profile-list {
+		text-align: left;
+		color: #7a6a5a;
+		line-height: 2;
+		margin-bottom: 16px;
+		padding-left: 4px;
+		font-size: $font-size-mobile;
 
-.about__profile-list-item {
-	&::before {
-		content: '・';
+		@include mobile {
+			font-size: 12px;
+		}
+	}
+
+	&__profile-list-item {
+		&::before {
+			content: '・';
+			color: $color-gold;
+		}
+	}
+
+	&__profile-note {
+		color: $color-text-sub;
+		text-align: left;
+		line-height: 1.8;
+	}
+
+	// --- 右：ストーリーエリア ---
+	&__story {
+		flex: 1;
+		background-color: #fff;
+		padding: 24px 32px;
+
+		@include mobile {
+			padding: 32px 16px;
+		}
+	}
+
+	&__sub-title {
+		font-family: $font-serif-en;
 		color: $color-gold;
-	}
-}
-
-.about__profile-note {
-	color: $color-text-sub;
-	text-align: left;
-	line-height: 1.8;
-}
-
-// --- 右：ストーリーエリア ---
-.about__story {
-	flex: 1;
-	background-color: #fff;
-    padding: 24px 32px;
-}
-
-.about__sub-title {
-	font-family: $font-serif-en;
-	color: $color-gold;
-	letter-spacing: 0.15em;
-	margin-bottom: 12px;
-}
-
-.about__title {
-	font-family: $font-serif-ja;
-	font-size: $font-size-xlarge;
-	font-weight: 400;
-	line-height: 1.7;
-	margin-bottom: 32px;
-
-	@include mobile {
-		font-size: $font-size-xlarge; // 24px
+		letter-spacing: 0.15em;
+		margin-bottom: 12px;
 	}
 
-	// タイトル下の区切り線（ゴールド）
-	&::after {
-		content: '';
-		display: block;
-		width: 50%;
-		height: 1px;
-		background-color: $color-gold;
-		margin-top: 24px;
-	}
-}
+	&__title {
+		font-family: $font-serif-ja;
+		font-weight: 400;
+		line-height: 1.7;
+		margin-bottom: 32px;
 
-.about__text{
+		// タイトル下の区切り線（ゴールド）
+		&::after {
+			content: '';
+			display: block;
+			width: 50%;
+			height: 1px;
+			background-color: $color-gold;
+			margin-top: 24px;
+		}
+	}
+
+	&__text {
 		color: $color-text-sub;
 		margin-bottom: 24px;
 
@@ -447,6 +453,7 @@ Utilities
 			margin-bottom: 0;
 		}
 	}
+}
 
 // ========================================
 // お悩みセクション
@@ -454,173 +461,150 @@ Utilities
 
 .worries {
 	background-color: $color-bg;
-	}
 
-.worries__inner {
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 0 40px;
+	&__inner {
+		max-width: $max-width;
+		margin: 0 auto;
+		padding: 0 40px;
 
-	@include mobile {
-		padding: 0 20px;
+		@include mobile {
+			padding: 0 20px;
+		}
 	}
 }
-
 
 // タイトル背景（ダークバー）
-.worries__title {
-	display: inline-block;
-	background-color: $color-text;
-	color: $color-white;
-	padding: 14px 40px;
-
-	@include mobile {
-		font-size: $font-size-xlarge;
-		padding: 12px 24px;
+.worries {
+	&__title {
+		display: inline-block;
+		background-color: $color-text;
+		color: $color-white;
+		padding: 14px 40px;
 	}
-}
 
-.worries__desc {
-	color: $color-text-sub;
-	letter-spacing: 0.05em;
-}
-
-// --- カードグリッド（3列） ---
-.worries__grid {
-	display: flex;
-	flex-wrap: wrap; // 折り返しあり
-	gap: 16px;
-	margin-bottom: 48px;
-}
-
-// --- 各カード ---
-.worries__card {
-	flex: 0 0 calc(33.33% - 11px); // 3列
-	background-color: $color-white;
-	border: 1px solid $color-border;
-	border-radius: 8px;
-	padding: 28px 24px;
-	text-align: center;
-
-	@include mobile {
-		flex: 0 0 calc(50% - 8px); // 2列
+	&__desc {
+		color: $color-text-sub;
+		letter-spacing: 0.05em;
 	}
-}
 
-.worries__card-text {
-	color: $color-text;
-	line-height: 1.9;
-}
+	// --- カードグリッド（3列） ---
+	&__grid {
+		display: flex;
+		flex-wrap: wrap; // 折り返しあり
+		gap: 16px;
+		margin-bottom: 48px;
+	}
 
-// --- 締めコピー ---
-.worries__footer {
-	text-align: center;
-}
+	// --- 各カード ---
+	&__card {
+		flex: 0 0 calc(33.33% - 11px); // 3列
+		background-color: $color-white;
+		border: 1px solid $color-border;
+		border-radius: 8px;
+		padding: 28px 24px;
+		text-align: center;
 
-.worries__footer-text {
-	font-size: $font-size-base;
-	color: $color-text-sub;
-	line-height: 2;
+		@include mobile {
+			flex: 0 0 calc(50% - 8px); // 2列
+		}
+	}
 
-	strong {
+	&__card-text {
 		color: $color-text;
-		font-weight: 400;
-		display: block;
-		margin-top: 8px;
+		line-height: 1.9;
+	}
+
+	// --- 締めコピー ---
+	&__footer {
+		text-align: center;
+	}
+
+	&__footer-text {
+		padding: 0 24px;
+
+		strong {
+			color: $color-text;
+			font-weight: 400;
+			display: block;
+			margin-top: 8px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		&__card {
+			flex: 0 0 100%;
+		}
 	}
 }
-
-// ========================================
-// スマホ用：カードをさらに小さい画面で1列に
-// ========================================
-@media (max-width: 480px) {
-	.worries__card {
-		flex: 0 0 100%;
-	}
-}
-
 
 /* ========================================
 理由セクション reason
 ======================================== */
 
 .reason {
-background-color: #fff;
-}
+	background-color: #fff;
 
-/* カード群 */
-.reason__cards {
-display: flex;
-gap: 40px;
-justify-content: center;
-margin-bottom: 48px;
-}
+	/* カード群 */
+	&__cards {
+		display: flex;
+		gap: 40px;
+		justify-content: center;
+		margin-bottom: 48px;
 
-/* 各カード */
-.reason__card {
-flex: 1;
-text-align: center;
-}
+		@include mobile {
+			flex-direction: column;
+			gap:40px
+		};
+		}
 
-/* カード画像 */
-.reason__card-image {
-width: 100%;
-aspect-ratio: 4 / 3;
-background-color: #e0e0e0; /* 画像未設定時のプレースホルダー色 */
-border-radius: 4px;
-overflow: hidden;
-margin-bottom: 24px;
-}
+	/* 各カード */
+	&__card {
+		flex: 1;
+		text-align: center;
 
-.reason__card-image img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-}
+		@include mobile {
+			max-width: 480px;
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
 
-/* カードタイトル */
-.reason__card-title {
-font-size: $font-size-large;
-margin-bottom: 8px;
-}
+	/* カード画像 */
+	&__card-image {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		background-color: #e0e0e0; /* 画像未設定時のプレースホルダー色 */
+		border-radius: 4px;
+		overflow: hidden;
+		margin-bottom: 24px;
+	}
 
-/* カード説明文 */
-.reason__card-desc {
-font-size: 14px;
-color: #555;
-line-height: 1.7;
-}
+	&__card-image img {
+		object-fit: cover;
+	}
 
+	/* カードタイトル */
+	&__card-title {
+		font-size: 20px;
+		margin-bottom: 8px;
+		font-family: 'Noto Serif JP';
+	}
 
-/* ========================================
-レスポンシブ（タブレット・スマホ）
-======================================== */
+	/* カード説明文 */
+	&__card-desc {
+		font-size: 14px;
+		color: #555;
+		line-height: 1.7;
+	}
 
-@media (max-width: 768px) {
-
-.reason__inner {
-padding: 0 20px;
-}
-
-.reason__cards {
-flex-direction: column;
-gap: 40px;
-}
-
-.reason__card {
-max-width: 480px;
-margin: 0 auto;
-width: 100%;
-}
-
-.reason__header-title {
-font-size: 26px;
-}
-
-.reason__footer-text {
-font-size: 16px;
-}
+	@include mobile {
+		&__inner {
+			padding: 0 20px;
+		}
+		&__footer-text {
+			font-size: 16px;
+		}
+	}
 }
 
 // ========================================
@@ -628,222 +612,227 @@ font-size: 16px;
 // ========================================
 
 .approach {
-background-color: $color-bg-alt; 
-}
+	background-color: $color-bg-alt;
 
-// 英字ラベル（MENUの文字）
-.approach__header-title--en {
-display: block;
-margin-bottom: 12px;
-}
+	// 英字ラベル（MENUの文字）
+	&__header-title--en {
+		display: block;
+		margin-bottom: 12px;
+	}
 
-// 大見出し
-.approach__title {
-margin-bottom: 24px;
-}
+	// 大見出し
+	&__title {
+		margin-bottom: 24px;
+	}
 
-// リード文（説明文）
-.approach__lead {
-color: $color-text-sub;
-line-height: 2;
-margin-bottom: 80px; // アプローチリストとの間隔
+	// リード文（説明文）
+	&__lead {
+		color: $color-text-sub;
+		line-height: 2;
+		margin-bottom: 80px; // アプローチリストとの間隔
 
-@include mobile {
-margin-bottom: 48px;
-text-align: left; // スマホでは左揃えに
-}
-}
+		@include mobile {
+			margin-bottom: 48px;
+			text-align: left; // スマホでは左揃えに
+		}
+	}
 
+	/* ----------------------------------------
+	3つのアプローチ（セクション中部）
+	---------------------------------------- */
 
-/* ----------------------------------------
-3つのアプローチ（セクション中部）
----------------------------------------- */
+	// アプローチ全体のリスト
+	&__list {
+		display: flex;
+		flex-direction: column; // 縦に3行並べる
+		gap: 40px; // 各行の間隔
+		margin-bottom: 80px;
 
-// アプローチ全体のリスト
-.approach__list {
-display: flex;
-flex-direction: column; // 縦に3行並べる
-gap: 40px;              // 各行の間隔
-margin-bottom: 80px;
+		@include mobile {
+			gap: 48px;
+			margin-bottom: 60px;
+		}
+	}
 
-@include mobile {
-gap: 48px;
-margin-bottom: 60px;
-}
-}
+	// 各行（画像＋テキストの横2カラム）
+	&__item {
+		display: flex; // 横並び
+		align-items: center; // 上下中央揃え
+		gap: 48px; // 画像とテキストの間隔
+		background-color: $color-text; // ダークグレー背景（ワイヤー通り）
+		padding: 40px;
+		border-radius: 4px;
 
-// 各行（画像＋テキストの横2カラム）
-.approach__item {
-display: flex;       // 横並び
-align-items: center; // 上下中央揃え
-gap: 48px;           // 画像とテキストの間隔
-background-color: $color-text; // ダークグレー背景（ワイヤー通り）
-padding: 40px;
-border-radius: 4px;
+		@include mobile {
+			flex-direction: column; // スマホ：縦並びに切り替え
+			gap: 24px;
+			padding: 24px 20px;
+		}
+	}
 
-@include mobile {
-flex-direction: column; // スマホ：縦並びに切り替え
-gap: 24px;
-padding: 24px 20px;
-}
-}
+	// 左：画像エリア（正方形に近い形）
+	&__item-image {
+		flex: 0 0 220px; // 幅を固定・縮まない
+		width: 220px;
+		height: 220px;
+		background-color: $color-border; // 画像未設定時のプレースホルダー
+		overflow: hidden;
 
-// 左：画像エリア（正方形に近い形）
-.approach__item-image {
-flex: 0 0 220px; // 幅を固定・縮まない
-width: 220px;
-height: 220px;
-background-color: $color-border; // 画像未設定時のプレースホルダー
-overflow: hidden;
+		@include mobile {
+			flex: none;
+			width: 100%; // スマホでは横幅いっぱい
+			height: 200px;
+		}
 
-@include mobile {
-flex: none;
-width: 100%;     // スマホでは横幅いっぱい
-height: 200px;
-}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
 
-img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-}
-}
+	// 右：テキストエリア（余白をすべて使う）
+	&__item-body {
+		flex: 1; // 残りの幅をすべて使う
+	}
 
-// 右：テキストエリア（余白をすべて使う）
-.approach__item-body {
-flex: 1; // 残りの幅をすべて使う
-}
+	// アプローチタイトル（番号＋タイトル）
+	&__item-title {
+		font-family: $font-serif-ja;
+		font-size: $font-size-large; // 24px
+		font-weight: 400;
+		color: $color-white;
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
 
-// アプローチタイトル（番号＋タイトル）
-.approach__item-title {
-font-family: $font-serif-ja;
-font-size: $font-size-large; // 24px
-font-weight: 400;
-color: $color-white;
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
+		@include mobile {
+			font-size: 20px;
+		}
+	}
 
-// 番号（01 / 02 / 03）
-.approach__item-num {
-font-family: $font-serif-en;
-font-size: $font-size-large;
-color: $color-gold-light; // ゴールドで番号を目立たせる
-letter-spacing: 0.05em;
-}
+	// 番号（01 / 02 / 03）
+	&__item-num {
+		font-family: $font-serif-en;
+		font-size: $font-size-large;
+		color: $color-gold-light; // ゴールドで番号を目立たせる
+		letter-spacing: 0.05em;
+	}
 
-// 区切り文字（｜）
-.approach__item-sep {
-color: $color-gold-light;
-}
+	// 区切り文字（｜）
+	&__item-sep {
+		color: $color-gold-light;
+	}
 
-// 説明文
-.approach__item-desc {
-font-size: $font-size-mobile; // 14px
-color: $color-border;         // 明るいベージュ（暗背景に合わせて）
-line-height: 2;
-}
+	// 説明文
+	&__item-desc {
+		font-size: $font-size-mobile; // 14px
+		color: $color-border; // 明るいベージュ（暗背景に合わせて）
+		line-height: 2;
 
+		@include mobile {
+			padding: 0 8px;
+		}
+	}
 
-/* ----------------------------------------
-③ ファスティングの流れ（セクション下部）
----------------------------------------- */
+	/* ----------------------------------------
+	③ ファスティングの流れ（セクション下部）
+	---------------------------------------- */
 
-// 「ファスティングの流れ」見出し
-.approach__flow-title {
-font-family: $font-serif-ja;
-font-size: $font-size-xlarge; // 32px
-font-weight: 400;
-color: $color-header;
-text-align: center;
-margin-bottom: 48px;
+	// 「ファスティングの流れ」見出し
+	&__flow-title {
+		font-family: $font-serif-ja;
+		font-size: $font-size-xlarge; // 32px
+		font-weight: 400;
+		color: $color-header;
+		text-align: center;
+		margin-bottom: 48px;
 
-@include mobile {
-font-size: $font-size-large; // 24px
-margin-bottom: 32px;
-}
-}
+		@include mobile {
+			font-size: $font-size-large; // 24px
+			margin-bottom: 32px;
+		}
+	}
 
-// カード3枚を横並びにするコンテナ
-.approach__flow-cards {
-display: flex;       // 横並び
-gap: 32px;           // カード間の隙間
-justify-content: center;
+	// カード3枚を横並びにするコンテナ
+	&__flow-cards {
+		display: flex; // 横並び
+		gap: 32px; // カード間の隙間
+		justify-content: center;
 
-@include mobile {
-flex-direction: column; // スマホ：縦1列に切り替え
-gap: 40px;
-}
-}
+		@include mobile {
+			flex-direction: column; // スマホ：縦1列に切り替え
+			gap: 16px;
+		}
+	}
 
-// 各カード
-.approach__flow-card {
-flex: 1;          // 3枚が均等幅
-text-align: center;
+	// 各カード
+	&__flow-card {
+		flex: 1; // 3枚が均等幅
+		text-align: center;
 
-@include mobile {
-max-width: 480px;  // スマホでも広がりすぎない
-margin: 0 auto;
-width: 100%;
-}
-}
+		@include mobile {
+			max-width: 480px; // スマホでも広がりすぎない
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
 
-// カード上部の画像エリア（横長）
-.approach__flow-card-image {
-width: 100%;
-height: 180px;                   // 高さ固定
-background-color: $color-border; // プレースホルダー色
-overflow: hidden;
-margin-bottom: 20px;
+	// カード上部の画像エリア（横長）
+	&__flow-card-image {
+		width: 100%;
+		height: 180px; // 高さ固定
+		background-color: $color-border; // プレースホルダー色
+		overflow: hidden;
+		margin-bottom: 20px;
 
-img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-}
-}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
 
-// Day表記（例：Day 1-2）
-.approach__flow-card-day {
-font-family: $font-serif-en;
-font-size: $font-size-mobile; // 14px
-color: $color-text-sub;
-letter-spacing: 0.1em;
-margin-bottom: 8px;
-}
+	// Day表記（例：Day 1-2）
+	&__flow-card-day {
+		font-family: $font-serif-en;
+		font-size: 16px; // 14px
+		color: $color-text-sub;
+		letter-spacing: 0.1em;
+	}
 
-// ステップ名（例：準備食）
-.approach__flow-card-name {
-font-family: $font-serif-ja;
-font-size: $font-size-large; // 24px
-font-weight: 400;
-color: $color-header;
-margin-bottom: 8px;
-}
+	// ステップ名（例：準備食）
+	&__flow-card-name {
+		font-family: $font-serif-ja;
+		font-size: $font-size-large; // 24px
+		font-weight: 400;
+		color: $color-header;
+		margin-bottom: 8px;
+	}
 
-// 補足テキスト（例：食事を少しずつ整える）
-.approach__flow-card-desc {
-font-size: $font-size-mobile; // 14px
-color: $color-text-sub;
-line-height: 1.8;
-}
+	// 補足テキスト（例：食事を少しずつ整える）
+	&__flow-card-desc {
+		font-size: $font-size-mobile; // 14px
+		color: $color-text-sub;
+		line-height: 1.8;
+	}
 
-// 矢印（カードとカードの間）
-.approach__flow-arrow {
-display: flex; 
-align-items: center; 
-justify-content: center;
-flex-shrink: 0;// 矢印が縮まないようにする
-font-size: 24px;
-color: $color-gold; 
+	// 矢印（カードとカードの間）
+	&__flow-arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0; // 矢印が縮まないようにする
+		font-size: 24px;
+		color: $color-gold;
 
-@include mobile {
-transform: rotate(90deg);
-}
+		@include mobile {
+			transform: rotate(90deg);
+		}
+	}
 }
 
 // ========================================
@@ -851,350 +840,308 @@ transform: rotate(90deg);
 // ========================================
 
 .faq {
-background-color: $color-bg; // オフホワイト背景
+	background-color: $color-bg; // オフホワイト背景
+
+	// --- セクション見出し ---
+	&__header-en {
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	&__title {
+		margin-bottom: 16px;
+	}
+
+	&__lead {
+		color: $color-text-sub;
+		margin-bottom: 0;
+	}
+	/* ----------------------------------------
+	アコーディオンリスト
+	---------------------------------------- */
+
+	// リスト全体
+	&__list {
+		margin-top: 60px; 
+		margin-bottom: 80px; 
+		list-style: none;
+
+		@include mobile {
+			margin-top: 40px;
+			margin-bottom: 0;
+		}
+	}
+
+	&__item {
+		border-bottom: 1px solid $color-border; 
+		&:first-child {
+			border-top: 1px solid $color-border;
+		}
+	}
+
+	&__question {
+		appearance: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 24px 0; 
+
+		@include mobile {
+			padding: 20px 0;
+		}
+	}
+
+	&__question-text {
+		font-family: $font-serif-ja;
+		font-size: $font-size-base;
+		font-weight: 400;
+		color: $color-text;
+		line-height: 1.7;
+		letter-spacing: 0.05em;
+	}
+
+	&__icon {
+		flex-shrink: 0; // アイコンが縮まないようにする
+		position: relative;
+		width: 20px;
+		height: 20px;
+
+		// 横線（常に表示）
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: $color-gold; // ゴールドで統一
+			border-radius: 2px;
+			transition:
+				transform 0.3s ease,
+				opacity 0.3s ease; // アニメーション
+		}
+
+		&::before {
+			width: 16px;
+			height: 1px;
+			transform: translate(-50%, -50%);
+		}
+
+		&::after {
+			width: 1px;
+			height: 16px;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__question[aria-expanded='true'] {
+		.faq__icon::after {
+			transform: translate(-50%, -50%) rotate(90deg);
+			opacity: 0; 
+		}
+	}
+
+	&__answer {
+		overflow: hidden; // はみ出た分を隠してアコーディオンを実現
+		max-height: 0; 
+		transition: max-height 0.4s ease; 
+	}
+
+	&__answer-text {
+		padding: 0 0 24px 0; 
+		color: $color-text-sub;
+		font-size: $font-size-mobile; 
+		line-height: 2;
+
+		@include mobile {
+			padding-bottom: 20px;
+		}
+	}
 }
-
-
-// --- セクション見出し ---
-.faq__header-en {
-display: block;
-margin-bottom: 8px;
-}
-
-.faq__title {
-margin-bottom: 16px;
-}
-
-.faq__lead {
-color: $color-text-sub;
-margin-bottom: 0; // common__read の margin-bottom を打ち消す
-}
-
-
-/* ----------------------------------------
-アコーディオンリスト
----------------------------------------- */
-
-// リスト全体
-.faq__list {
-margin-top: 56px;      // 見出しとの間隔
-margin-bottom: 80px;   // コンタクトエリアとの間隔
-list-style: none;
-
-@include mobile {
-margin-top: 40px;
-margin-bottom: 56px;
-}
-}
-
-// 各アイテム（Q&Aのセット）
-.faq__item {
-border-bottom: 1px solid $color-border; // 区切り線
-
-// リストの一番上にも線を引く
-&:first-child {
-border-top: 1px solid $color-border;
-}
-}
-
-// クリックできる質問ボタン
-.faq__question {
-// ボタンのデフォルトスタイルをリセット
-appearance: none;
-background: none;
-border: none;
-cursor: pointer;
-width: 100%;
-text-align: left;
-
-// レイアウト（質問テキストとアイコンを両端に配置）
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 16px;
-padding: 24px 0; // 上下の余白
-
-@include mobile {
-padding: 20px 0;
-}
-}
-
-// 質問テキスト
-.faq__question-text {
-font-family: $font-serif-ja;
-font-size: $font-size-base;
-font-weight: 400;
-color: $color-text;
-line-height: 1.7;
-letter-spacing: 0.05em;
-}
-
-// 開閉アイコン（疑似要素で + / − を表現）
-.faq__icon {
-flex-shrink: 0;          // アイコンが縮まないようにする
-position: relative;
-width: 20px;
-height: 20px;
-
-// 横線（常に表示）
-&::before,
-&::after {
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-background-color: $color-gold; // ゴールドで統一
-border-radius: 2px;
-transition: transform 0.3s ease, opacity 0.3s ease; // アニメーション
-}
-
-// 横線
-&::before {
-width: 16px;
-height: 1px;
-transform: translate(-50%, -50%);
-}
-
-// 縦線（開いているときに回転して消える）
-&::after {
-width: 1px;
-height: 16px;
-transform: translate(-50%, -50%);
-}
-}
-
-// 開いているとき（aria-expanded="true"のとき）のアイコン変化
-.faq__question[aria-expanded="true"] {
-
-// 縦線を回転させて − になる
-.faq__icon::after {
-transform: translate(-50%, -50%) rotate(90deg);
-opacity: 0; // 縦線を消すことで − になる
-}
-}
-
-// 回答エリア（初期状態：非表示）
-.faq__answer {
-overflow: hidden;      // はみ出た分を隠してアコーディオンを実現
-max-height: 0;         // 閉じているときは高さ0
-transition: max-height 0.4s ease; // 開閉アニメーション
-}
-
-// 回答テキスト
-.faq__answer-text {
-padding: 0 0 24px 0;   // 下の余白（質問との間隔）
-color: $color-text-sub;
-font-size: $font-size-mobile; // 14px
-line-height: 2;
-
-@include mobile {
-padding-bottom: 20px;
-}
-}
-
 
 // ========================================
 // 実績＆ビフォーアフターセクション results
 // ========================================
 
 .results {
-  background-color: $color-bg; // オフホワイト背景
-}
+	background-color: $color-bg; 
 
+	/* ----------------------------------------
+	セクション見出し
+	---------------------------------------- */
+	&__header-en {
+		display: block;
+		margin-bottom: 8px;
+	}
 
-/* ----------------------------------------
-セクション見出し
----------------------------------------- */
+	&__title {
+		margin-bottom: 0;
+	}
 
-.results__header-en {
-display: block;
-margin-bottom: 8px;
-}
+	/* ----------------------------------------
+	2カラムコンテナ
+	---------------------------------------- */
+	&__container {
+		display: flex;
+		align-items: center;
+		gap: 80px;
 
-.results__title {
-margin-bottom: 0;
-}
+		@include mobile {
+			flex-direction: column-reverse;
+			gap: 56px;
+			margin-top: 48px;
+		}
+	}
 
+	/* ----------------------------------------
+	左：実績数字エリア
+	---------------------------------------- */
+	&__stats {
+		flex: 0 0 260px;
+		width: 260px;
+		display: flex;
+		flex-direction: column; 
+		gap: 48px;
 
-/* ----------------------------------------
-2カラムコンテナ
-PC：左右並び / スマホ：縦1列
----------------------------------------- */
+		@include mobile {
+			flex: none;
+			width: 100%;
+			gap: 36px;
+		}
+	}
 
-.results__container {
-display: flex;
-align-items: center;
-gap: 80px;
+	&__stat-item {
+		display: flex;
+		align-items: stretch; // 縦線をテキストの高さに合わせて伸ばす
 
-@include mobile {
-flex-direction: column-reverse;
-gap: 56px;
-margin-top: 48px;
-}
-}
+		&::before {
+			content: '';
+			display: block;
+			width: 1px; // 線の太さ
+			background-color: $color-gold-light; 
+			margin-right: 20px; // 線とテキストの間隔
+			flex-shrink: 0;
+		}
+	}
 
+	// 数字・ラベル・説明文のまとまり
+	&__stat-body {
+		flex: 1;
+	}
 
-/* ----------------------------------------
-左：実績数字エリア
----------------------------------------- */
+	// 数字（大きく表示）
+	&__stat-number {
+		font-family: $font-sans-ja; // ゴシック体
+		font-size: 48px;
+		color: $color-header;
+		line-height: 1;
+		margin-bottom: 8px;
+		letter-spacing: 0.02em;
 
-.results__stats {
-// PC：左カラムの幅を固定
-flex: 0 0 260px;
-width: 260px;
-display: flex;
-flex-direction: column; // 3つの実績を縦並びに
-gap: 48px;
+		@include mobile {
+			font-size: 32px;
+		}
+	}
 
-@include mobile {
-flex: none;
-width: 100%;
-gap: 36px;
-}
-}
+	&__stat-unit {
+		font-size: 16px;
+		margin-left: 3px;
+		@include mobile {
+			display: inline-block; 
+		}
+	}
 
-// 各実績アイテム（縦線 + テキストのセット）
-.results__stat-item {
-display: flex;
-align-items: stretch; // 縦線をテキストの高さに合わせて伸ばす
+	&__stat-label {
+		font-family: $font-sans-ja;
+		font-size: $font-size-mobile; 
+		font-weight: 400;
+		color: $color-text;
+		letter-spacing: 0.08em;
+		margin-bottom: 10px;
+	}
 
-// 左側の細い縦線（疑似要素で表現）
-&::before {
-content: '';
-display: block;
-width: 1px;               // 線の太さ
-background-color: $color-gold-light; // 上品なゴールド
-margin-right: 20px;       // 線とテキストの間隔
-flex-shrink: 0;
-}
-}
+	// 説明文
+	&__stat-desc {
+		font-family: $font-sans-ja;
+		font-size: $font-size-small;
+		color: $color-text-sub;
+		line-height: 1.9;
+	}
 
-// 数字・ラベル・説明文のまとまり
-.results__stat-body {
-flex: 1;
-}
+	/* ----------------------------------------
+	右：ビフォーアフタースライダーエリア
+	---------------------------------------- */
+	&__slider-area {
+		flex: 1;
+		min-width: 0; // flexの子要素が縮まない問題を防ぐ
 
-// 数字（大きく表示）
-.results__stat-number {
-font-family: $font-sans-ja; // ゴシック体
-font-size: 48px;
-font-weight: 300;           // 細めの数字で上品に
-color: $color-header;
-line-height: 1;
-margin-bottom: 8px;
-letter-spacing: 0.02em;
+		// 矢印ボタンとスライダー本体を横並びに
+		display: flex;
+		align-items: center;
+		gap: 16px;
 
-@include mobile {
-font-size: 40px;
-}
-}
+		@include mobile {
+			gap: 10px;
+		}
+	}
 
-// 単位（% / 名以上 / 年）
-.results__stat-unit {
-font-size: $font-size-base; // 数字より小さく
-font-weight: 300;
-margin-left: 2px;
-}
+	// スライダーの見える範囲（はみ出た部分を隠す）
+	&__slider-viewport {
+		flex: 1; // 矢印に挟まれた残り幅をすべて使う
+		overflow: hidden;
+		background-color: $color-bg-alt; 
+		padding: 20px 0; 
+	}
 
-// ラベル（満足度 / サポート実績 / 学びと経験）
-.results__stat-label {
-font-family: $font-sans-ja;
-font-size: $font-size-mobile; // 14px
-font-weight: 400;
-color: $color-text;
-letter-spacing: 0.08em;
-margin-bottom: 10px;
-}
+	&__slider-track {
+		display: flex;
+		transition: transform 0.5s ease; 
+	}
 
-// 説明文
-.results__stat-desc {
-font-family: $font-sans-ja;
-font-size: $font-size-small; // 12px
-color: $color-text-sub;
-line-height: 1.9;
-}
+	&__slide {
+		flex: 0 0 100%; 
+		padding: 0 16px; 
 
+		img {
+			width: 70%;
+			height: 100%;
+			margin: 0 auto;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+		}
+	}
 
-/* ----------------------------------------
-右：ビフォーアフタースライダーエリア
----------------------------------------- */
+	/* ----------------------------------------
+	矢印ボタン
+	---------------------------------------- */
+	&__slider-btn {
+		background: none;
+		cursor: pointer;
 
-// スライダー全体（矢印ボタンも含むエリア）
-.results__slider-area {
-flex: 1;
-min-width: 0; // flexの子要素が縮まない問題を防ぐ
+		flex-shrink: 0; // ボタンが縮まないようにする
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-// 矢印ボタンとスライダー本体を横並びに
-display: flex;
-align-items: center;
-gap: 16px; // 矢印と画像の間隔
+		font-family: $font-serif-en; 
+		font-size: 40px;
+		color: $color-gold-light; 
 
-@include mobile {
-gap: 10px;
-}
-}
+		transition: color 0.3s ease;
+		&:hover {
+			color: $color-gold;
+		}
 
-// スライダーの見える範囲（はみ出た部分を隠す）
-.results__slider-viewport {
-flex: 1;      // 矢印に挟まれた残り幅をすべて使う
-overflow: hidden;
-background-color: $color-bg-alt; // 淡いベージュ背景（美術館の壁のように）
-padding: 20px 0; // 上下に少し余白を取り、絵のように浮かせる
-}
-
-// カードを横一列に並べるトラック（JSで横移動させる）
-.results__slider-track {
-display: flex;
-transition: transform 0.5s ease; // ゆっくり静かにスライド
-}
-
-// 各スライド（統合画像1枚）
-.results__slide {
-flex: 0 0 100%; // 1枚が横幅100%（1枚ずつ表示）
-padding: 0 16px; // 左右に余白を取り、窮屈に見せない
-
-img {
-width: 70%;
-height: 100%;
-margin: 0 auto;	
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-}
-}
-
-
-/* ----------------------------------------
-矢印ボタン
-矢印はスライダーの左右に静かに佇むだけ
----------------------------------------- */
-
-.results__slider-btn {
-// デフォルトのボタンスタイルをリセット
-background: none;
-cursor: pointer;
-
-// サイズと見た目
-flex-shrink: 0; // ボタンが縮まないようにする
-width: 32px;
-height: 32px;
-display: flex;
-align-items: center;
-justify-content: center;
-
-// 文字（矢印記号）
-font-family: $font-serif-en; // 明朝体で繊細な印象に
-font-size: 40px;
-color: $color-gold-light;    // 主張しすぎないゴールド
-
-// ホバーでだけ少し濃くなる
-transition: color 0.3s ease;
-&:hover {
-color: $color-gold;
-}
-
-// 非活性のとき（端まで来たとき）は薄く
-&:disabled {
-opacity: 0.2;
-cursor: default;
-pointer-events: none;
-}
+		&:disabled {
+			opacity: 0.2;
+			cursor: default;
+			pointer-events: none;
+		}
+	}
 }
