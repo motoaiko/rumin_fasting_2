@@ -735,7 +735,7 @@ Utilities
 		line-height: 2;
 
 		@include mobile {
-			padding: 0 8px;
+			padding: 0 16px;
 		}
 	}
 
@@ -1146,4 +1146,76 @@ Utilities
 			pointer-events: none;
 		}
 	}
+}
+
+// ========================================
+// Instagramセクション instagram
+// ========================================
+
+.instagram {
+background-color: $color-white;
+overflow: hidden;
+
+// --- 見出しエリア ---
+&__header {
+text-align: center;
+margin-bottom: 48px;
+
+@include mobile {
+	margin-bottom: 36px;
+}
+}
+
+// 「Instagram」の大見出し
+&__title {
+	font-family: "Noto Sans JP", sans-serif;
+    font-weight: 700;
+    color: #4a4a4a;
+    letter-spacing: 0.02em;
+@include mobile {
+	font-size: 28px;
+}
+}
+
+// 説明文
+&__lead {
+font-family: $font-sans-ja;
+font-size: $font-size-mobile;
+color: $color-text-sub;
+line-height: 1.9;
+}
+
+// --- スライダーエリア（フルワイド） ---
+&__slider {
+width: 100%;
+overflow: hidden;
+}
+
+// --- トラック ---
+&__track {
+display: flex;
+gap: 12px;
+width: max-content;
+// transitionは書かない（JSでrequestAnimationFrameを使うため）
+}
+
+// --- 各画像アイテム ---
+&__item {
+// ★ 幅を変えたいときはここだけ変更する
+width: 200px;
+flex-shrink: 0;
+
+@include mobile {
+	width: 150px;
+}
+
+img {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	display: block;
+	border-radius: 8px;
+	border: 1px solid $color-border;
+}
+}
 }

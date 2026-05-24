@@ -127,3 +127,105 @@ if (sliderTrack && prevBtn && nextBtn) {
   });
 
 }
+
+// ========================================
+// Instagramスライダー（シームレス無限ループ）
+// ========================================
+
+var instagramTrack = document.getElementById('instagramTrack');
+
+// スライダーが存在するページでだけ動かす
+if (instagramTrack) {
+
+  // ----------------------------------------
+  // ステップ1：オリジナルのアイテムを複製してトラックに追加する
+  // ----------------------------------------
+
+  // 最初から入っているアイテム（1セット分）を全て取得する
+  var originalItems = instagramTrack.querySelectorAll('.instagram__item');
+
+  // 各アイテムをコピーして、トラックの末尾に追加する
+  originalItems.forEach(function(item) {
+    var clone = item.cloneNode(true);        // 中の画像ごとコピー
+    clone.setAttribute('aria-hidden', 'true'); // 読み上げ対象から外す
+    instagramTrack.appendChild(clone);       // トラックの末尾に追加
+  });
+
+
+  // ----------------------------------------
+  // ステップ2：1セット分の合計幅を正確に計測する
+  // ----------------------------------------
+
+  // ★ スピードを変えたいときはこの数字を変える（px/フレーム）
+  // 小さくするとゆっくり、大きくすると速くなる
+  var speed = 0.5;
+
+  // 現在のスクロール位置（px）を記録する変数
+  var currentX = 0;
+
+  // 1セット分の合計幅（アイテムの幅 + gap の合計）
+  // DOMが描画されてから計測するため、関数の中で取得する
+  var oneSetWidth = 0;
+
+  function calcOneSetWidth() {
+    // 最初の1セット分のアイテムを取得（全体の前半分）
+    var items = instagramTrack.querySelectorAll('.instagram__item');
+    var count = originalItems.length; // オリジナルの枚数（8枚）
+
+    var total = 0;
+    for (var i = 0; i < count; i++) {
+      // getBoundingClientRect() でアイテムの実際の幅を取得する
+      total += items[i].getBoundingClientRect().width;
+    }
+
+    // gap（12px）× アイテム数 分も合計に加える
+    var gap = 12;
+    total += gap * count;
+
+    return total;
+  }
+
+
+  // ----------------------------------------
+  // ステップ3：毎フレーム少しずつ左に動かしてループさせる
+  // ----------------------------------------
+
+  function animate() {
+
+    // 1セット分の幅を計測（初回のみ実質的に意味がある）
+    if (oneSetWidth === 0) {
+      oneSetWidth = calcOneSetWidth();
+    }
+
+    // 毎フレーム speed（px）だけ左に進める
+    currentX += speed;
+
+    // 1セット分だけ進んだら、位置を0にリセットする
+    // このリセットの瞬間に2セット目の先頭が1セット目と
+    // 完全に同じ位置に見えるため、ガタつきが起きない
+    if (currentX >= oneSetWidth) {
+      currentX = 0;
+    }
+
+    // トラックを左にずらす
+    instagramTrack.style.transform = 'translateX(-' + currentX + 'px)';
+
+    // 次のフレームで再び animate() を呼び出す（ループ）
+    requestAnimationFrame(animate);
+  }
+
+  // アニメーション開始
+  requestAnimationFrame(animate);
+
+
+  // ----------------------------------------
+  // ステップ4：画面リサイズ時に幅を再計測する
+  // ----------------------------------------
+
+  window.addEventListener('resize', function() {
+    // リサイズしたら幅をリセットして再計測させる
+    oneSetWidth = 0;
+    currentX = 0;
+  });
+
+}
