@@ -384,6 +384,11 @@ sectionの共通設定
   margin-bottom: 40px;
   padding: 0 16px;
 }
+@media (max-width: 768px) {
+  .common__read {
+    text-align: justify;
+  }
+}
 .common__box-title {
   font-family: "Noto Serif JP", serif;
   font-size: 24px;
@@ -1361,7 +1366,7 @@ Utilities
 .voice__slider-area {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
 }
 @media (max-width: 768px) {
   .voice__slider-area {
@@ -1430,7 +1435,7 @@ Utilities
   color: #7a6a5a;
   line-height: 1.9;
   flex: 1;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .voice__card-profile {
   display: flex;
@@ -1599,4 +1604,331 @@ Utilities
   color: #d9cfc5;
   line-height: 2;
   letter-spacing: 0.04em;
+}
+
+.plan {
+  background-color: #ffffff;
+  padding-bottom: 160px;
+  /* ----------------------------------------
+  セクション見出し
+  ---------------------------------------- */
+}
+.plan__title {
+  font-size: 36px;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 768px) {
+  .plan__title {
+    font-size: 22px;
+  }
+}
+.plan__lead {
+  color: #7a6a5a;
+  line-height: 2;
+  margin-bottom: 0;
+}
+.plan {
+  /* ----------------------------------------
+  補足バッジエリア
+  ---------------------------------------- */
+}
+.plan__badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 56px;
+}
+@media (max-width: 768px) {
+  .plan__badges {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+}
+.plan__badge {
+  display: inline-block;
+  padding: 10px 28px;
+  border: 1px solid #d9cfc5;
+  border-radius: 50px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #b89a6a;
+  letter-spacing: 0.1em;
+}
+@media (max-width: 768px) {
+  .plan__badge {
+    font-size: 12px;
+    padding: 4px 14px;
+    letter-spacing: 0.08em;
+  }
+}
+.plan {
+  /* ----------------------------------------
+  プランカード2枚コンテナ
+  ---------------------------------------- */
+}
+.plan__container {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+@media (max-width: 768px) {
+  .plan__container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+.plan {
+  /* ----------------------------------------
+  各プランカード（共通スタイル）
+  ---------------------------------------- */
+}
+.plan__card {
+  flex: 1;
+  border: 1px solid #d9cfc5;
+  border-radius: 8px;
+  padding: 48px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+@media (max-width: 768px) {
+  .plan__card {
+    padding: 36px 24px 32px;
+  }
+}
+.plan {
+  /* ----------------------------------------
+  カード上部：タイトル・価格
+  ---------------------------------------- */
+}
+.plan__card-header {
+  position: relative;
+  text-align: center;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #d9cfc5;
+  z-index: 0;
+}
+.plan__card-header::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 120px;
+  height: 100px;
+  margin-left: -55px;
+  background: url(../images/icon-fukidashi.svg) 0 0;
+  background-repeat: no-repeat;
+  background-size: 120px 100px;
+  z-index: -10;
+}
+@media (max-width: 768px) {
+  .plan__card-header::before {
+    width: 100px;
+    height: 80px;
+    background-size: 100px 80px;
+  }
+}
+.plan__card-name {
+  color: #7a6a5a;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .plan__card-name {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+}
+.plan__card-price {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+@media (max-width: 768px) {
+  .plan__card-price {
+    font-size: 24px;
+  }
+}
+.plan__card-currency {
+  font-size: 32px;
+}
+@media (max-width: 768px) {
+  .plan__card-currency {
+    font-size: 16px;
+  }
+}
+.plan {
+  /* ----------------------------------------
+  カード中部：特徴リスト
+  ---------------------------------------- */
+}
+.plan__card-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .plan__card-list {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+}
+.plan__card-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+.plan__card-item::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23b89a6a' d='M13.485 1.431a1.473 1.473 0 0 0-2.084 0l-5.72 5.914-2.083-2.155a1.473 1.473 0 1 0-2.084 2.083l3.124 3.226a1.473 1.473 0 0 0 2.084 0l6.763-6.985a1.473 1.473 0 0 0 0-2.083z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+@media (max-width: 768px) {
+  .plan__card-item {
+    font-size: 14px;
+  }
+}
+
+.c-btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 48px;
+  border-radius: 50px;
+  background-color: #06C755;
+  color: #ffffff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+.c-btn-line::before {
+  font-family: "Font Awesome 6 Brands";
+  content: "\f3c6";
+  font-size: 20px;
+  line-height: 1;
+}
+.c-btn-line:hover {
+  opacity: 0.85;
+}
+@media (max-width: 768px) {
+  .c-btn-line {
+    padding: 14px 40px;
+    font-size: 14px;
+  }
+}
+
+.message {
+  background-image: url("../images/message-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 768px) {
+  .message {
+    background-attachment: scroll;
+  }
+}
+.message {
+  /* ----------------------------------------
+  オーバーレイ層
+  ---------------------------------------- */
+}
+.message__overlay {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 240px 0;
+}
+@media (max-width: 768px) {
+  .message__overlay {
+    padding: 80px 0;
+  }
+}
+.message {
+  /* ----------------------------------------
+  コンテンツエリア（中央揃え）
+  ---------------------------------------- */
+}
+.message__container {
+  text-align: center;
+}
+.message {
+  /* ----------------------------------------
+  キャッチコピー
+  ---------------------------------------- */
+}
+.message__title {
+  font-size: 36px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+@media (max-width: 768px) {
+  .message__title {
+    font-size: 24px;
+    letter-spacing: 0.08em;
+  }
+}
+.message {
+  /* ----------------------------------------
+  リード文
+  ---------------------------------------- */
+}
+.message__text {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .message__text {
+    text-align: left;
+  }
+}
+.message {
+  /* ----------------------------------------
+  LINEボタンの配置エリア
+  ---------------------------------------- */
+}
+.message__btn-wrap {
+  margin-top: 48px;
+}
+@media (max-width: 768px) {
+  .message__btn-wrap {
+    margin-top: 36px;
+  }
+}
+.message__btn {
+  font-size: 20px;
+  padding: 16px 80px;
+}
+@media (max-width: 768px) {
+  .message__btn {
+    font-size: 14px;
+    padding: 8px 32px;
+  }
 }/*# sourceMappingURL=style.css.map */

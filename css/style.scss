@@ -125,6 +125,9 @@ sectionの共通設定
 		text-align: center;
 		margin-bottom: 40px;
 		padding: 0 16px;
+		@include mobile {
+			text-align: justify;
+		}
 	}
 
 	// アプローチタイトル（番号＋タイトル）
@@ -1253,7 +1256,7 @@ background-color: $color-bg-alt;
 &__slider-area {
 	display: flex;
 	align-items: center;
-	gap: 16px;
+	gap: 24px;
 
 
 	@include mobile {
@@ -1328,7 +1331,7 @@ background-color: $color-bg-alt;
 		color: $color-text-sub;
 		line-height: 1.9;
 		flex: 1;
-		margin-bottom: 16px;
+		margin-bottom: 24px;
 	}
 
 	// --- カード下部：プロフィールエリア ---
@@ -1518,3 +1521,350 @@ letter-spacing: 0.04em;
 
 }
 }
+
+// ========================================
+// プラン・料金セクション plan
+// ========================================
+
+.plan {
+background-color: $color-white;
+padding-bottom: 160px;
+
+/* ----------------------------------------
+セクション見出し
+---------------------------------------- */
+
+&__title {
+font-size: 36px;
+letter-spacing: 0.08em;
+
+@include mobile {
+	font-size: 22px;
+}
+}
+
+// リード文
+&__lead {
+color: $color-text-sub;
+line-height: 2;
+margin-bottom: 0; // バッジエリアとの余白はplan__badgesで管理
+}
+
+/* ----------------------------------------
+補足バッジエリア
+---------------------------------------- */
+
+&__badges {
+display: flex;
+justify-content: center;
+gap: 16px;
+margin-top: 32px;   // リード文との間隔
+margin-bottom: 56px; // カードとの間隔
+
+@include mobile {
+	flex-wrap: wrap;  // スマホで折り返し
+	gap: 12px;
+	margin-top: 24px;
+	margin-bottom: 40px;
+}
+}
+
+// 各バッジ
+&__badge {
+display: inline-block;
+padding: 10px 28px;
+border: 1px solid $color-border;
+border-radius: 50px;
+font-size: $font-size-mobile; // 14px
+color: #fff;
+background-color: $color-gold;
+letter-spacing: 0.1em;
+
+@include mobile {
+	font-size: 12px;
+    padding: 4px 14px;
+    letter-spacing: 0.08em;
+}
+}
+/* ----------------------------------------
+プランカード2枚コンテナ
+---------------------------------------- */
+
+&__container {
+display: flex;          // PC：横並び
+align-items: stretch;   // カードの高さをそろえる
+gap: 32px;
+
+@include mobile {
+	flex-direction: column; // スマホ：縦1列に切り替え
+	gap: 24px;
+}
+}
+
+/* ----------------------------------------
+各プランカード（共通スタイル）
+---------------------------------------- */
+
+&__card {
+flex: 1;                // 2枚が均等幅
+border: 1px solid $color-border;
+border-radius: 8px;
+padding: 48px 40px 40px;
+display: flex;
+flex-direction: column; // 上下方向にならべ、ボタンを下部に固定
+background-color: $color-white;
+
+@include mobile {
+	padding: 36px 24px 32px;
+}
+}
+
+/* ----------------------------------------
+カード上部：タイトル・価格
+---------------------------------------- */
+
+&__card-header {
+position: relative;
+text-align: center;
+padding-bottom: 32px;
+margin-bottom: 32px;
+border-bottom: 1px solid $color-border;
+z-index: 0; // 擬似要素がテキストの下に来るように
+
+&::before {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 120px;
+	height: 100px;
+	margin-left: -55px;
+	background: url(../images/icon-fukidashi.svg) 0 0;
+	background-repeat: no-repeat;
+	background-size: 120px 100px;
+	z-index: -10;
+
+	@include mobile {
+		width:100px;
+		height: 80px;
+		background-size: 100px 80px;
+	}
+}}
+
+// プラン名
+&__card-name {
+color: $color-text-sub;
+letter-spacing: 0.1em;
+margin-bottom: 16px;
+
+@include mobile {
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+}
+// 価格（大きく）
+&__card-price {
+	font-family: "Noto Sans JP", sans-serif; 
+    font-size: 48px;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+
+@include mobile {
+	font-size: 24px;
+}
+}
+
+// 「¥」記号
+&__card-currency {
+font-size: 32px;
+
+@include mobile {
+	font-size: 16px;
+}
+}
+
+/* ----------------------------------------
+カード中部：特徴リスト
+---------------------------------------- */
+
+&__card-list {
+flex: 1; // 残りの高さをすべて使う（ボタンを下部に固定するため）
+display: flex;
+flex-direction: column;
+gap: 20px;            // 各行の間隔
+margin-bottom: 40px;
+
+@include mobile {
+	gap: 16px;
+	margin-bottom: 32px;
+}
+}
+
+// 各リストアイテム（チェックアイコン付き）
+&__card-item {
+display: flex;
+align-items: center;
+gap: 12px;
+font-size: $font-size-base; // 16px
+color: $color-text;
+line-height: 1.6;
+
+// CSSの擬似要素でチェックマークを描画（Font Awesomeが読み込まれていればfaも利用可）
+&::before {
+	content: '';
+	display: inline-block;
+	flex-shrink: 0;       // アイコンが縮まないように
+	width: 18px;
+	height: 18px;
+
+	// チェックマーク（SVGをdataURIでインライン指定）
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23b89a6a' d='M13.485 1.431a1.473 1.473 0 0 0-2.084 0l-5.72 5.914-2.083-2.155a1.473 1.473 0 1 0-2.084 2.083l3.124 3.226a1.473 1.473 0 0 0 2.084 0l6.763-6.985a1.473 1.473 0 0 0 0-2.083z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+@include mobile {
+	font-size: $font-size-mobile; // 14px
+}
+}
+} 
+
+// ========================================
+// 共通ボタンコンポーネント c-btn-line
+// ※ LINEボタンはサイト内の複数箇所で使い回す想定のため、
+//    messageセクション専用ではなくコンポーネントとして定義します。
+//    このブロックは style.scss の「共通ボタン」エリアに追記してください。
+// ========================================
+
+.c-btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;                   // アイコンとテキストの間隔
+  padding: 16px 48px;
+  border-radius: 50px;        // ピル型
+  background-color: #06C755; // LINE公式ブランドカラー
+  color: $color-white;
+  font-family: $font-sans-ja;
+  font-size: $font-size-base; // 16px
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+
+  // LINEアイコン（Font Awesomeが読み込まれている前提）
+  // Font Awesomeを使わない場合はこのブロックを削除してください
+  &::before {
+    font-family: 'Font Awesome 6 Brands';
+    content: '\f3c6';         // fa-line のUnicode
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @include mobile {
+    padding: 14px 40px;
+    font-size: $font-size-mobile; // 14px
+  }
+}
+
+
+// ========================================
+// メッセージ＆クロージングセクション message
+// ========================================
+
+.message {
+// --- 背景画像の設定 ---
+background-image: url('../images/message-bg.jpg');
+background-size: cover;           // 画像を画面いっぱいに広げる
+background-position: center;      // 中央を基準にトリミング
+background-attachment: fixed;     // パララックス効果（不要なら削除可）
+
+// ========================================
+// iOSではfixedが正しく動かないためscrollに変更
+// ========================================
+@include mobile {
+background-attachment: scroll;
+}
+
+/* ----------------------------------------
+オーバーレイ層
+---------------------------------------- */
+&__overlay {
+// 背景画像の上に半透明のベールを重ねる
+background: rgba(0, 0, 0, 0.45);
+
+// セクションの縦幅（上下パディングでゆとりを確保）
+padding: 240px 0;
+
+@include mobile {
+	padding: 80px 0;
+}
+}
+
+/* ----------------------------------------
+コンテンツエリア（中央揃え）
+---------------------------------------- */
+&__container {
+text-align: center;
+}
+
+/* ----------------------------------------
+キャッチコピー
+---------------------------------------- */
+&__title {
+font-size: 36px;
+font-weight: 400;
+color: $color-white;            // 白文字（オーバーレイの上に乗せるため）
+line-height: 1.7;
+letter-spacing: 0.12em;
+margin-bottom: 28px;
+
+@include mobile {
+	font-size: 24px;
+	letter-spacing: 0.08em;
+}
+}
+
+/* ----------------------------------------
+リード文
+---------------------------------------- */
+&__text {
+color: rgba(255, 255, 255, 0.88); // やや透過の白（読みやすさのため）
+line-height: 1.9;
+letter-spacing: 0.06em;
+margin-bottom: 0;               // ボタンとの余白はbtn-wrapで管理
+
+@include mobile {
+	text-align: left; // スマホでは左揃えに
+}
+}
+
+/* ----------------------------------------
+LINEボタンの配置エリア
+---------------------------------------- */
+&__btn-wrap {
+margin-top: 48px;               // リード文との間隔
+
+@include mobile {
+	margin-top: 36px;
+}
+}
+&__btn {
+	font-size: 20px;
+    padding: 16px 80px;
+	@include mobile {
+		font-size: 14px;
+		padding: 8px 32px;
+	}
+}
+
+} 
