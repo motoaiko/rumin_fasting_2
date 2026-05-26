@@ -342,7 +342,12 @@ sectionの共通設定
 
 .common__header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+}
+@media (max-width: 768px) {
+  .common__header {
+    margin-bottom: 40px;
+  }
 }
 .common__header-title--en {
   font-family: "Cormorant Garamond", serif;
@@ -379,6 +384,30 @@ sectionの共通設定
   margin-bottom: 40px;
   padding: 0 16px;
 }
+.common__box-title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  .common__box-title {
+    font-size: 20px;
+  }
+}
+.common__box-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  color: #d4b896;
+  letter-spacing: 0.05em;
+}
+.common__box-line {
+  color: #d4b896;
+}
 
 /* =============================================
 Utilities
@@ -386,21 +415,21 @@ Utilities
 .mobile {
   display: none;
 }
-
 @media (max-width: 768px) {
   .mobile {
     display: block;
   }
 }
+
 .pc {
   display: block;
 }
-
 @media (max-width: 768px) {
   .pc {
     display: none;
   }
 }
+
 .btn {
   display: inline-block;
   padding: 14px 32px;
@@ -433,6 +462,13 @@ Utilities
 .btn--header:hover {
   background-color: rgb(168.7763636364, 134.7945454545, 80.4236363636);
   opacity: 1;
+}
+
+.line-btn {
+  position: fixed;
+  z-index: 1000;
+  top: 80%;
+  right: 1%;
 }
 
 .header {
@@ -874,30 +910,6 @@ Utilities
 .approach__item-body {
   flex: 1;
 }
-.approach__item-title {
-  font-family: "Noto Serif JP", serif;
-  font-size: 24px;
-  font-weight: 400;
-  color: #ffffff;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-@media (max-width: 768px) {
-  .approach__item-title {
-    font-size: 20px;
-  }
-}
-.approach__item-num {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-  color: #d4b896;
-  letter-spacing: 0.05em;
-}
-.approach__item-sep {
-  color: #d4b896;
-}
 .approach__item-desc {
   font-size: 14px;
   color: #d9cfc5;
@@ -1308,12 +1320,12 @@ Utilities
   width: max-content;
 }
 .instagram__item {
-  width: 250px;
+  width: 300px;
   flex-shrink: 0;
 }
 @media (max-width: 768px) {
   .instagram__item {
-    width: 200px;
+    width: 250px;
   }
 }
 .instagram__item img {
@@ -1328,14 +1340,6 @@ Utilities
 
 .voice {
   background-color: #f3ede6;
-}
-.voice__header {
-  margin-bottom: 56px;
-}
-@media (max-width: 768px) {
-  .voice__header {
-    margin-bottom: 40px;
-  }
 }
 .voice__title {
   font-family: "Noto Serif JP", serif;
@@ -1362,6 +1366,8 @@ Utilities
 @media (max-width: 768px) {
   .voice__slider-area {
     gap: 8px;
+    width: 100%;
+    overflow: hidden;
   }
 }
 .voice__viewport {
@@ -1424,7 +1430,7 @@ Utilities
   color: #7a6a5a;
   line-height: 1.9;
   flex: 1;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 .voice__card-profile {
   display: flex;
@@ -1499,4 +1505,98 @@ Utilities
   color: #7a6a5a;
   margin-top: 32px;
   letter-spacing: 0.05em;
+}
+
+.why {
+  background-color: #faf8f5;
+}
+.why__title {
+  font-family: "Noto Serif JP", serif;
+  letter-spacing: 0.12em;
+}
+.why {
+  /* ----------------------------------------
+  	カードリスト（縦に3枚並べる）
+  ---------------------------------------- */
+}
+.why__list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media (max-width: 768px) {
+  .why__list {
+    gap: 48px;
+  }
+}
+.why {
+  /* ----------------------------------------
+  	各カード（左：画像 / 右：テキスト）
+  ---------------------------------------- */
+}
+.why__card {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background-color: #4a4a4a;
+  border-radius: 4px;
+  padding: 40px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .why__card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0;
+  }
+}
+.why__card-image {
+  flex: 0 0 240px;
+  width: 240px;
+  height: 240px;
+  background-color: #d9cfc5;
+  overflow: hidden;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .why__card-image {
+    flex: none;
+    width: 100%;
+    height: 220px;
+    border-radius: 4px 4px 0 0;
+  }
+}
+.why__card-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.why__card-body {
+  flex: 1;
+}
+@media (max-width: 768px) {
+  .why__card-body {
+    padding: 24px 20px 32px;
+    width: 100%;
+  }
+}
+.why__card-title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .why__card-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+}
+.why__card-text {
+  color: #d9cfc5;
+  line-height: 2;
+  letter-spacing: 0.04em;
 }/*# sourceMappingURL=style.css.map */

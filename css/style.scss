@@ -82,7 +82,10 @@ sectionの共通設定
 .common {
 	&__header {
 		text-align: center;
-		margin-bottom: 40px;
+		margin-bottom: 60px;
+		@include mobile {
+			margin-bottom: 40px;
+		}
 	}
 
 	&__header-title--en {
@@ -123,25 +126,48 @@ sectionの共通設定
 		margin-bottom: 40px;
 		padding: 0 16px;
 	}
+
+	// アプローチタイトル（番号＋タイトル）
+	&__box-title {
+		font-family: $font-serif-ja;
+		font-size: $font-size-large; // 24px
+		font-weight: 400;
+		color: $color-white;
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		@include mobile {
+			font-size: 20px;
+		}
+	}
+	&__box-num {
+		font-family: $font-serif-en;
+		font-size: $font-size-large;
+		color: $color-gold-light; // ゴールドで番号を目立たせる
+		letter-spacing: 0.05em;
+	}
+	&__box-line {
+		color: $color-gold-light;
+	}
+	
 }
+
+
 
 /* =============================================
 Utilities
 ============================================= */
 .mobile {
 	display: none;
-}
-@include mobile {
-	.mobile {
+	@include mobile {
 		display: block;
 	}
 }
-
 .pc {
 	display: block;
-}
-@include mobile {
-	.pc {
+	@include mobile {
 		display: none;
 	}
 }
@@ -189,6 +215,15 @@ Utilities
 		background-color: darken($color-gold, 8%);
 		opacity: 1;
 	}
+}
+
+// 固定ボタン（mobileのみ）
+.line-btn {
+
+	position: fixed;
+	z-index: 1000;
+    top: 80%;
+    right: 1%;
 }
 
 // ========================================
@@ -614,6 +649,8 @@ Utilities
 // アプローチ＆流れセクション approach
 // ========================================
 
+
+
 .approach {
 	background-color: $color-bg-alt;
 
@@ -701,34 +738,6 @@ Utilities
 		flex: 1; // 残りの幅をすべて使う
 	}
 
-	// アプローチタイトル（番号＋タイトル）
-	&__item-title {
-		font-family: $font-serif-ja;
-		font-size: $font-size-large; // 24px
-		font-weight: 400;
-		color: $color-white;
-		margin-bottom: 20px;
-		display: flex;
-		align-items: center;
-		gap: 8px;
-
-		@include mobile {
-			font-size: 20px;
-		}
-	}
-
-	// 番号（01 / 02 / 03）
-	&__item-num {
-		font-family: $font-serif-en;
-		font-size: $font-size-large;
-		color: $color-gold-light; // ゴールドで番号を目立たせる
-		letter-spacing: 0.05em;
-	}
-
-	// 区切り文字（｜）
-	&__item-sep {
-		color: $color-gold-light;
-	}
 
 	// 説明文
 	&__item-desc {
@@ -1202,11 +1211,11 @@ Utilities
 
 	// --- 各画像アイテム ---
 	&__item {
-		width: 250px;
+		width: 300px;
 		flex-shrink: 0;
 
 		@include mobile {
-			width: 200px;		}
+			width: 250px;		}
 
 		img {
 			width: 100%;
@@ -1227,13 +1236,6 @@ Utilities
 background-color: $color-bg-alt;
 
 // --- 見出しエリア ---
-&__header {
-	margin-bottom: 56px;
-
-	@include mobile {
-		margin-bottom: 40px;
-	}
-}
 
 &__title {
 	font-family: $font-serif-ja;
@@ -1257,8 +1259,11 @@ background-color: $color-bg-alt;
 	align-items: center;
 	gap: 16px;
 
+
 	@include mobile {
 		gap: 8px;
+		width: 100%;
+		overflow: hidden;
 	}
 }
 
@@ -1327,7 +1332,7 @@ background-color: $color-bg-alt;
 		color: $color-text-sub;
 		line-height: 1.9;
 		flex: 1;
-		margin-bottom: 28px;
+		margin-bottom: 16px;
 	}
 
 	// --- カード下部：プロフィールエリア ---
@@ -1412,4 +1417,108 @@ background-color: $color-bg-alt;
 		margin-top: 32px;
 		letter-spacing: 0.05em;
 	}
+}
+
+// ========================================
+// 選ばれる3つの理由セクション why
+// ========================================
+
+.why {
+background-color: $color-bg;
+
+// --- 見出しエリア ---
+
+&__title {
+font-family: $font-serif-ja; 
+letter-spacing: 0.12em;
+}
+
+/* ----------------------------------------
+	カードリスト（縦に3枚並べる）
+---------------------------------------- */
+
+&__list {
+display: flex;
+flex-direction: column; 
+gap: 40px;
+
+@include mobile {
+	gap: 48px;
+}
+}
+
+
+/* ----------------------------------------
+	各カード（左：画像 / 右：テキスト）
+---------------------------------------- */
+
+&__card {
+display: flex;
+align-items: center; 
+gap: 48px;
+background-color: $color-text; 
+border-radius: 4px;
+padding: 40px;
+overflow: hidden;
+
+@include mobile {
+	flex-direction: column;
+	align-items: flex-start; 
+	gap: 24px;
+	padding: 0;
+}
+}
+
+// 左：画像エリア
+&__card-image {
+flex: 0 0 240px;              // PC：幅を固定・縮まない
+width: 240px;
+height: 240px;                // 正方形
+background-color: $color-border; // 画像未設定時のプレースホルダー
+overflow: hidden;
+border-radius: 4px;
+
+@include mobile {
+	flex: none;
+	width: 100%;                // スマホ：横幅いっぱいに広げる
+	height: 220px;              // スマホでの高さ
+	border-radius: 4px 4px 0 0; // 上の角だけ丸める
+}
+
+img {
+	object-fit: cover;          // 正方形にトリミング
+}
+}
+
+// 右：テキストエリア
+&__card-body {
+flex: 1;                      // 残りの幅をすべて使う
+
+@include mobile {
+	padding: 24px 20px 32px;    // スマホ：テキストに内側の余白を付ける
+	width: 100%;
+}
+}
+
+&__card-title {
+font-family: $font-serif-ja;  // 明朝体で統一感を出す
+font-size: $font-size-large;  // 24px
+font-weight: 400;
+color: $color-white;          // 暗背景に白文字
+line-height: 1.6;
+letter-spacing: 0.06em;
+margin-bottom: 20px;
+
+@include mobile {
+	font-size: 20px;
+	margin-bottom: 16px;
+}
+}
+
+&__card-text {
+color: $color-border;
+line-height: 2;
+letter-spacing: 0.04em;
+
+}
 }
