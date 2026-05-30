@@ -295,11 +295,6 @@ if (voiceTrack && voicePrev && voiceNext) {
 
     } else {
 
-      // ----------------------------------------
-      // PC：通常モード（カード1枚ずつ左端から順に表示）
-      // カード幅はCSSの calc((100% - 48px) / 3) で決まるため
-      // offsetWidth で実際の幅を取得して計算する
-      // ----------------------------------------
       offset = (cardWidth + gap) * voiceIndex;
     }
 
@@ -385,3 +380,50 @@ if (voiceTrack && voicePrev && voiceNext) {
   moveVoice();
 
 }
+
+// ========================================
+// 共通アコーディオン開閉（.c-accordion）
+// ========================================
+
+// すべての .c-accordion__header ボタンを取得する
+var accordionHeaders = document.querySelectorAll('.c-accordion__header');
+
+// 各ボタンにクリックイベントを設定する
+accordionHeaders.forEach(function (header) {
+
+  header.addEventListener('click', function () {
+
+    // クリックされたボタンの、直後の本文エリアを取得する
+    var body = header.nextElementSibling;
+
+    // 現在の開閉状態を確認する（'true'なら開いている）
+    var isOpen = header.getAttribute('aria-expanded') === 'true';
+
+    // ------------------------------------------
+    // 他の開いているアコーディオンを閉じる処理
+    // （1つだけ開く動作にしたい場合はこのブロックを残す）
+    // （複数同時に開けるようにしたい場合はこのブロックを削除する）
+    // ------------------------------------------
+    accordionHeaders.forEach(function (otherHeader) {
+      if (otherHeader !== header) {
+        otherHeader.setAttribute('aria-expanded', 'false');
+        otherHeader.nextElementSibling.style.maxHeight = null;
+      }
+    });
+
+    // ------------------------------------------
+    // クリックされたアコーディオンの開閉を切り替える
+    // ------------------------------------------
+    if (isOpen) {
+      // 開いていた → 閉じる
+      header.setAttribute('aria-expanded', 'false');
+      body.style.maxHeight = null;  // max-height を CSS の初期値（0）に戻す
+    } else {
+      // 閉じていた → 開く
+      header.setAttribute('aria-expanded', 'true');
+      // scrollHeight：本文エリアの実際の高さを取得してセットする
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+
+  });
+});

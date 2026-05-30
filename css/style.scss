@@ -89,25 +89,45 @@ sectionの共通設定
 	}
 
 	&__header-title--en {
-		font-family: $font-serif-en;
-		color: $color-gold;
-		letter-spacing: 0.15em;
+		font-family: "Cormorant Garamond", serif;
 		margin-bottom: 12px;
-		font-size: $font-size-base;
+		font-size: 64px;
+		color: #E5DED6;
+		letter-spacing: 0.08em;
+
+		@include mobile {
+			font-size: 48px;
+		}
+	
 	}
 
 	&__header-title {
+		position: relative;
 		font-family: $font-serif-ja;
-		color: $color-header;
-		font-size: $font-size-xlarge;
+		color: $color-text;
+		font-size: 24px;
 		font-weight: 400;
-		margin-bottom: 16px;
+		margin-top:-72px;
+		margin-bottom: 32px;		
+		
 		line-height: 1.5;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.12em;
 
 		@include mobile {
 			font-size: 20px;
 			letter-spacing: 0.05em;
+			margin-top: -56px;
+		}
+		&::before {
+			display: block;
+			content: '';
+			position: absolute;
+			bottom: -16px;
+			left: 50%;
+			width: 50px;
+			height: 2px;
+			margin-left: -25px;
+			background-color: #CBBEAC;
 		}
 	}
 
@@ -125,6 +145,7 @@ sectionの共通設定
 		text-align: center;
 		margin-bottom: 40px;
 		padding: 0 16px;
+		color: #7a6a5a;
 		@include mobile {
 			text-align: justify;
 		}
@@ -214,6 +235,44 @@ Utilities
 		background-color: darken($color-gold, 8%);
 		opacity: 1;
 	}
+}
+// ========================================
+// 共通ボタンコンポーネント c-btn-line
+// ========================================
+
+.c-btn-line {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;                   // アイコンとテキストの間隔
+padding: 16px 48px;
+border-radius: 50px;        // ピル型
+background-color: #06C755; // LINE公式ブランドカラー
+color: $color-white;
+font-family: $font-sans-ja;
+font-size: $font-size-base; // 16px
+font-weight: 400;
+letter-spacing: 0.08em;
+text-decoration: none;
+transition: opacity 0.25s ease;
+
+// LINEアイコン（Font Awesomeが読み込まれている前提）
+// Font Awesomeを使わない場合はこのブロックを削除してください
+&::before {
+font-family: 'Font Awesome 6 Brands';
+content: '\f3c6';         // fa-line のUnicode
+font-size: 20px;
+line-height: 1;
+}
+
+&:hover {
+opacity: 0.85;
+}
+
+@include mobile {
+padding: 14px 40px;
+font-size: $font-size-mobile; // 14px
+}
 }
 
 // 固定ボタン（mobileのみ）
@@ -322,6 +381,10 @@ Utilities
 		align-items: center;
 		justify-content: flex-start;
 		gap: 8px;
+
+		@include mobile {
+			font-size: 12px;
+		}
 
 		&::before {
 			content: '';
@@ -466,10 +529,7 @@ Utilities
 	}
 
 	&__title {
-		font-family: $font-serif-ja;
-		font-weight: 400;
 		line-height: 1.7;
-		margin-bottom: 32px;
 
 		// タイトル下の区切り線（ゴールド）
 		&::after {
@@ -479,6 +539,9 @@ Utilities
 			height: 1px;
 			background-color: $color-gold;
 			margin-top: 24px;
+		}
+		&::before {
+			display: none;
 		}
 	}
 
@@ -508,16 +571,7 @@ Utilities
 			padding: 0 20px;
 		}
 	}
-}
 
-// タイトル背景（ダークバー）
-.worries {
-	&__title {
-		display: inline-block;
-		background-color: $color-text;
-		color: $color-white;
-		padding: 14px 40px;
-	}
 
 	&__desc {
 		color: $color-text-sub;
@@ -647,22 +701,10 @@ Utilities
 // ========================================
 // アプローチ＆流れセクション approach
 // ========================================
-
-
-
 .approach {
 	background-color: $color-bg-alt;
 
-	// 英字ラベル（MENUの文字）
-	&__header-title--en {
-		display: block;
-		margin-bottom: 12px;
-	}
 
-	// 大見出し
-	&__title {
-		margin-bottom: 24px;
-	}
 
 	// リード文（説明文）
 	&__lead {
@@ -850,150 +892,191 @@ Utilities
 // ========================================
 // よくあるご質問セクション faq
 // ========================================
-
 .faq {
-	background-color: $color-bg; // オフホワイト背景
-
-	// --- セクション見出し ---
-	&__header-en {
-		display: block;
-		margin-bottom: 8px;
-	}
-
-	&__title {
-		margin-bottom: 16px;
-	}
-
 	&__lead {
 		color: $color-text-sub;
 		margin-bottom: 0;
 	}
-	/* ----------------------------------------
-	アコーディオンリスト
-	---------------------------------------- */
+}
 
-	// リスト全体
-	&__list {
-		margin-top: 60px;
-		margin-bottom: 80px;
-		list-style: none;
+// ========================================
+// 共通アコーディオンコンポーネント .common-accordion
+//「よくある質問」と「プログラムのご参加について」で使用
+// ========================================
 
-		@include mobile {
-			margin-top: 40px;
-			margin-bottom: 0;
-		}
-	}
+.c-accordion {
+list-style: none;
+&__wrapper{
+	max-width: 800px;
 
-	&__item {
-		border-bottom: 1px solid $color-border;
-		&:first-child {
-			border-top: 1px solid $color-border;
-		}
-	}
-
-	&__question {
-		appearance: none;
-		background: none;
-		border: none;
-		cursor: pointer;
-		width: 100%;
-		text-align: left;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-		padding: 24px 0;
-
-		@include mobile {
-			padding: 20px 0;
-		}
-	}
-
-	&__question-text {
-		font-family: $font-serif-ja;
-		font-size: $font-size-base;
-		font-weight: 400;
-		color: $color-text;
-		line-height: 1.7;
-		letter-spacing: 0.05em;
-	}
-
-	&__icon {
-		flex-shrink: 0; // アイコンが縮まないようにする
-		position: relative;
-		width: 20px;
-		height: 20px;
-
-		// 横線（常に表示）
-		&::before,
-		&::after {
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			background-color: $color-gold; // ゴールドで統一
-			border-radius: 2px;
-			transition:
-				transform 0.3s ease,
-				opacity 0.3s ease; // アニメーション
-		}
-
-		&::before {
-			width: 16px;
-			height: 1px;
-			transform: translate(-50%, -50%);
-		}
-
-		&::after {
-			width: 1px;
-			height: 16px;
-			transform: translate(-50%, -50%);
-		}
-	}
-
-	&__question[aria-expanded='true'] {
-		.faq__icon::after {
-			transform: translate(-50%, -50%) rotate(90deg);
-			opacity: 0;
-		}
-	}
-
-	&__answer {
-		overflow: hidden; // はみ出た分を隠してアコーディオンを実現
-		max-height: 0;
-		transition: max-height 0.4s ease;
-	}
-
-	&__answer-text {
-		padding: 0 0 24px 0;
-		color: $color-text-sub;
-		font-size: $font-size-mobile;
-		line-height: 2;
-
-		@include mobile {
-			padding-bottom: 20px;
-		}
+	@include mobile {
+		padding: 0 24px;
 	}
 }
+
+/* ----------------------------------------
+各アイテム（1行分）
+---------------------------------------- */
+&__item {
+border-bottom: 1px solid $color-border;
+
+// 先頭の行だけ上にもボーダーを引く
+&:first-child {
+	border-top: 1px solid $color-border;
+}
+}
+
+/* ----------------------------------------
+クリックできる見出し部分
+---------------------------------------- */
+&__header {
+// ボタンデフォルトスタイルのリセット
+appearance: none;
+background: none;
+border: none;
+cursor: pointer;
+
+// レイアウト
+width: 100%;
+text-align: left;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+padding: 28px 0; // 上下の余白（FAQ と統一）
+
+@include mobile {
+	padding: 20px 0;
+}
+}
+
+// 見出しテキスト
+&__title {
+font-family: $font-serif-ja;       // 明朝体
+font-size: $font-size-base;        // 16px
+font-weight: 400;
+color: $color-text;
+line-height: 1.7;
+letter-spacing: 0.06em;
+
+@include mobile {
+	font-size: $font-size-mobile;    // 14px
+}
+}
+
+/* ----------------------------------------
+開閉アイコン（＋ / −）
+---------------------------------------- */
+&__icon {
+flex-shrink: 0;                    // アイコンが縮まないように
+position: relative;
+width: 20px;
+height: 20px;
+
+// 横線（常に表示 → ＋の横棒 兼 −の棒）
+&::before,
+&::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: $color-gold;  // ゴールドで統一
+	border-radius: 2px;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+// 横棒
+&::before {
+	width: 16px;
+	height: 1px;
+	transform: translate(-50%, -50%);
+}
+
+// 縦棒（開いているとき rotate して消える → − になる）
+&::after {
+	width: 1px;
+	height: 16px;
+	transform: translate(-50%, -50%);
+}
+}
+
+// 開いているとき：縦棒を回転させて消す → − の形に
+&__header[aria-expanded="true"] {
+.c-accordion__icon::after {
+	transform: translate(-50%, -50%) rotate(90deg);
+	opacity: 0;
+}
+}
+
+/* ----------------------------------------
+本文エリア（アコーディオンの開閉部分）
+---------------------------------------- */
+&__body {
+overflow: hidden;                  // はみ出た部分を隠してスライドを実現
+max-height: 0;                     // 初期状態は高さ0（閉じている）
+transition: max-height 0.4s ease; // 開閉アニメーション
+}
+
+// 本文の内側パディング（bodyと分けることでアニメーションを安定させる）
+&__content {
+padding: 4px 0 32px;              // 上：わずかな余白 / 下：十分な余白
+
+@include mobile {
+	padding: 4px 0 24px;
+}
+}
+
+/* ----------------------------------------
+本文冒頭の説明文
+---------------------------------------- */
+&__lead {
+font-size: $font-size-mobile;     // 14px
+color: $color-text-sub;
+line-height: 1.9;
+margin-bottom: 16px;
+}
+
+/* ----------------------------------------
+箇条書きリスト
+---------------------------------------- */
+&__list {
+display: flex;
+flex-direction: column;
+gap: 12px;                         // 各行の間隔
+}
+
+&__list-item {
+font-size: $font-size-mobile;     // 14px
+color: $color-text-sub;
+line-height: 1.8;
+padding-left: 1em;                // 「・」の分だけ字下げ
+
+// 「・」を擬似要素で表示
+&::before {
+	content: '・';
+	color: $color-gold;             // ゴールドで統一
+	margin-left: -1em;              // 字下げを打ち消して左端に揃える
+}
+}
+
+/* ----------------------------------------
+注釈テキスト（※から始まる文）
+---------------------------------------- */
+&__note {
+font-size: $font-size-small;      // 12px
+color: $color-text-sub;
+line-height: 1.8;
+margin-top: 20px;
+}
+
+} 
+
 
 // ========================================
 // 実績＆ビフォーアフターセクション results
 // ========================================
-
 .results {
 	background-color: $color-bg;
-
-	/* ----------------------------------------
-	セクション見出し
-	---------------------------------------- */
-	&__header-en {
-		display: block;
-		margin-bottom: 8px;
-	}
-
-	&__title {
-		margin-bottom: 0;
-	}
 
 	/* ----------------------------------------
 	2カラムコンテナ
@@ -1048,12 +1131,11 @@ Utilities
 
 	// 数字（大きく表示）
 	&__stat-number {
-		font-family: $font-sans-ja; // ゴシック体
-		font-size: 48px;
+		display: inline-block;
 		color: $color-header;
 		line-height: 1;
-		margin-bottom: 8px;
-		letter-spacing: 0.02em;
+		font-size: 32px;
+
 
 		@include mobile {
 			font-size: 32px;
@@ -1067,12 +1149,11 @@ Utilities
 	}
 
 	&__stat-label {
-		font-family: $font-sans-ja;
+		display: inline;
+		padding-left: 8px;
 		font-size: $font-size-mobile;
-		font-weight: 400;
-		color: $color-text;
 		letter-spacing: 0.08em;
-		margin-bottom: 10px;
+		margin-bottom: 8px;
 	}
 
 	// 説明文
@@ -1081,6 +1162,10 @@ Utilities
 		font-size: $font-size-small;
 		color: $color-text-sub;
 		line-height: 1.9;
+
+		@include mobile {
+			padding-top: 8px;
+		}
 	}
 
 	/* ----------------------------------------
@@ -1171,6 +1256,7 @@ Utilities
 		margin-bottom: 48px;
 
 		@include mobile {
+			padding-top: 36px;
 			margin-bottom: 36px;
 		}
 	}
@@ -1178,7 +1264,6 @@ Utilities
 	// 「Instagram」の大見出し
 	&__title {
 		font-family: 'Noto Sans JP', sans-serif;
-		font-weight: 700;
 		color: #4a4a4a;
 		letter-spacing: 0.02em;
 		@include mobile {
@@ -1234,12 +1319,8 @@ Utilities
 .voice {
 background-color: $color-bg-alt;
 
-// --- 見出しエリア ---
 
-&__title {
-	font-family: $font-serif-ja;
-	letter-spacing: 0.12em;
-}
+
 
 &__lead {
 	color: $color-text-sub;
@@ -1429,7 +1510,6 @@ background-color: $color-bg;
 
 &__title {
 font-family: $font-serif-ja; 
-letter-spacing: 0.12em;
 }
 
 /* ----------------------------------------
@@ -1530,13 +1610,17 @@ letter-spacing: 0.04em;
 background-color: $color-white;
 padding-bottom: 160px;
 
+@include mobile {
+	padding-bottom: 60px;
+}
+
+
 /* ----------------------------------------
 セクション見出し
 ---------------------------------------- */
 
 &__title {
 font-size: 36px;
-letter-spacing: 0.08em;
 
 @include mobile {
 	font-size: 22px;
@@ -1635,7 +1719,7 @@ z-index: 0; // 擬似要素がテキストの下に来るように
 	display: block;
 	content: '';
 	position: absolute;
-	top: 0;
+	top: -10px;
 	left: 50%;
 	width: 120px;
 	height: 100px;
@@ -1654,19 +1738,38 @@ z-index: 0; // 擬似要素がテキストの下に来るように
 
 // プラン名
 &__card-name {
+font-size: 24px;
 color: $color-text-sub;
 letter-spacing: 0.1em;
-margin-bottom: 16px;
+line-height: 1;
 
 @include mobile {
-	font-size: 14px;
-	margin-bottom: 8px;
+	font-size: 16px;
 }
 }
+
+&__card-en {
+font-size: 14px;
+margin-bottom: 8px;
+@include mobile {
+	font-size: 12px;
+}
+}
+
+&__card-sub {
+font-size: 14px;
+margin-bottom: 24px;
+
+@include mobile {
+	font-size: 12px;
+	margin-bottom: 16px;
+}
+}
+
 // 価格（大きく）
 &__card-price {
 	font-family: "Noto Sans JP", sans-serif; 
-    font-size: 48px;
+    font-size: 24px;
     line-height: 1;
     display: flex;
     align-items: baseline;
@@ -1674,16 +1777,15 @@ margin-bottom: 16px;
     gap: 4px;
 
 @include mobile {
-	font-size: 24px;
+	font-size: 16px;
 }
 }
-
 // 「¥」記号
 &__card-currency {
-font-size: 32px;
+font-size: 16px;
 
 @include mobile {
-	font-size: 16px;
+	font-size: 12px;
 }
 }
 
@@ -1700,7 +1802,7 @@ margin-bottom: 40px;
 
 @include mobile {
 	gap: 16px;
-	margin-bottom: 32px;
+	margin:0 auto 8px;
 }
 }
 
@@ -1735,55 +1837,12 @@ line-height: 1.6;
 } 
 
 // ========================================
-// 共通ボタンコンポーネント c-btn-line
-// ※ LINEボタンはサイト内の複数箇所で使い回す想定のため、
-//    messageセクション専用ではなくコンポーネントとして定義します。
-//    このブロックは style.scss の「共通ボタン」エリアに追記してください。
-// ========================================
-
-.c-btn-line {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;                   // アイコンとテキストの間隔
-  padding: 16px 48px;
-  border-radius: 50px;        // ピル型
-  background-color: #06C755; // LINE公式ブランドカラー
-  color: $color-white;
-  font-family: $font-sans-ja;
-  font-size: $font-size-base; // 16px
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: opacity 0.25s ease;
-
-  // LINEアイコン（Font Awesomeが読み込まれている前提）
-  // Font Awesomeを使わない場合はこのブロックを削除してください
-  &::before {
-    font-family: 'Font Awesome 6 Brands';
-    content: '\f3c6';         // fa-line のUnicode
-    font-size: 20px;
-    line-height: 1;
-  }
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  @include mobile {
-    padding: 14px 40px;
-    font-size: $font-size-mobile; // 14px
-  }
-}
-
-
-// ========================================
 // メッセージ＆クロージングセクション message
 // ========================================
 
 .message {
 // --- 背景画像の設定 ---
-background-image: url('../images/message-bg.jpg');
+background-image: url('../images/onnanoko.webp');
 background-size: cover;           // 画像を画面いっぱいに広げる
 background-position: center;      // 中央を基準にトリミング
 background-attachment: fixed;     // パララックス効果（不要なら削除可）
@@ -1806,7 +1865,7 @@ background: rgba(0, 0, 0, 0.45);
 padding: 240px 0;
 
 @include mobile {
-	padding: 80px 0;
+	padding: 60px 0;
 }
 }
 
@@ -1814,6 +1873,7 @@ padding: 240px 0;
 コンテンツエリア（中央揃え）
 ---------------------------------------- */
 &__container {
+	padding-top: 60px; 
 text-align: center;
 }
 
@@ -1825,7 +1885,6 @@ font-size: 36px;
 font-weight: 400;
 color: $color-white;            // 白文字（オーバーレイの上に乗せるため）
 line-height: 1.7;
-letter-spacing: 0.12em;
 margin-bottom: 28px;
 
 @include mobile {
@@ -1839,13 +1898,7 @@ margin-bottom: 28px;
 ---------------------------------------- */
 &__text {
 color: rgba(255, 255, 255, 0.88); // やや透過の白（読みやすさのため）
-line-height: 1.9;
 letter-spacing: 0.06em;
-margin-bottom: 0;               // ボタンとの余白はbtn-wrapで管理
-
-@include mobile {
-	text-align: left; // スマホでは左揃えに
-}
 }
 
 /* ----------------------------------------
@@ -1868,3 +1921,211 @@ margin-top: 48px;               // リード文との間隔
 }
 
 } 
+
+
+// ========================================
+// フッター footer
+// ========================================
+
+.footer {
+background-color: $color-white;
+padding: 120px 0;
+@include mobile {
+	padding: 100px 0;
+}
+
+
+
+/* ----------------------------------------
+フッター上部：ロゴ ＆ ナビゲーション
+---------------------------------------- */
+&__top {
+display: flex;
+align-items: center;
+justify-content: space-between; // ロゴ左・ナビ右
+gap: 40px;
+margin-bottom: 48px;
+
+@include mobile {
+	flex-direction: column-reverse;  
+	gap: 80px;                      // スマホ：縦並びに切り替え
+}
+}
+
+/* ----------------------------------------
+ロゴ
+---------------------------------------- */
+&__logo {
+font-family: $font-serif-en;    // 英字セリフ体
+font-size: 28px;
+color: $color-text;
+letter-spacing: 0.08em;
+white-space: nowrap;
+transition: opacity 0.2s ease;
+
+&:hover {
+	opacity: 0.7;
+}
+}
+&__logo-sub {
+font-family: $font-sans-ja;    // 日本語ゴシック体
+font-size: 12px;
+color: $color-text-sub;
+letter-spacing: 0.05em;
+margin-top: 4px;
+}
+
+/* ----------------------------------------
+メインナビゲーション
+---------------------------------------- */
+&__nav-list {
+display: flex;
+align-items: center;
+flex-wrap: wrap;                // 幅が足りないとき折り返す
+gap: 8px 32px;                  // 行間 8px / 列間 32px
+
+@include mobile {
+	gap: 24px;
+	flex-direction: column;    }
+}
+
+// メインナビリンク（英字＋日本語の縦並び）
+&__nav-link {
+display: flex;
+flex-direction: column;   // 英字と日本語を縦並びに
+align-items: center;      // 中央揃え
+gap: 5px;                 // 英字と日本語の間隔
+transition: color 0.2s ease;
+
+&:hover {
+	opacity: 1;             // 親の hover:opacity を上書き
+
+	// ホバー時：英字・日本語ともにゴールドに
+	.footer__nav-text-en,
+	.footer__nav-text-ja {
+	color: $color-gold;
+	}
+}
+}
+
+// 英字（上段・小さめ・控えめに）
+&__nav-text-en {
+font-family: $font-serif-en;      // エレガントなセリフ体
+font-size: 16px;
+color: $color-gold-light;         // 控えめなゴールドベージュ
+letter-spacing: 0.12em;
+line-height: 1;
+
+@include mobile {
+	font-size: 18px;
+    letter-spacing: 0.05em;
+}
+}
+
+// 日本語（下段・メイン表記）
+&__nav-text-ja {
+font-family: $font-sans-ja;
+font-size: 12px;
+color: $color-text-sub;
+letter-spacing: 0.05em;
+line-height: 1;
+transition: color 0.2s ease;
+}
+/* ----------------------------------------
+フッター中部：SNSアイコン（中央揃え）
+---------------------------------------- */
+&__sns {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 24px;
+margin-bottom: 48px;
+
+@include mobile {
+	gap: 20px;
+	margin-bottom: 36px;
+}
+}
+
+// SNSアイコン共通リンク
+&__sns-link {
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+  // ホバー・タップ時：フワッと薄くなる（色変化なし・一括管理）
+  transition: opacity 0.3s ease;
+
+  &:hover,
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+// SVGアイコン画像（共通サイズ・中央揃え）
+&__sns-icon-img {
+  object-fit: contain;  // 縦横比を保ちながらボックスに収める
+}
+/* ----------------------------------------
+フッター下部：境界線 ＆ リーガルリンク
+---------------------------------------- */
+
+// 境界線
+&__border {
+border: none;
+border-top: 1px solid $color-border;
+margin: 0 0 28px;
+
+@include mobile {
+	margin-bottom: 32px;
+}
+}
+
+// コピーライト ＆ リーガルリンクを横並びにするコンテナ
+&__legal {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;                // 幅が足りないとき折り返す
+gap: 8px 24px;                  // 行間 8px / 列間 24px
+padding-bottom: 32px;          // 下端の余白
+
+@include mobile {
+	flex-direction: column;       // スマホ：縦並び
+	gap: 12px;
+	padding-bottom: 24px;
+}
+}
+
+// リーガルリンク（プライバシーポリシー・利用規約）
+&__legal-link {
+font-family: $font-sans-ja;
+font-size: $font-size-small;    // 12px
+color: $color-text-sub;
+letter-spacing: 0.05em;
+text-decoration: underline;
+text-underline-offset: 3px;    // 下線と文字の間隔
+transition: color 0.2s ease;
+
+&:hover {
+	color: $color-gold;
+	opacity: 1;
+}
+}
+
+// コピーライトテキスト（リンクなし）
+&__legal-copyright {
+font-size: $font-size-small;    // 12px
+color: $color-text-sub;
+letter-spacing: 0.05em;
+@include mobile {
+	padding-bottom: 24px;
+}
+}
+
+}
+
+
