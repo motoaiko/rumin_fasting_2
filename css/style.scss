@@ -111,7 +111,7 @@ sectionの共通設定
 		margin-bottom: 32px;		
 		
 		line-height: 1.5;
-		letter-spacing: 0.12em;
+		letter-spacing: 0.08em;
 
 		@include mobile {
 			font-size: 20px;
@@ -156,7 +156,7 @@ sectionの共通設定
 		font-family: $font-serif-ja;
 		font-size: $font-size-large; // 24px
 		font-weight: 400;
-		color: $color-white;
+		color: #4a4a4a;
 		margin-bottom: 20px;
 		display: flex;
 		align-items: center;
@@ -192,6 +192,20 @@ Utilities
 		display: none;
 	}
 }
+
+/* フェードアップｊｓ  */
+.js-fadeup {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+.js-fadeup.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 // ========================================
 // 共通ボタン
 // ========================================
@@ -285,7 +299,7 @@ font-size: $font-size-mobile; // 14px
 }
 
 // ========================================
-// ヘッダー
+// 1.ヘッダー
 // ========================================
 
 .header {
@@ -419,7 +433,7 @@ font-size: $font-size-mobile; // 14px
 }
 
 // ========================================
-// Aboutセクション（運営者ストーリー）
+// 3.Aboutセクション（運営者ストーリー）
 // ========================================
 
 .about {
@@ -556,7 +570,7 @@ font-size: $font-size-mobile; // 14px
 }
 
 // ========================================
-// お悩みセクション
+// 4.お悩みセクション
 // ========================================
 
 .worries {
@@ -629,7 +643,7 @@ font-size: $font-size-mobile; // 14px
 }
 
 /* ========================================
-理由セクション reason
+5.理由セクション reason
 ======================================== */
 
 .reason {
@@ -699,7 +713,7 @@ font-size: $font-size-mobile; // 14px
 }
 
 // ========================================
-// アプローチ＆流れセクション approach
+// 6.アプローチ＆流れセクション approach
 // ========================================
 .approach {
 	background-color: $color-bg-alt;
@@ -740,7 +754,7 @@ font-size: $font-size-mobile; // 14px
 		display: flex; // 横並び
 		align-items: center; // 上下中央揃え
 		gap: 48px; // 画像とテキストの間隔
-		background-color: $color-text; // ダークグレー背景（ワイヤー通り）
+		background-color: #fff; // ダークグレー背景（ワイヤー通り）
 		padding: 40px;
 		border-radius: 5px;
 
@@ -783,7 +797,7 @@ font-size: $font-size-mobile; // 14px
 	// 説明文
 	&__item-desc {
 		font-size: $font-size-mobile; // 14px
-		color: $color-border; // 明るいベージュ（暗背景に合わせて）
+		color: #7a6a5a; // 明るいベージュ（暗背景に合わせて）
 		line-height: 2;
 
 		@include mobile {
@@ -856,6 +870,7 @@ font-size: $font-size-mobile; // 14px
 		font-size: 16px; // 14px
 		color: $color-text-sub;
 		letter-spacing: 0.1em;
+		line-height: 1;
 	}
 
 	// ステップ名（例：準備食）
@@ -890,9 +905,11 @@ font-size: $font-size-mobile; // 14px
 }
 
 // ========================================
-// よくあるご質問セクション faq
+// 7.よくあるご質問セクション faq
 // ========================================
 .faq {
+	background-color: #FFF;
+	
 	&__lead {
 		color: $color-text-sub;
 		margin-bottom: 0;
@@ -1073,7 +1090,7 @@ margin-top: 20px;
 
 
 // ========================================
-// 実績＆ビフォーアフターセクション results
+// 8.実績＆ビフォーアフターセクション results
 // ========================================
 .results {
 	background-color: $color-bg;
@@ -1243,33 +1260,36 @@ margin-top: 20px;
 }
 
 // ========================================
-// Instagramセクション instagram
+// 9.Instagramセクション instagram
 // ========================================
 
 .instagram {
 	background-color: $color-white;
 	overflow: hidden;
 
-	// --- 見出しエリア ---
+	// --- 見出しエリア（リンク化） ---
 	&__header {
-		text-align: center;
-		margin-bottom: 48px;
-
-		@include mobile {
-			padding-top: 36px;
-			margin-bottom: 36px;
-		}
+	  display: block;           // <a>タグをブロック要素として扱う
+	  text-align: center;
+	  margin-bottom: 48px;
+	  text-decoration: none;    // デフォルトの下線を消す
+	  cursor: pointer;
+	
+	  // ホバー・タップ時：フワッと薄くなる
+	  transition: opacity 0.3s ease;
+	
+	  &:hover,
+	  &:active {
+		opacity: 0.75;
+	  }
+	
+	  @include mobile {
+		padding-top: 36px;
+		margin-bottom: 36px;
+	  }
 	}
 
 	// 「Instagram」の大見出し
-	&__title {
-		font-family: 'Noto Sans JP', sans-serif;
-		color: #4a4a4a;
-		letter-spacing: 0.02em;
-		@include mobile {
-			font-size: 28px;
-		}
-	}
 
 	// 説明文
 	&__lead {
@@ -1312,8 +1332,10 @@ margin-top: 20px;
 	}
 }
 
+
+
 // ========================================
-// お客様の声セクション voice
+// 10.お客様の声セクション voice
 // ========================================
 
 .voice {
@@ -1338,6 +1360,9 @@ background-color: $color-bg-alt;
 	display: flex;
 	align-items: center;
 	gap: 24px;
+	max-width: 1100px;
+    margin: 0 auto;
+
 
 
 	@include mobile {
@@ -1500,7 +1525,7 @@ background-color: $color-bg-alt;
 }
 
 // ========================================
-// 選ばれる3つの理由セクション why
+// 11.選ばれる3つの理由セクション why
 // ========================================
 
 .why {
@@ -1535,7 +1560,7 @@ gap: 40px;
 display: flex;
 align-items: center; 
 gap: 48px;
-background-color: $color-text; 
+background-color: #f3ede6; 
 border-radius: 4px;
 padding: 40px;
 overflow: hidden;
@@ -1571,10 +1596,9 @@ img {
 
 // 右：テキストエリア
 &__card-body {
-flex: 1;                      // 残りの幅をすべて使う
-
+flex: 1; 
 @include mobile {
-	padding: 24px 20px 32px;    // スマホ：テキストに内側の余白を付ける
+	padding: 24px 20px 32px; 
 	width: 100%;
 }
 }
@@ -1595,7 +1619,7 @@ margin-bottom: 20px;
 }
 
 &__card-text {
-color: $color-border;
+color: #7a6a5a;
 line-height: 2;
 letter-spacing: 0.04em;
 
@@ -1603,7 +1627,7 @@ letter-spacing: 0.04em;
 }
 
 // ========================================
-// プラン・料金セクション plan
+// 12.プラン・料金セクション plan
 // ========================================
 
 .plan {
@@ -1611,7 +1635,7 @@ background-color: $color-white;
 padding-bottom: 160px;
 
 @include mobile {
-	padding-bottom: 60px;
+	padding-bottom: 120px;
 }
 
 
@@ -1681,7 +1705,6 @@ gap: 32px;
 
 @include mobile {
 	flex-direction: column; // スマホ：縦1列に切り替え
-	gap: 24px;
 }
 }
 
@@ -1699,7 +1722,7 @@ flex-direction: column; // 上下方向にならべ、ボタンを下部に固�
 background-color: $color-white;
 
 @include mobile {
-	padding: 36px 24px 32px;
+	padding: 40px 24px;
 }
 }
 
@@ -1719,7 +1742,7 @@ z-index: 0; // 擬似要素がテキストの下に来るように
 	display: block;
 	content: '';
 	position: absolute;
-	top: -10px;
+	top: -30px;
 	left: 50%;
 	width: 120px;
 	height: 100px;
@@ -1750,7 +1773,7 @@ line-height: 1;
 
 &__card-en {
 font-size: 14px;
-margin-bottom: 8px;
+margin-bottom: 16px;
 @include mobile {
 	font-size: 12px;
 }
@@ -1837,7 +1860,7 @@ line-height: 1.6;
 } 
 
 // ========================================
-// メッセージ＆クロージングセクション message
+// 13.メッセージ＆クロージングセクション message
 // ========================================
 
 .message {
@@ -1865,7 +1888,7 @@ background: rgba(0, 0, 0, 0.45);
 padding: 240px 0;
 
 @include mobile {
-	padding: 60px 0;
+	padding: 120px 0;
 }
 }
 
@@ -1898,9 +1921,13 @@ margin-bottom: 28px;
 ---------------------------------------- */
 &__text {
 color: rgba(255, 255, 255, 0.88); // やや透過の白（読みやすさのため）
-letter-spacing: 0.06em;
-}
+letter-spacing: 0.1em;
+line-height: 2;
 
+@include mobile {
+	letter-spacing: -0.04em;
+}
+}	
 /* ----------------------------------------
 LINEボタンの配置エリア
 ---------------------------------------- */
@@ -1931,7 +1958,7 @@ margin-top: 48px;               // リード文との間隔
 background-color: $color-white;
 padding: 120px 0;
 @include mobile {
-	padding: 100px 0;
+	padding: 100px 0 0;
 }
 
 

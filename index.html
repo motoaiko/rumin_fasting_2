@@ -52,7 +52,7 @@
 <body>
 
   <!-- ========================================
-    ヘッダーエリア
+    1.ヘッダーエリア
   ======================================== -->
   <header class="header">
     <div class="header__inner">
@@ -80,9 +80,9 @@
   </header>
   <main>
     <!-- ========================================
-      ヒーローセクション
+      2.ヒーローセクション
     ======================================== -->
-    <section class="hero l-common">
+    <section class="hero l-common" id="hero">
       <div class="hero__inner">
 
         <!-- 左：テキストエリア -->
@@ -115,13 +115,13 @@
     </section>
 
     <!-- ========================================
-      About（運営者ストーリー）セクション
+      3.About（運営者ストーリー）セクション
     ======================================== -->
     <section class="about l-common" id="about">
       <div class="about__inner wrapper">
 
         <!-- 左：プロフィール画像 + プロフィール情報 -->
-        <div class="about__profile">
+        <div class="about__profile js-fadeup">
           <img class="about__profile-image" src="images/rumi3.png" alt="秋本るみのプロフィール画像">
           </img>
 
@@ -146,10 +146,8 @@
           </h2>
           <div class="about__text-area">
             <p class="about__text">
-              1990.4.24生まれ。兄3人の4兄妹。<br>大阪出身、大阪在住。
-            </p>
-            <p class="about__text">
-              昔から食べることが大好きで、むっちり体型でした。
+              1990.4.24生まれ。兄3人の4兄妹。<br>大阪出身、大阪在住。<br>
+              昔から食べることが大好き。
             </p>
             <p class="about__text">
               高校生のときにダイエットにハマり、
@@ -159,30 +157,20 @@
             </p>
             <p class="about__text">
               セラピーを受けつつ、徐々に回復しながら、
-              美容と健康に興味を強く持ち、
-              19歳でエステ会社へ就職。
+              美容と健康に興味を強く持ち、19歳でエステ会社へ就職。
             </p>
             <p class="about__text">
-              ２年目には実績を認められ、チーフの役職につき、
-              そこから副店長、店長と昇格。
+              ２年目には実績を認められ、チーフの役職につき、そこから副店長、店長と昇格。
             </p>
             <p class="about__text">
-              20歳の頃、
-              仕事をしながらも、
-              『施術だけではお客様の美と健康を
-              サポートできない』
-              と感じ、栄養学の勉強を続ける。
+              20歳の頃、仕事をしながらも、『施術だけではお客様の美と健康をサポートできない』と感じ、栄養学の勉強を続ける。
             </p>
             <p class="about__text">
-              会社でファスティングを取り扱うことになり、
-              ファスティング指導を開始。
+              会社でファスティングを取り扱うことになり、ファスティング指導を開始。
               <br>
-              27歳の頃に、
-              エステティックグランプリ関西部門エリアファイナル出場。
-              解剖生理学を学び、エステ国際ライセンスINFAゴールドマスター取得。
+              27歳の頃に、エステティックグランプリ関西部門エリアファイナル出場。解剖生理学を学び、エステ国際ライセンスINFAゴールドマスター取得。
               <br>
-              30歳の頃、
-              仕事のプレッシャーや、忙しさ、ストレスなどが重なり、体調を崩し、退職。
+              30歳の頃、仕事のプレッシャーや、忙しさ、ストレスなどが重なり、体調を崩し、退職。
             </p>
             <p class="about__text">
               その年に、オンラインでファスティングサポートを始める。
@@ -202,20 +190,20 @@
     </section>
 
     <!-- ========================================
-      問題提起セクション worries
+      4.問題提起セクション worries
     ======================================== -->
     <section class="worries l-common" id="worries">
       <div class="worries__inner">
 
         <!-- セクションタイトル -->
-        <div class="worries__header common__header">
+        <div class="worries__header common__header js-fadeup">
           <span class="worries__header-title--en common__header-title--en">Check list</span>
           <h2 class="worries__title common__header-title">こんなお悩みはありませんか？</h2>
         </div>
 
 
         <!-- お悩みカードグリッド -->
-        <ul class="worries__grid">
+        <ul class="worries__grid js-fadeup">
 
           <!-- カード1 -->
           <li class="worries__card">
@@ -249,7 +237,7 @@
 
         </ul>
        
-        <div class="worries__footer common__footer">
+        <div class="worries__footer common__footer js-fadeup">
           <p class="worries__footer-text common__footer-text">
             でも、それは「意志が弱いから」ではありません。<br class="pc">
             あなたの体が、<br class="pc">
@@ -261,12 +249,12 @@
     </section>
 
     <!-- ========================================
-    理由セクション reason
+    5.理由セクション reason
   ======================================== -->
-  <section class="reason l-common" id="reason">
+  <section class="reason l-common js-fadeup" id="reason">
     <div class="reason__inner wrapper">
 
-      <div class="reason__header common__header">
+      <div class="reason__header common__header js-fadeup">
 
         <span class="reason__header-title--en common__header-title--en">Reason</span>
 
@@ -305,7 +293,7 @@
         </li>
       </ul>
   
-      <div class="reason__footer common__footer">
+      <div class="reason__footer common__footer js-fadeup">
         <p class="reason__footer-text common__footer-text">
           体の土台を整えていくことで、<br class="pc"> 
           食欲は少しずつ穏やかになっていきます。
@@ -315,12 +303,12 @@
   </section>  
 
   <!-- ========================================
-  アプローチ＆流れセクション approach
+  6.アプローチ＆流れセクション approach
 ======================================== -->
   <section class="approach l-common" id="approach">
     <div class="approach__inner wrapper">
 
-      <div class="approach__header common__header">
+      <div class="approach__header common__header js-fadeup">
         <span class="approach__header-title--en common__header-title--en">Approach</span>
         <h2 class="approach__title common__header-title">
           食欲の原因を、一緒に見つけていきます。</h2>
@@ -338,7 +326,7 @@
       <ul class="approach__list">
 
         <!-- アプローチ 01 -->
-        <li class="approach__item">
+        <li class="approach__item js-fadeup">
           <!-- 左：画像 -->
           <div class="approach__item-image">
             <img src="images/approach1.png" alt="分子栄養学に基づく分析">
@@ -361,7 +349,7 @@
         </li>
 
         <!-- アプローチ 02 -->
-        <li class="approach__item">
+        <li class="approach__item js-fadeup">
           <!-- 左：画像 -->
           <div class="approach__item-image">
             <img src="images/approach2.png" alt="整えるファスティング">
@@ -386,7 +374,7 @@
         </li>
 
         <!-- アプローチ 03 -->
-        <li class="approach__item">
+        <li class="approach__item js-fadeup">
           <!-- 左：画像 -->
           <div class="approach__item-image">
             <img src="images/approach3.png" alt="一生使える知識を身につける">
@@ -412,7 +400,7 @@
 
       </ul>
 
-      <div class="approach__flow">
+      <div class="approach__flow js-fadeup">
 
         <!-- 流れの見出し -->
         <h3 class="approach__flow-title">ファスティングの流れ</h3>
@@ -463,13 +451,13 @@
 
 
 <!-- ========================================
-よくあるご質問セクション faq
+7.よくあるご質問セクション faq
 ======================================== -->
 <section class="l-common faq" id="faq">
 <div class="faq__inner wrapper c-accordion__wrapper">
 
   <!-- セクション見出し -->
-  <div class="faq__header common__header">
+  <div class="faq__header common__header js-fadeup">
     <span class="faq__header-en common__header-title--en">Q&A</span>
     <h2 class="faq__title common__header-title">よくあるご質問</h2>
     <p class="faq__lead common__read">ファスティングについて、よくいただくご質問にお答えします。</p>
@@ -548,13 +536,13 @@
 </section>
 
 <!-- ========================================
-実績＆ビフォーアフターセクション results
+8.実績＆ビフォーアフターセクション results
 ======================================== -->
 <section class="l-common results" id="results">
 <div class="results__inner wrapper">
 
   <!-- セクション見出し -->
-  <div class="results__header common__header">
+  <div class="results__header common__header js-fadeup">
     <span class="results__header-en common__header-title--en">Results</span>
     <h2 class="results__title common__header-title">実績</h2>
   </div>
@@ -563,7 +551,7 @@
   <div class="results__container">
 
     <!-- ========== 左：実績数字エリア ========== -->
-    <ul class="results__stats">
+    <ul class="results__stats js-fadeup">
 
       <!-- 実績1 -->
       <li class="results__stat-item">
@@ -597,7 +585,7 @@
     </ul>
 
     <!-- ========== 右：ビフォーアフタースライダーエリア ========== -->
-    <div class="results__slider-area">
+    <div class="results__slider-area js-fadeup">
 
       <!-- 矢印：左 -->
       <button class="results__slider-btn results__slider-btn--prev" id="resultsPrev" aria-label="前へ">&#8249;</button>
@@ -641,15 +629,22 @@
 </section>
 
 <!-- ========================================
-Instagramセクション instagram
+9.Instagramセクション instagram
 ======================================== -->
-<section class="l-common instagram" id="instagram">
+<section class="l-common instagram js-fadeup" id="instagram">
 
-<!-- 見出しエリア -->
-<div class="instagram__header wrapper">
-  <h2 class="instagram__title common__header-title">Instagram</h2>
-  <p class="instagram__lead">日々のサポートや、リアルなお声を発信しています。</p>
-</div>
+  <a  class="instagram__header wrapper"
+      href="https://www.instagram.com/rumin_fasting/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagramアカウントを見る">
+      <span class="results__header-en common__header-title--en">SNS</span>
+    <h2 class="instagram__title common__header-title">Instagram</h2>
+
+    <p class="instagram__lead">日々のサポートや、リアルなお声を発信しています。</p>
+  </a>
+
+
 
 <!-- ストーリーズスライダーエリア（画面いっぱい・wrapperなし） -->
 <div class="instagram__slider">
@@ -687,14 +682,15 @@ Instagramセクション instagram
 </div>
 </section>
 
+
 <!-- ========================================
-お客様の声セクション voice
+10.お客様の声セクション voice
 ======================================== -->
 <section class="l-common voice" id="voice">
 <div class="voice__inner">
 
   <!-- セクション見出し -->
-  <div class="voice__header common__header wrapper">
+  <div class="voice__header common__header wrapper js-fadeup">
     <span class="voice__header-en common__header-title--en">Voice</span>
     <h2 class="voice__title common__header-title">お客様の声</h2>
     <p class="voice__lead common__read">
@@ -833,20 +829,22 @@ Instagramセクション instagram
 
   </div>
 
+
+  
   <!-- 注釈テキスト -->
-  <p class="voice__note">※ 個人の感想です。効果には個人差があります。</p>
+  <p class="voice__note js-fadeup">※ 個人の感想です。効果には個人差があります。</p>
 
 </div>
 </section>
 
 <!-- ========================================
-選ばれる3つの理由セクション why
+11.選ばれる3つの理由セクション why
 ======================================== -->
-<section class="l-common why" id="why">
+<section class="l-common why js-fadeup" id="why">
 <div class="why__inner wrapper">
 
   <!-- セクション見出し -->
-  <div class="why__header common__header">
+  <div class="why__header common__header js-fadeup">
     <span class="why__header-en common__header-title--en">Why Loyell</span>
     <h2 class="why__title common__header-title">Loyellのこだわり</h2>
   </div>
@@ -855,7 +853,7 @@ Instagramセクション instagram
   <div class="why__list">
 
     <!-- ===== 理由1 ===== -->
-    <div class="why__card">
+    <div class="why__card js-fadeup">
 
       <!-- 左：画像エリア -->
       <div class="why__card-image">
@@ -878,7 +876,7 @@ Instagramセクション instagram
     </div>
 
     <!-- ===== 理由2 ===== -->
-    <div class="why__card">
+    <div class="why__card js-fadeup">
 
       <!-- 左：画像エリア -->
       <div class="why__card-image">
@@ -901,7 +899,7 @@ Instagramセクション instagram
     </div>
 
     <!-- ===== 理由3 ===== -->
-    <div class="why__card">
+    <div class="why__card js-fadeup">
 
       <!-- 左：画像エリア -->
       <div class="why__card-image">
@@ -931,13 +929,13 @@ Instagramセクション instagram
 </section>
 
 <!-- ========================================
-プラン・料金セクション plan
+12.プラン・料金セクション plan
 ======================================== -->
 <section class="l-common plan" id="plan">
 <div class="plan__inner wrapper">
 
   <!-- セクション見出しエリア -->
-  <div class="plan__header common__header">
+  <div class="plan__header common__header js-fadeup">
     <span class="plan__header-en common__header-title--en">Plan</span>
     <h2 class="plan__title common__header-title">
       あなたに合ったプランを
@@ -949,7 +947,7 @@ Instagramセクション instagram
   </div>
 
   <!-- 補足バッジエリア（全国対応・Zoom） -->
-  <div class="plan__badges">
+  <div class="plan__badges js-fadeup">
     <span class="plan__badge">全国対応</span>
     <span class="plan__badge">ZoomカウンセリングOK</span>
   </div>
@@ -958,7 +956,7 @@ Instagramセクション instagram
   <div class="plan__container">
 
     <!-- ========== パーソナルプラン（左） ========== -->
-    <div class="plan__card plan__card--personal">
+    <div class="plan__card plan__card--personal js-fadeup">
 
       <!-- カード上部：タイトル・価格 -->
       <div class="plan__card-header">
@@ -992,7 +990,7 @@ Instagramセクション instagram
 
 
     <!-- ========== グループプラン（右） ========== -->
-    <div class="plan__card plan__card--group">
+    <div class="plan__card plan__card--group js-fadeup">
 
       <!-- カード上部：タイトル・価格 -->
       <div class="plan__card-header">
@@ -1025,7 +1023,7 @@ Instagramセクション instagram
 </section>
 
 <!-- ========================================
-メッセージ＆クロージングセクション message
+13.メッセージ＆クロージングセクション message
 ======================================== -->
 <section class="message" id="message">
 
@@ -1060,13 +1058,13 @@ Instagramセクション instagram
 </section>
 
 <!-- ========================================
-プログラムのご参加について（注意事項・免責）セクション notice
+14.プログラムのご参加について（注意事項・免責）セクション notice
 ======================================== -->
-<section class="l-common notice" id="notice">
+<section class="l-common notice js-fadeup" id="notice">
   <div class="notice__inner wrapper c-accordion__wrapper">
 
     <!-- セクション見出し -->
-    <div class="notice__header common__header">
+    <div class="notice__header common__header js-fadeup">
       <span class="notice__header-en common__header-title--en">Notice</span>
 
       <h2 class="notice__title common__header-title">プログラムのご参加について</h2>
@@ -1090,16 +1088,16 @@ Instagramセクション instagram
               以下の場合はご参加をお断りすることがあります。あらかじめご了承ください。
             </p>
             <ul class="c-accordion__list">
-              <li class="c-accordion__list-item">肝臓疾患、肝炎、肝硬変など</li>
-              <li class="c-accordion__list-item">腎臓疾患、透析、腎不全など</li>
-              <li class="c-accordion__list-item">悪性新生物(ガン)</li>
-              <li class="c-accordion__list-item">ステロイド投与中</li>
-              <li class="c-accordion__list-item">妊婦、完全授乳中</li>
-              <li class="c-accordion__list-item">精神疾患型糖尿病</li>
+              <li class="c-accordion__list-item">肝臓疾患、肝炎、肝硬変などの方</li>
+              <li class="c-accordion__list-item">腎臓疾患、透析、腎不全などの方 </li>
+              <li class="c-accordion__list-item">悪性新生物(ガン) の方</li>
+              <li class="c-accordion__list-item">ステロイド投与中の方</li>
+              <li class="c-accordion__list-item">妊婦、完全授乳中の方</li>
+              <li class="c-accordion__list-item">精神疾患型糖尿病の方</li>
               <li class="c-accordion__list-item">免疫の弱い方、風邪、インフルエンザによくかかる方</li>
               <li class="c-accordion__list-item">前後2週間で抗生物質を飲む予定のある方</li>
-              <li class="c-accordion__list-item">重度の貧血、へモグロビンが10以下</li>
-              <li class="c-accordion__list-item">低コレステロール、T-CHO140以下を目安</li>
+              <li class="c-accordion__list-item">重度の貧血、へモグロビンが10以下の方</li>
+              <li class="c-accordion__list-item">低コレステロール、T-CHO140以下の方</li>
               <li class="c-accordion__list-item">重度の低血糖症、痩せすぎ、体調がすぐれない方</li>
             </ul>
             <p class="c-accordion__note">

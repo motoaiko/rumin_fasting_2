@@ -370,7 +370,7 @@ sectionの共通設定
   margin-top: -72px;
   margin-bottom: 32px;
   line-height: 1.5;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
 }
 @media (max-width: 768px) {
   .common__header-title {
@@ -413,7 +413,7 @@ sectionの共通設定
   font-family: "Noto Serif JP", serif;
   font-size: 24px;
   font-weight: 400;
-  color: #ffffff;
+  color: #4a4a4a;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -453,6 +453,18 @@ Utilities
   .pc {
     display: none;
   }
+}
+
+/* フェードアップｊｓ  */
+.js-fadeup {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.js-fadeup.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .btn {
@@ -815,7 +827,7 @@ Utilities
 }
 
 /* ========================================
-理由セクション reason
+5.理由セクション reason
 ======================================== */
 .reason {
   background-color: #fff;
@@ -922,7 +934,7 @@ Utilities
   display: flex;
   align-items: center;
   gap: 48px;
-  background-color: #4a4a4a;
+  background-color: #fff;
   padding: 40px;
   border-radius: 5px;
 }
@@ -960,7 +972,7 @@ Utilities
 }
 .approach__item-desc {
   font-size: 14px;
-  color: #d9cfc5;
+  color: #7a6a5a;
   line-height: 2;
 }
 @media (max-width: 768px) {
@@ -1028,6 +1040,7 @@ Utilities
   font-size: 16px;
   color: #7a6a5a;
   letter-spacing: 0.1em;
+  line-height: 1;
 }
 .approach__flow-card-name {
   font-family: "Noto Serif JP", serif;
@@ -1055,6 +1068,9 @@ Utilities
   }
 }
 
+.faq {
+  background-color: #FFF;
+}
 .faq__lead {
   color: #7a6a5a;
   margin-bottom: 0;
@@ -1373,23 +1389,20 @@ Utilities
   overflow: hidden;
 }
 .instagram__header {
+  display: block;
   text-align: center;
   margin-bottom: 48px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.instagram__header:hover, .instagram__header:active {
+  opacity: 0.75;
 }
 @media (max-width: 768px) {
   .instagram__header {
     padding-top: 36px;
     margin-bottom: 36px;
-  }
-}
-.instagram__title {
-  font-family: "Noto Sans JP", sans-serif;
-  color: #4a4a4a;
-  letter-spacing: 0.02em;
-}
-@media (max-width: 768px) {
-  .instagram__title {
-    font-size: 28px;
   }
 }
 .instagram__lead {
@@ -1447,6 +1460,8 @@ Utilities
   display: flex;
   align-items: center;
   gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 @media (max-width: 768px) {
   .voice__slider-area {
@@ -1622,7 +1637,7 @@ Utilities
   display: flex;
   align-items: center;
   gap: 48px;
-  background-color: #4a4a4a;
+  background-color: #f3ede6;
   border-radius: 4px;
   padding: 40px;
   overflow: hidden;
@@ -1680,7 +1695,7 @@ Utilities
   }
 }
 .why__card-text {
-  color: #d9cfc5;
+  color: #7a6a5a;
   line-height: 2;
   letter-spacing: 0.04em;
 }
@@ -1691,7 +1706,7 @@ Utilities
 }
 @media (max-width: 768px) {
   .plan {
-    padding-bottom: 60px;
+    padding-bottom: 120px;
   }
 }
 .plan {
@@ -1762,7 +1777,6 @@ Utilities
 @media (max-width: 768px) {
   .plan__container {
     flex-direction: column;
-    gap: 24px;
   }
 }
 .plan {
@@ -1781,7 +1795,7 @@ Utilities
 }
 @media (max-width: 768px) {
   .plan__card {
-    padding: 36px 24px 32px;
+    padding: 40px 24px;
   }
 }
 .plan {
@@ -1801,7 +1815,7 @@ Utilities
   display: block;
   content: "";
   position: absolute;
-  top: -10px;
+  top: -30px;
   left: 50%;
   width: 120px;
   height: 100px;
@@ -1831,7 +1845,7 @@ Utilities
 }
 .plan__card-en {
   font-size: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 @media (max-width: 768px) {
   .plan__card-en {
@@ -1935,7 +1949,7 @@ Utilities
 }
 @media (max-width: 768px) {
   .message__overlay {
-    padding: 60px 0;
+    padding: 120px 0;
   }
 }
 .message {
@@ -1972,7 +1986,13 @@ Utilities
 }
 .message__text {
   color: rgba(255, 255, 255, 0.88);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+@media (max-width: 768px) {
+  .message__text {
+    letter-spacing: -0.04em;
+  }
 }
 .message {
   /* ----------------------------------------
@@ -2004,7 +2024,7 @@ Utilities
 }
 @media (max-width: 768px) {
   .footer {
-    padding: 100px 0;
+    padding: 100px 0 0;
   }
 }
 .footer {
