@@ -216,12 +216,14 @@ Utilities
   letter-spacing: 0.08em;
   text-align: center;
   transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .btn--primary {
   background-color: $color-gold;
   color: $color-white;
   border: 1px solid $color-gold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
   &:hover {
     background-color: darken($color-gold, 8%);
@@ -286,7 +288,7 @@ Utilities
   width: 100%;
   z-index: 100;
   background-color: $color-white;
-  border-bottom: 1px solid $color-border;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
   &__inner {
     max-width: $max-width;
@@ -395,6 +397,7 @@ Utilities
 
 	&__image {
 		flex: 1;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	}
 }
 
@@ -435,6 +438,7 @@ Utilities
 		border-radius: 50%;
 		background-color: $color-border;
 		border: 3px solid $color-gold-light;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	}
 
 	&__text-area {
@@ -486,6 +490,7 @@ Utilities
 		flex: 1;
 		padding: 24px 32px;
 		background-color: $color-white;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		padding: 32px 16px;
@@ -559,6 +564,7 @@ Utilities
 		border: 1px solid $color-border;
 		border-radius: 30px;
 		text-align: center;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		flex: 0 0 calc(50% - 8px);
@@ -645,7 +651,8 @@ Utilities
 		margin: 0 auto 24px;
 		border-radius: 10px;
 		overflow: hidden;
-		border: 1px solid $color-border;
+		border: 0.8px solid $color-border;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		width: 60%;
@@ -707,6 +714,7 @@ Utilities
 		padding: 40px;
 		background-color: $color-white;
 		border-radius: 5px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		flex-direction: column;
@@ -823,6 +831,7 @@ Utilities
 		border-radius: 12px;
 		background-color: $color-white;
 		margin-bottom: 16px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		img {
 		height: 100%;
@@ -848,6 +857,7 @@ Utilities
 		font-size: 20px;
 		font-weight: bold;
 		color: $color-header;
+		line-height: 1;
 	}
 
 	&__flow-card-desc {
@@ -1274,6 +1284,7 @@ Utilities
 		background-color: $color-white;
 		border: 1px solid $color-border;
 		border-radius: 5px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		flex: 0 0 80%;
@@ -1395,6 +1406,7 @@ Utilities
 		padding: 40px;
 		background-color: $color-bg-alt;
 		border-radius: 4px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 		@include mobile {
 		flex-direction: column;

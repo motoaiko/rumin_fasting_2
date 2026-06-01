@@ -470,12 +470,15 @@ Utilities
   letter-spacing: 0.08em;
   text-align: center;
   transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .btn--primary {
   background-color: #b89a6a;
   color: #ffffff;
   border: 1px solid #b89a6a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .btn--primary:hover {
   background-color: rgb(168.7763636364, 134.7945454545, 80.4236363636);
@@ -537,7 +540,7 @@ Utilities
   width: 100%;
   z-index: 100;
   background-color: #ffffff;
-  border-bottom: 1px solid #d9cfc5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .header__inner {
   max-width: 1100px;
@@ -639,6 +642,7 @@ Utilities
 }
 .hero__image {
   flex: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .about {
@@ -674,6 +678,7 @@ Utilities
   border-radius: 50%;
   background-color: #d9cfc5;
   border: 3px solid #d4b896;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .about__text-area {
   padding: 0 16px;
@@ -716,6 +721,7 @@ Utilities
   flex: 1;
   padding: 24px 32px;
   background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .about__story {
@@ -778,6 +784,7 @@ Utilities
   border: 1px solid #d9cfc5;
   border-radius: 30px;
   text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .worries__card {
@@ -855,7 +862,8 @@ Utilities
   margin: 0 auto 24px;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #d9cfc5;
+  border: 0.8px solid #d9cfc5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .reason__card-image {
@@ -911,6 +919,7 @@ Utilities
   padding: 40px;
   background-color: #ffffff;
   border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .approach__item {
@@ -1020,6 +1029,7 @@ Utilities
   border-radius: 12px;
   background-color: #ffffff;
   margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .approach__flow-card-image img {
   height: 100%;
@@ -1043,6 +1053,7 @@ Utilities
   font-size: 20px;
   font-weight: bold;
   color: #907b5b;
+  line-height: 1;
 }
 .approach__flow-card-desc {
   font-size: 14px;
@@ -1417,6 +1428,7 @@ Utilities
   background-color: #ffffff;
   border: 1px solid #d9cfc5;
   border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .voice__card {
@@ -1528,6 +1540,7 @@ Utilities
   padding: 40px;
   background-color: #f3ede6;
   border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .why__card {
