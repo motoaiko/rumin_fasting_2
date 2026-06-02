@@ -169,6 +169,10 @@ sectionの共通設定
     font-size: $font-size-large;
     color: $color-gold-light;
     letter-spacing: 0.05em;
+
+	@include mobile {
+	  font-size: 18px;
+	}
   }
 
   &__box-line {
@@ -615,69 +619,102 @@ Utilities
 // ========================================
 
 .reason {
-	background-color: $color-white;
-
-	&__inner {
+		background-color: $color-white;
+	
+		&__inner {
 		@include mobile {
-		padding: 0 20px;
+			padding: 0 20px;
 		}
-	}
-
-	&__cards {
+		}
+	
+		&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 800px;
+		margin: 0 auto 48px;
+		gap: 40px; 
+	
+		@include mobile {
+			flex-direction: column; 
+			gap: 56px;
+		}
+		}
+	
+		&__image-area {
+		flex: 1;
 		display: flex;
 		justify-content: center;
-		gap: 40px;
-		margin-bottom: 48px;
-
+		align-items: center;
+		min-width: 0;
+	
 		@include mobile {
-		flex-direction: column;
-		gap: 40px;
+			width: 100%;
+			max-width: 320px; 
 		}
-	}
-
-	&__card {
-		flex: 1;
-		text-align: center;
-
-		@include mobile {
-		width: 100%;
-		max-width: 480px;
-		margin: 0 auto;
 		}
-	}
-
-	&__card-image {
-		width: 80%;
-		margin: 0 auto 24px;
-		border-radius: 10px;
-		overflow: hidden;
-		border: 0.8px solid $color-border;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-
-		@include mobile {
+	
+		&__main-image {
 		width: 60%;
 		}
-	}
+	
+		&__stats {
+			display: flex;
+			flex-direction: column;
+			width: 50%;
+			gap: 32px;
+			text-align: justify;  
 
-	&__card-title {
-		margin-bottom: 8px;
-		font-family: $font-serif-ja;
-		font-size: 20px;
-	}
-
-	&__card-desc {
-		color: $color-text-sub;
-		font-size: 14px;
-		line-height: 1.7;
-	}
-
-	&__footer-text {
 		@include mobile {
-		font-size: 16px;
+			flex: none;
+			width: 100%;
+			gap: 36px;
 		}
-	}
-}
-// ========================================
+		}
+	
+		&__stat-item {
+		display: flex;
+		align-items: stretch; // 縦線を100%の高さに伸ばす
+	
+		&::before {
+			content: '';
+			flex-shrink: 0;
+			width: 1px;
+			margin-right: 20px;
+			background-color: $color-gold-light;
+		}
+		}
+	
+		&__stat-body {
+		flex: 1;
+		}
+	
+		&__stat-title {
+		margin-bottom: 8px;
+		font-size: 20px;
+		line-height: 1.2;  
+
+		@include mobile {
+			font-size: 18px;
+		}
+		}
+	
+		&__stat-desc {
+		margin-bottom: 0;
+		font-family: $font-sans-ja;
+		font-size: $font-size-small;
+		color: $color-text-sub;
+		line-height: 1.9; 
+		}
+	
+		&__footer-text {
+		@include mobile {
+			font-size: 16px;
+		}
+		}
+  }
+  
+  // ========================================
 // 6.アプローチ＆流れセクション approach
 // ========================================
 
@@ -720,27 +757,6 @@ Utilities
 		flex-direction: column;
 		gap: 24px;
 		padding: 24px 20px;
-		}
-	}
-
-	&__item-image {
-		flex: 0 0 220px;
-		width: 220px;
-		height: 220px;
-		overflow: hidden;
-		background-color: $color-border;
-		border-radius: 5px;
-
-		@include mobile {
-		flex: none;
-		width: 100%;
-		height: 200px;
-		}
-
-		img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
 		}
 	}
 
@@ -1513,11 +1529,9 @@ Utilities
 	&__badge {
 		display: inline-block;
 		padding: 10px 28px;
-		background-color: $color-gold;
-		border: 1px solid $color-border;
+		border: 0.8px solid $color-border;
 		border-radius: 50px;
 		font-size: $font-size-mobile;
-		color: $color-white;
 		letter-spacing: 0.1em;
 
 		@include mobile {
@@ -1915,3 +1929,5 @@ Utilities
 		}
 	}
 }
+
+
