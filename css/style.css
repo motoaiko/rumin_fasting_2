@@ -962,8 +962,50 @@ Utilities
     padding: 24px 20px;
   }
 }
+.approach__item-step {
+  position: absolute;
+  padding: 12px 20px;
+  line-height: 1;
+  border-radius: 5px 0 12px 0;
+  top: 0px;
+  left: 0px;
+  background: #faf8f5;
+}
 .approach__item-body {
   flex: 1;
+}
+.approach__flow-card-title {
+  position: relative;
+  padding-left: 60px;
+  margin: 32px 0 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d9cfc5;
+}
+@media (max-width: 768px) {
+  .approach__flow-card-title {
+    padding-left: 54px;
+  }
+}
+.approach__flow-card-title::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: url(../images/icon4.png) no-repeat center center/contain;
+  top: 3px;
+  left: 8px;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .approach__flow-card-title::before {
+    width: 32px;
+    height: 32px;
+  }
+}
+.approach__flow-card-title--item2::before {
+  background-image: url(../images/icon2.png);
+}
+.approach__flow-card-title--item3::before {
+  background-image: url(../images/icon5.png);
 }
 .approach__item-desc {
   font-size: 14px;

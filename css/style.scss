@@ -760,8 +760,59 @@ Utilities
 		}
 	}
 
+	&__item-step {
+		position: absolute;
+		padding: 12px 20px;
+		line-height: 1;
+		border-radius: 5px 0 12px 0;
+		top: 0px;
+		left: 0px;
+		background: #faf8f5;			
+	}
+
 	&__item-body {
 		flex: 1;
+	}
+
+	&__flow-card-title {
+		position: relative;
+		padding-left: 60px;
+		margin: 32px 0 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #d9cfc5;
+
+
+		@include mobile {
+		padding-left: 54px;
+		}
+
+		&::before{
+		content: '';
+		width: 40px;
+		height: 40px;
+		background:url(../images/icon4.png) no-repeat center center / contain; 
+		top: 3px;
+		left: 8px;
+		position: absolute;
+
+		@include mobile {
+			width: 32px;
+			height: 32px;
+		}
+
+		}
+	}
+
+	&__flow-card-title--item2 {
+		&::before {
+		background-image: url(../images/icon2.png);
+		}
+	}
+
+	&__flow-card-title--item3 {
+		&::before {
+		background-image: url(../images/icon5.png);
+		}
 	}
 
 	&__item-desc {
