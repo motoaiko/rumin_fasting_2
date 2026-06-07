@@ -1162,6 +1162,12 @@ Utilities
   font-weight: bold;
   color: #907b5b;
   line-height: 1;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 1px solid #907b5b;
+  display: block;
+  max-width: 100%;
+  padding-bottom: 8px;
 }
 .approach__flow-card-desc {
   font-size: 14px;

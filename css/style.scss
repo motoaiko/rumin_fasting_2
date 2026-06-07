@@ -982,6 +982,11 @@ Utilities
 		font-weight: bold;
 		color: $color-header;
 		line-height: 1;
+		width: fit-content;
+    border-bottom: 1px solid #907b5b;
+    display: block;
+    max-width: 100%;
+    padding-bottom: 8px;
 	}
 
 	&__flow-card-desc {
