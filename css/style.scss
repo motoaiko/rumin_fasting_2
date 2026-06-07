@@ -15,6 +15,7 @@ $color-header: #907b5b; // ヘッダーテキスト
 $color-text: #4a4a4a; // メインテキストのダークブラウン
 $color-text-sub: #7a6a5a; // サブテキスト・説明文のミドルブラウン
 $color-border: #d9cfc5; // ボーダー・区切り線の薄いベージュ
+$color-strong: #e9967a; // 強調用のサーモンピンク
 
 // --- フォント ---
 $font-serif-en: 'Cormorant Garamond', serif; // 英字見出し用エレガントセリフ
@@ -363,7 +364,7 @@ Utilities
 	}
 
 	&__tag {
-		color: $color-text-sub;
+		color: $color-gold;
 		letter-spacing: 0.1em;
 		margin-bottom: 16px;
 		display: flex;
@@ -401,8 +402,21 @@ Utilities
 
 	&__image {
 		flex: 1;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	}
+
+	&__image-placeholder {
+		position: relative;
+	}
+
+	&__overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to right, #FAF9F6 0%, transparent 30%);
+
+	@include mobile {
+		background: linear-gradient(to top, #FAF9F6 0%, transparent 30%);
+	}
+}
 }
 
 // ========================================
@@ -527,6 +541,11 @@ Utilities
 		&:last-child {
 		margin-bottom: 0;
 		}
+
+		strong {
+		color: $color-gold;
+		font-weight: 400;
+		}
 	}
 }
 
@@ -606,11 +625,10 @@ Utilities
 		padding: 0 24px;
 
 		strong {
-		display: block;
-		margin-top: 8px;
-		color: $color-text;
-		font-weight: 400;
-		}
+			color: $color-gold;
+			font-weight: 400;
+			}
+			
 	}
 }
 
@@ -774,12 +792,34 @@ Utilities
 		flex: 1;
 	}
 
+	&__flow{
+		position: relative;
+		max-width: $max-width;
+    margin: 0 auto;
+    padding: 60px 0;
+	}
+
+	// 背景の白いSVGラインの配置設定
+		&__flow-bg-line {
+			display: none; /* PCでは非表示 */
+			@include mobile {
+		display: block;
+		position: absolute;
+        top: 50%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+        width: 260%;
+		z-index: 1; 
+		pointer-events: none; 
+			}
+		}
 	&__flow-card-title {
 		position: relative;
 		padding-left: 60px;
 		margin: 32px 0 20px;
 		padding-bottom: 20px;
 		border-bottom: 1px solid #d9cfc5;
+		z-index: 2;
 
 
 		@include mobile {
@@ -858,6 +898,7 @@ Utilities
 		display: flex;
 		flex-direction: column;
 		text-align: left;
+		z-index: 1;
 
 		&:nth-of-type(1) {
 		margin-top: 0;
@@ -906,16 +947,32 @@ Utilities
 		}
 	}
 
+	&__flow-card-overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba($color-bg, 0.2);}
+
+	&__flow-card:hover .approach__flow-card-overlay {
+		opacity: 1;
+	}
+
 	&__flow-card-day {
 		position: absolute;
 		padding: 12px 20px;
-		font-family: $font-serif-en;
-		font-size: 16px;
-		color: $color-text;
+		font-family: "Cormorant Garamond", serif;
+		font-size: 20px;
+		color: #4a4a4a;
 		letter-spacing: 0.05em;
 		line-height: 1;
-		background-color: $color-bg;
-		border-radius: 12px 0 12px 0;
+		background-color: #faf8f5;
+		border-radius: 50px;
+		top: -16px;
+		left: -16px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+		@include mobile {
+		font-size: 16px;
+		}
 	}
 
 	&__flow-card-name {
@@ -1847,7 +1904,7 @@ Utilities
 		margin-top: 4px;
 		font-family: $font-sans-ja;
 		font-size: 12px;
-		color: $color-text-sub;
+		color: $color-gold;
 		letter-spacing: 0.05em;
 	}
 
