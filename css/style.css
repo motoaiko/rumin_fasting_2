@@ -694,7 +694,7 @@ Utilities
   margin: 0 auto 24px;
   border-radius: 50%;
   background-color: #d9cfc5;
-  border: 3px solid #d4b896;
+  border: 1px solid #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .about__text-area {
