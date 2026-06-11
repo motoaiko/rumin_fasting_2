@@ -734,6 +734,10 @@ Utilities
   color: #7a6a5a;
   line-height: 1.8;
 }
+.about__profile-note strong {
+  color: #b89a6a;
+  font-weight: 400;
+}
 .about__story {
   flex: 1;
   padding: 24px 32px;
@@ -1118,7 +1122,7 @@ Utilities
   position: relative;
   aspect-ratio: 1/1;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 5px;
   background-color: #ffffff;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -1910,7 +1914,7 @@ Utilities
 
 .message {
   background-image: url("../images/message.png");
-  background-position: center;
+  background-position: center 20%;
   background-size: cover;
   background-attachment: fixed;
 }
