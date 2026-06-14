@@ -181,6 +181,11 @@ sectionの共通設定
   }
 }
 
+strong {
+	color: $color-strong;
+	font-weight: 400;
+	}
+
 /* =============================================
 Utilities
 ============================================= */
@@ -250,7 +255,7 @@ Utilities
 	  }
 	@include mobile {
 		padding: 8px 18px;
-		font-size: 8px;
+		font-size: 10px;
 	}
 }
 .c-btn-line {
@@ -502,13 +507,7 @@ Utilities
 
 	&__profile-note {
 		color: $color-text-sub;
-		line-height: 1.8;
-
-		strong {
-			color: $color-gold;
-			font-weight: 400;
-			}
-	
+		line-height: 1.8;	
 	}
 
 	&__story {
@@ -549,10 +548,6 @@ Utilities
 		margin-bottom: 0;
 		}
 
-		strong {
-		color: $color-gold;
-		font-weight: 400;
-		}
 	}
 }
 
@@ -631,10 +626,6 @@ Utilities
 	&__footer-text {
 		padding: 0 24px;
 
-		strong {
-			color: $color-gold;
-			font-weight: 400;
-			}
 			
 	}
 }
@@ -1725,12 +1716,28 @@ Utilities
 		padding: 40px 24px;
 		}
 	}
+	&__card--group{
+		border: 3px solid $color-border;
+		position: relative;
+		&::before {
+			content: "＼ おすすめ ／";
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: #7a6a5a;
+			color: #fff;
+			padding: 4px 16px;
+			border-radius: 50px;
+			font-size: 14px;
+		}
+	}
 
 	&__card-header {
 		position: relative;
 		z-index: 0;
 		padding-bottom: 32px;
-		margin-bottom: 32px;
+		margin:16px 0 32px;
 		border-bottom: 1px solid $color-border;
 		text-align: center;
 
@@ -2127,7 +2134,7 @@ Utilities
 	font-size: 14px;
 	}
 	}
-	
+
 
 	p, ul {
 	font-size: 15px;
