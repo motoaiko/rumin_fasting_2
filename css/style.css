@@ -1830,7 +1830,7 @@ Utilities
   position: relative;
 }
 .plan__card--group::before {
-  content: "＼ おすすめ ／";
+  content: "おすすめ";
   position: absolute;
   top: -20px;
   left: 50%;

@@ -1720,7 +1720,7 @@ Utilities
 		border: 3px solid $color-border;
 		position: relative;
 		&::before {
-			content: "＼ おすすめ ／";
+			content: "おすすめ";
 			position: absolute;
 			top: -20px;
 			left: 50%;
