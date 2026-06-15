@@ -2103,13 +2103,16 @@ Utilities
 // ========================================
 // legal.htmlのスタイル
 // ========================================
-
+.main{
+	padding-top: 120px;
+}
 
 .legal-document {
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 160px 20px;
-	color: $color-text; // 既存のベース文字色
+	padding: 40px 20px;
+	color: $color-text; 
+	scroll-margin-top: 120px;
 
 	h2 {
 	font-family: $font-serif-ja;
