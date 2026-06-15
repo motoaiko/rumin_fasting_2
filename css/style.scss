@@ -706,13 +706,35 @@ Utilities
 		}
 	
 		&__stat-title {
-		margin-bottom: 8px;
-		font-size: 20px;
-		line-height: 1.2;  
+			margin-bottom: 8px;
+			font-size: 20px;
+			position: relative;
+			padding-left: 56px;
 
 		@include mobile {
 			font-size: 18px;
 		}
+
+		&::before {
+			content: "";
+			width: 30px;
+			height: 30px;
+			background: url(../images/reason1.png) no-repeat center center / contain;
+			top: 3px;
+			left: 8px;
+			position: absolute;
+		}
+		}
+		&__stat-title--item2 {
+			&::before {
+			background-image: url(../images/reason2.png);
+			}
+		}
+	
+		&__stat-title--item3 {
+			&::before {
+			background-image: url(../images/reason3.png);
+			}
 		}
 	
 		&__stat-desc {
