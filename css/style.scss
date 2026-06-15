@@ -2105,6 +2105,10 @@ Utilities
 // ========================================
 .main{
 	padding-top: 120px;
+
+	@include mobile {
+		padding-top: 240px;
+	}
 }
 
 .legal-document {

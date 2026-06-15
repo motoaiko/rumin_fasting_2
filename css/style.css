@@ -2188,6 +2188,11 @@ Utilities
 .main {
   padding-top: 120px;
 }
+@media (max-width: 768px) {
+  .main {
+    padding-top: 240px;
+  }
+}
 
 .legal-document {
   max-width: 800px;
