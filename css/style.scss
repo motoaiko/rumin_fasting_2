@@ -179,6 +179,62 @@ body,
 	&__box-line {
 		color: $color-gold-light;
 	}
+
+	&__slider-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: 44px;  // ★押しやすいようにサイズを32pxから44pxに拡大
+        height: 44px; // ★同上
+        border: 1px solid $color-gold; // ★ゴールドの細いプレーンな枠線を追加
+        background-color: #ffffff;    // ★背景を白にして、写真と重なっても見やすく
+        border-radius: 50%;           // ★綺麗な正円ボタンにします
+        cursor: pointer;
+        font-family: $font-serif-en;
+        font-size: 28px;              // ★円の中に綺麗に収まるよう文字サイズを微調整
+        color: $color-gold;
+        line-height: 1;
+        
+        // ★矢印の位置が少し上に見えるのを防ぐための微調整（文字のフォントによって適宜微調整してください）
+        padding-bottom: 4px; 
+        
+        // ★変化が滑らかになるように設定
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+
+        // パソコンでマウスホバーしたときのアクション
+        @media (hover: hover) {
+            &:hover {
+                background-color: $color-gold; // ★ゴールド背景に反転
+                color: #ffffff;                // ★文字は白に反転
+                
+                // 次へボタン（--next）なら、ホバー時に少しだけ右にピクッと動いて躍動感を出す
+                &.results__slider-btn--next {
+                    transform: translateX(3px);
+                }
+                // 前へボタン（--prevがある場合）なら、左に動かす
+                &.results__slider-btn--prev {
+                    transform: translateX(-3px);
+                }
+            }
+        }
+
+        // ボタンを押した瞬間（クリック中）の心地よい凹み演出
+        &:active {
+            transform: scale(0.95);
+        }
+
+        // スライダーの端に達して、ボタンが押せなくなったときの状態
+        &:disabled {
+            opacity: 0.15;
+            border-color: #ccc;
+            color: #ccc;
+            cursor: default;
+            pointer-events: none;
+            transform: none !important; // 動かさない
+        }
+    }
+
 	}
 
 	.strong,
@@ -1284,60 +1340,8 @@ body,
 		}
 	}
 
-	&__slider-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        width: 44px;  // ★押しやすいようにサイズを32pxから44pxに拡大
-        height: 44px; // ★同上
-        border: 1px solid $color-gold; // ★ゴールドの細いプレーンな枠線を追加
-        background-color: #ffffff;    // ★背景を白にして、写真と重なっても見やすく
-        border-radius: 50%;           // ★綺麗な正円ボタンにします
-        cursor: pointer;
-        font-family: $font-serif-en;
-        font-size: 28px;              // ★円の中に綺麗に収まるよう文字サイズを微調整
-        color: $color-gold;
-        line-height: 1;
-        
-        // ★矢印の位置が少し上に見えるのを防ぐための微調整（文字のフォントによって適宜微調整してください）
-        padding-bottom: 4px; 
-        
-        // ★変化が滑らかになるように設定
-        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 
-        // パソコンでマウスホバーしたときのアクション
-        @media (hover: hover) {
-            &:hover {
-                background-color: $color-gold; // ★ゴールド背景に反転
-                color: #ffffff;                // ★文字は白に反転
-                
-                // 次へボタン（--next）なら、ホバー時に少しだけ右にピクッと動いて躍動感を出す
-                &.results__slider-btn--next {
-                    transform: translateX(3px);
-                }
-                // 前へボタン（--prevがある場合）なら、左に動かす
-                &.results__slider-btn--prev {
-                    transform: translateX(-3px);
-                }
-            }
-        }
-
-        // ボタンを押した瞬間（クリック中）の心地よい凹み演出
-        &:active {
-            transform: scale(0.95);
-        }
-
-        // スライダーの端に達して、ボタンが押せなくなったときの状態
-        &:disabled {
-            opacity: 0.15;
-            border-color: #ccc;
-            color: #ccc;
-            cursor: default;
-            pointer-events: none;
-            transform: none !important; // 動かさない
-        }
-    }}
+}
 
 // ========================================
 // 9.Instagramセクション instagram
@@ -1517,34 +1521,12 @@ body,
 		}
 	}
 
-	&__btn {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-shrink: 0;
-		width: 36px;
-		height: 36px;
-		border: none;
-		background: none;
-		cursor: pointer;
-		appearance: none;
-		font-family: $font-serif-en;
-		font-size: 40px;
-		font-weight: 300;
-		color: $color-gold;
-		line-height: 1;
-		transition: color 0.25s ease;
-
-		&:disabled {
-		opacity: 0.2;
-		cursor: default;
-		pointer-events: none;
-		}
-
+	// 矢印ボタンをモバイルでは非表示にする
+	&__btn--next,
+	&__btn--prev {
 		@include mobile {
-		width: 24px;
-		font-size: 24px;
-		}
+	display:none;
+	}
 	}
 
 	&__note {
