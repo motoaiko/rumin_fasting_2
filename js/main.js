@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 発動させる境界線の設定（共通ルール）
     const scrollObserverOptions = {
         root: null,
-        rootMargin: '-200px 0px 0px 0px',
+        rootMargin: '-500px 0px 0px 0px',
         threshold: 0,
     };
 

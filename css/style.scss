@@ -43,316 +43,317 @@ $section-padding-sp: 60px;
 共通設定
 ============================================= */
 body,
-html {
-  font-family: $font-sans-ja;
-  background: $color-bg;
-  color: $color-text;
-  line-height: 1.9;
-  font-size: $font-size-base;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-@include mobile {
-  body {
-    font-size: $font-size-mobile;
-  }
-}
-
-/* =============================================
-sectionの共通設定
-============================================= */
-.l-common {
-  padding: $section-padding 0;
-
-  @include mobile {
-    padding: $section-padding-sp 0;
-  }
-}
-
-.wrapper {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 40px;
-
-  @include mobile {
-    padding: 0 16px;
-  }
-}
-
-.common {
-  &__header {
-    text-align: center;
-    margin-bottom: 60px;
-
-    @include mobile {
-      margin-bottom: 40px;
-    }
-  }
-
-  &__header-title--en {
-    font-family: $font-serif-en;
-    font-size: 64px;
-    color: #e5ded6;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-
-    @include mobile {
-      font-size: 48px;
-    }
-  }
-
-  &__header-title {
-    position: relative;
-    font-family: $font-serif-ja;
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-    margin-top: -72px;
-    margin-bottom: 32px;
-
-    @include mobile {
-      font-size: 20px;
-      letter-spacing: 0.05em;
-      margin-top: -56px;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -16px;
-      left: 50%;
-      width: 50px;
-      height: 2px;
-      margin-left: -25px;
-      background-color: #cbbeac;
-    }
-  }
-
-  &__footer {
-    text-align: center;
-  }
-
-  &__footer-text {
-    color: $color-text-sub;
-    line-height: 2;
-  }
-
-  &__read {
-    text-align: center;
-    padding: 0 16px;
-    margin-bottom: 40px;
-    color: $color-text-sub;
-
-    @include mobile {
-      text-align: justify;
-    }
-  }
-
-  &__box-title {
-    font-family: $font-serif-ja;
-    font-size: $font-size-large;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-
-    @include mobile {
-      font-size: 20px;
-    }
-  }
-
-  &__box-num {
-    font-family: $font-serif-en;
-    font-size: $font-size-large;
-    color: $color-gold-light;
-    letter-spacing: 0.05em;
+	html {
+	font-family: $font-sans-ja;
+	background: $color-bg;
+	color: $color-text;
+	line-height: 1.9;
+	font-size: $font-size-base;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	}
 
 	@include mobile {
-	  font-size: 18px;
+	body {
+		font-size: $font-size-mobile;
 	}
-  }
-
-  &__box-line {
-    color: $color-gold-light;
-  }
-}
-
-strong {
-	color: $color-strong;
-	font-weight: 400;
 	}
 
-/* =============================================
-Utilities
-============================================= */
-.mobile {
-  display: none;
+	/* =============================================
+	sectionの共通設定
+	============================================= */
+	.l-common {
+	padding: $section-padding 0;
 
-  @include mobile {
-    display: block;
-  }
-}
+	@include mobile {
+		padding: $section-padding-sp 0;
+	}
+	}
 
-.pc {
-  @include mobile {
-    display: none;
-  }
-}
+	.wrapper {
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: 0 40px;
 
-/* フェードアップｊｓ */
-.js-fadeup {
-opacity: 0;
-transform: translateY(50px);
-transition: opacity 1s ease, transform 1s ease;
+	@include mobile {
+		padding: 0 16px;
+	}
+	}
 
-&.in-view {
-opacity: 1;
-transform: translateY(0);
-}
-}
+	.common {
+	&__header {
+		text-align: center;
+		margin-bottom: 60px;
 
-.js-fadeside{
-	opacity: 0;
-	transform: translateX(-120px); 
-	transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-	transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-	
-	&.side-view {
-	opacity: 1;
-	transform: translateX(0);
-}
-}
-
-/* =============================================
-共通ボタン
-============================================= */
-.btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 50px;
-  font-size: $font-size-mobile;
-  letter-spacing: 0.08em;
-  text-align: center;
-  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.btn--primary {
-  background-color: $color-gold;
-  color: $color-white;
-  border: 1px solid $color-gold;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-
-  &:hover {
-    background-color: darken($color-gold, 8%);
-  }
-}
-
-.btn--header {
-	color: $color-gold;
-	border: 1px solid $color-gold;
-	padding: 8px 24px;
-    line-height: 1.3;
-    font-size: 12px;
-
-	  @media (hover: hover) {
-		&:hover {
-		  background-color: darken($color-gold, 8%);
-		  color: $color-white;
+		@include mobile {
+		margin-bottom: 40px;
 		}
-	  }
-	@include mobile {
-		padding: 8px 18px;
-		font-size: 10px;
 	}
-}
-.c-btn-line {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px 48px;
-  border-radius: 50px;
-  background-color: #06c755;
-  color: $color-white;
-  font-size: $font-size-base;
-  letter-spacing: 0.08em;
-  transition: opacity 0.25s ease;
 
-  &::before {
-    font-family: 'Font Awesome 6 Brands';
-    content: '\f3c6';
-    font-size: 20px;
-    line-height: 1;
-  }
+	&__header-title--en {
+		font-family: $font-serif-en;
+		font-size: 64px;
+		color: #e5ded6;
+		letter-spacing: 0.08em;
+		margin-bottom: 12px;
 
-  &:hover {
-    opacity: 0.85;
-  }
+		@include mobile {
+		font-size: 48px;
+		}
+	}
 
-  @include mobile {
-    padding: 14px 40px;
-    font-size: $font-size-mobile;
-  }
-}
+	&__header-title {
+		position: relative;
+		font-family: $font-serif-ja;
+		font-size: 24px;
+		font-weight: 400;
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		margin-top: -72px;
+		margin-bottom: 32px;
 
-.line-btn {
-  position: fixed;
-  z-index: 1000;
-  top: 80%;
-  right: 1%;
-}
+		@include mobile {
+		font-size: 20px;
+		letter-spacing: 0.05em;
+		margin-top: -56px;
+		}
 
-/* =============================================
-1.ヘッダー
-============================================= */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: $color-white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		&::before {
+		content: '';
+		position: absolute;
+		bottom: -16px;
+		left: 50%;
+		width: 50px;
+		height: 2px;
+		translate: -50% 0;
+		background-color: #cbbeac;
+		}
+	}
 
-  &__inner {
-    max-width: $max-width;
-    margin: 0 auto;
-    padding: 0 40px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+	&__footer {
+		text-align: center;
+	}
 
-    @include mobile {
-      padding: 0 20px;
-    }
-  }
+	&__footer-text {
+		color: $color-text-sub;
+		line-height: 2;
+	}
 
-  &__logo {
-    font-family: $font-serif-en;
-    font-size: $font-size-xlarge;
-    font-weight: 400;
-    color: $color-text;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-  }
+	&__read {
+		text-align: center;
+		padding: 0 16px;
+		margin-bottom: 40px;
+		color: $color-text-sub;
 
-  &__nav-list {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+		@include mobile {
+		text-align: justify;
+		}
+	}
 
-  &__nav-link {
-    color: $color-text-sub;
-    letter-spacing: 0.06em;
-  }
+	&__box-title {
+		font-family: $font-serif-ja;
+		font-size: $font-size-large;
+		font-weight: 400;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 20px;
+
+		@include mobile {
+		font-size: 20px;
+		}
+	}
+
+	&__box-num {
+		font-family: $font-serif-en;
+		font-size: $font-size-large;
+		color: $color-gold-light;
+		letter-spacing: 0.05em;
+
+		@include mobile {
+		font-size: 18px;
+		}
+	}
+
+	&__box-line {
+		color: $color-gold-light;
+	}
+	}
+
+	.strong,
+	strong {
+		color: $color-strong;
+		font-weight: 400;
+		}
+
+	/* =============================================
+	Utilities
+	============================================= */
+	.mobile {
+	display: none;
+
+	@include mobile {
+		display: block;
+	}
+	}
+
+	.pc {
+	@include mobile {
+		display: none;
+	}
+	}
+
+	/* フェードアップｊｓ */
+	.js-fadeup {
+	opacity: 0;
+	transform: translateY(50px);
+	transition: opacity 1s ease, transform 1s ease;
+
+	&.in-view {
+	opacity: 1;
+	transform: translateY(0);
+	}
+	}
+	/* フェードサイドjs*/
+	.js-fadeside{
+		opacity: 0;
+		transform: translateX(-150px); 
+		transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+		transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+		&.side-view {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	}
+
+	/* =============================================
+	共通ボタン
+	============================================= */
+	.btn {
+	display: inline-block;
+	padding: 14px 32px;
+	border-radius: 50px;
+	font-size: $font-size-mobile;
+	letter-spacing: 0.08em;
+	text-align: center;
+	transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	}
+
+	.btn--primary {
+	background-color: $color-gold;
+	color: $color-white;
+	border: 1px solid $color-gold;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+	&:hover {
+		background-color: darken($color-gold, 8%);
+	}
+	}
+
+	.btn--header {
+		color: $color-gold;
+		border: 1px solid $color-gold;
+		padding: 8px 24px;
+		line-height: 1.3;
+		font-size: 12px;
+
+		@media (hover: hover) {
+			&:hover {
+			background-color: darken($color-gold, 8%);
+			color: $color-white;
+			}
+		}
+		@include mobile {
+			padding: 8px 18px;
+			font-size: 10px;
+		}
+	}
+	.c-btn-line {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 16px 48px;
+	border-radius: 50px;
+	background-color: #06c755;
+	color: $color-white;
+	font-size: $font-size-base;
+	letter-spacing: 0.08em;
+	transition: opacity 0.25s ease;
+
+	&::before {
+		font-family: 'Font Awesome 6 Brands';
+		content: '\f3c6';
+		font-size: 20px;
+		line-height: 1;
+	}
+
+	&:hover {
+		opacity: 0.85;
+	}
+
+	@include mobile {
+		padding: 14px 40px;
+		font-size: $font-size-mobile;
+	}
+	}
+
+	.line-btn {
+	position: fixed;
+	z-index: 1000;
+	top: 80%;
+	right: 1%;
+	}
+
+	/* =============================================
+	1.ヘッダー
+	============================================= */
+	.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	background-color: $color-white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+	&__inner {
+		max-width: $max-width;
+		margin: 0 auto;
+		padding: 0 40px;
+		height: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+
+		@include mobile {
+		padding: 0 20px;
+		}
+	}
+
+	&__logo {
+		font-family: $font-serif-en;
+		font-size: $font-size-xlarge;
+		font-weight: 400;
+		color: $color-text;
+		letter-spacing: 0.1em;
+		white-space: nowrap;
+	}
+
+	&__nav-list {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	&__nav-link {
+		color: $color-text-sub;
+		letter-spacing: 0.06em;
+	}
 
 }
 
@@ -533,12 +534,6 @@ transform: translateY(0);
 		}
 	}
 
-	&__sub-title {
-		margin-bottom: 12px;
-		font-family: $font-serif-en;
-		color: $color-gold;
-		letter-spacing: 0.15em;
-	}
 
 	&__title {
 		line-height: 1.7;
@@ -580,10 +575,6 @@ transform: translateY(0);
 		}
 	}
 
-	&__desc {
-		color: $color-text-sub;
-		letter-spacing: 0.05em;
-	}
 
 	&__grid {
 		display: flex;
@@ -757,11 +748,6 @@ transform: translateY(0);
 		line-height: 1.9; 
 		}
 	
-		&__footer-text {
-		@include mobile {
-			font-size: 16px;
-		}
-		}
   }
   
   // ========================================
@@ -1299,27 +1285,59 @@ transform: translateY(0);
 	}
 
 	&__slider-btn {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-shrink: 0;
-		width: 32px;
-		height: 32px;
-		border: none;
-		background: none;
-		cursor: pointer;
-		font-family: $font-serif-en;
-		font-size: 40px;
-		color: $color-gold;
-		transition: color 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: 44px;  // ★押しやすいようにサイズを32pxから44pxに拡大
+        height: 44px; // ★同上
+        border: 1px solid $color-gold; // ★ゴールドの細いプレーンな枠線を追加
+        background-color: #ffffff;    // ★背景を白にして、写真と重なっても見やすく
+        border-radius: 50%;           // ★綺麗な正円ボタンにします
+        cursor: pointer;
+        font-family: $font-serif-en;
+        font-size: 28px;              // ★円の中に綺麗に収まるよう文字サイズを微調整
+        color: $color-gold;
+        line-height: 1;
+        
+        // ★矢印の位置が少し上に見えるのを防ぐための微調整（文字のフォントによって適宜微調整してください）
+        padding-bottom: 4px; 
+        
+        // ★変化が滑らかになるように設定
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 
-		&:disabled {
-		opacity: 0.2;
-		cursor: default;
-		pointer-events: none;
-		}
-	}
-}
+        // パソコンでマウスホバーしたときのアクション
+        @media (hover: hover) {
+            &:hover {
+                background-color: $color-gold; // ★ゴールド背景に反転
+                color: #ffffff;                // ★文字は白に反転
+                
+                // 次へボタン（--next）なら、ホバー時に少しだけ右にピクッと動いて躍動感を出す
+                &.results__slider-btn--next {
+                    transform: translateX(3px);
+                }
+                // 前へボタン（--prevがある場合）なら、左に動かす
+                &.results__slider-btn--prev {
+                    transform: translateX(-3px);
+                }
+            }
+        }
+
+        // ボタンを押した瞬間（クリック中）の心地よい凹み演出
+        &:active {
+            transform: scale(0.95);
+        }
+
+        // スライダーの端に達して、ボタンが押せなくなったときの状態
+        &:disabled {
+            opacity: 0.15;
+            border-color: #ccc;
+            color: #ccc;
+            cursor: default;
+            pointer-events: none;
+            transform: none !important; // 動かさない
+        }
+    }}
 
 // ========================================
 // 9.Instagramセクション instagram
@@ -1603,21 +1621,6 @@ transform: translateY(0);
 		@include mobile {
 		width: 100%;
 		padding: 24px 20px 32px;
-		}
-	}
-
-	&__card-title {
-		margin-bottom: 20px;
-		font-family: $font-serif-ja;
-		font-size: $font-size-large;
-		font-weight: 400;
-		color: $color-white;
-		line-height: 1.6;
-		letter-spacing: 0.06em;
-
-		@include mobile {
-		margin-bottom: 16px;
-		font-size: 20px;
 		}
 	}
 
