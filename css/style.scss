@@ -205,14 +205,26 @@ Utilities
 
 /* フェードアップｊｓ */
 .js-fadeup {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+opacity: 0;
+transform: translateY(50px);
+transition: opacity 1s ease, transform 1s ease;
 
-  &.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
+&.in-view {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.js-fadeside{
+	opacity: 0;
+	transform: translateX(-120px); 
+	transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+	transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+	
+	&.side-view {
+	opacity: 1;
+	transform: translateX(0);
+}
 }
 
 /* =============================================
@@ -1879,7 +1891,7 @@ Utilities
 // ========================================
 
 .message {
-	background-image: url('../images/message.png');
+	background-image: url('../images/message.webp');
 	background-position: center 20%;
 	background-size: cover;
 	background-attachment: fixed;
