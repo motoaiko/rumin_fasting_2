@@ -124,82 +124,64 @@ document.addEventListener('DOMContentLoaded', () => {
 	// ========================================
 	// 3. スライダー用の共通ドラッグ＆スワイプ制御
 	// ========================================
-	// 実績スライダーとお客の声スライダーで共通して使える、「引っ張ってめくる」ための型（親関数）を定義します
-	const initSliderDrag = (track, onSwipeLeft, onSwipeRight) => {
-		// 現在ドラッグ（マウス押し込み or 指タッチ）中かどうかを記録する旗です（初期値は偽）
-		let isDragging = false;
-		// ドラッグを開始した瞬間の、画面のX座標（横の位置）を記録する変数です
-		let startX = 0;
-		// 開始位置から「いま何ピクセル横に動いたか」の差分を記録する変数です
-		let diffX = 0;
-		// スワイプが成立したとみなす移動距離の基準（50px）を設定します
-		const swipeThreshold = 50;
 
-		// パソコンのマウスと、スマホの指タッチで、それぞれの「現在の横の座標」を正しく取得するための便利関数です
-		const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
+	// ========================================
+    // 3. スライダー用の共通ドラッグ＆スワイプ制御（簡潔版）
+    // ========================================
+    const initSliderDrag = (track, onSwipeLeft, onSwipeRight) => {
+        let isDragging = false;
+        let startX = 0;
+        let diffX = 0;
+        const swipeThreshold = 50;
 
-		// 画面を押し込んだ（ドラッグを開始した）瞬間の処理です
-		const dragStart = (e) => {
-			// ドラッグ中フラグを「真（進行中）」にします
-			isDragging = true;
-			// 押し込んだ瞬間のX座標を取得して記録します
-			startX = getX(e);
-			// 移動差分を一度リセット（0）にします
-			diffX = 0;
+        const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
 
-			// パソコンのマウスで操作された場合のみ以下の処理をします
-			if (e.type === 'mousedown') {
-				// クリックした対象がリンクでなければ、ブラウザ特有の「画像のめくれ」や「テキスト選択」の邪魔な挙動を禁止します
-				if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') {
-					e.preventDefault();
-				}
-				// マウスのカーソルの形を、掴んでいる状態のアイコン（grabbing）に変えます
-				track.style.cursor = 'grabbing';
-			}
-		};
+        // タッチ・クリック開始
+        const dragStart = (e) => {
+            isDragging = true;
+            startX = getX(e);
+            diffX = 0;
 
-		// 画面を押し込んだまま、マウスや指を横に動かしている最中（ドラッグ中）の処理です
-		const dragMove = (e) => {
-			// もし画面を押し込んでいない（ただマウスを動かしているだけ）なら、何もせず処理をスルーします
-			if (!isDragging) return;
-			// 「現在の位置」から「押し込んだ位置」を引き算して、何ピクセル動いたかの差分（diffX）を計算します
-			diffX = getX(e) - startX;
-		};
+            if (e.type === 'mousedown') {
+                if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') {
+                    e.preventDefault();
+                }
+                track.style.cursor = 'grabbing';
+            }
+        };
 
-		// マウスを離した、または指を画面から離した（ドラッグが終了した）瞬間の処理です
-		const dragEnd = () => {
-			// ドラッグ中でなければ、何もせず処理をスルーします
-			if (!isDragging) return;
-			// ドラッグ状態を終了（false）にします
-			isDragging = false;
-			// パソコンのカーソルの形を、掴める状態のアイコン（grab）に戻します
-			track.style.cursor = 'grab';
+        // タッチ・クリック移動（★縦横の判定をすべて削除し、これだけに削減）
+        const dragMove = (e) => {
+            if (!isDragging) return;
+            diffX = getX(e) - startX;
+        };
 
-			// もし、動かした距離の絶対値（プラスマイナス関係ない純粋な距離）が、基準の50pxを超えていた場合
-			if (Math.abs(diffX) >= swipeThreshold) {
-				// 差分がマイナス（＝左方向へ引っ張った）なら、「次へ進む」処理を実行します
-				if (diffX < 0) {
-					onSwipeLeft();
-				} else {
-					// 差分がプラス（＝右方向へ引っ張った）なら、「前へ戻る」処理を実行します
-					onSwipeRight();
-				}
-			}
-		};
+        // タッチ・クリック終了
+        const dragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.cursor = 'grab';
 
-		// 初期状態として、スライダー全体に「掴めるよ」と伝える手の形のカーソル（grab）を設定します
-		track.style.cursor = 'grab';
+            if (Math.abs(diffX) >= swipeThreshold) {
+                if (diffX < 0) {
+                    onSwipeLeft();
+                } else {
+                    onSwipeRight();
+                }
+            }
+        };
 
-		// スマホでのタッチ操作に関するイベント（開始・移動・終了）を登録します
-		track.addEventListener('touchstart', dragStart);
-		track.addEventListener('touchmove', dragMove);
-		track.addEventListener('touchend', dragEnd);
-		// パソコンでのマウス操作に関するイベントを登録します（移動と終了は画面全体のどこでも検知できるようにwindowに登録します）
-		track.addEventListener('mousedown', dragStart);
-		window.addEventListener('mousemove', dragMove);
-		window.addEventListener('mouseup', dragEnd);
-	};
+        track.style.cursor = 'grab';
 
+        // イベント登録
+        track.addEventListener('touchstart', dragStart);
+        track.addEventListener('touchmove', dragMove);
+        track.addEventListener('touchend', dragEnd);
+        track.addEventListener('mousedown', dragStart);
+        window.addEventListener('mousemove', dragMove);
+        window.addEventListener('mouseup', dragEnd);
+    };
+	
 	// ========================================
 	// 4. ビフォーアフタースライダー（1枚ずつ表示）
 	// ========================================
