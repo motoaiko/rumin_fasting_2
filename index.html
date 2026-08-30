@@ -7,7 +7,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  </noscript>
 
   <meta
   name="description"
@@ -43,7 +46,7 @@
 
 <!-- jQuery(→読み込みなし) -->
 <!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 <script src="js/main.js" defer></script>
 
@@ -87,23 +90,23 @@
 
         <!-- 左：テキストエリア -->
         <div class="hero__text">
-          <p class="hero__tag">分子栄養学 × <br class="mobile"> 細胞から整えるファスティング</p> 
+          <p class="hero__tag">我慢に頼らない、食欲コントロール講座</p> 
           <h2 class="hero__title">
             食欲は<br>
             我慢するものではなく、<br>
             <span class="strong">整えるもの。</span>
           </h2>
           <p class="hero__desc">
-            血糖値やホルモンバランスから食欲を整え、<br>
-            頑張り続けなくても、自然と軽やかな体へ。
+            外食も、会食も、忙しい毎日も。<br>
+            食欲に振り回されず、自分で身体を整えられるように。
           </p>
-          <a href="https://line.me/R/ti/p/@292hawyc?oat_content=url" class="btn btn--primary" target="_blank" rel="noopener noreferrer">LINEで無料相談・お問い合わせ</a>
+          <a href="https://line.me/R/ti/p/@292hawyc?oat_content=url" class="btn btn--primary" target="_blank" rel="noopener noreferrer">LINEで無料カウンセリング</a>
         </div>
 
         <!-- 右：メイン画像 -->
         <div class="hero__image">
           <div class="hero__image-placeholder">
-            <img class="hero__image-icon" src="images/rumi2.webp" alt="秋本るみ画像">
+            <img class="hero__image-icon" src="images/rumi2.webp" alt="秋本るみ画像" fetchpriority="high">
             <div class="hero__overlay"></div>
           </div>
         </div>
@@ -119,8 +122,10 @@
 
         <!-- 左：プロフィール画像 + プロフィール情報 -->
         <div class="about__profile js-fadeup">
-          <img class="about__profile-image" src="images/rumi3.webp" alt="秋本るみのプロフィール画像">
-          
+          <picture>
+            <source media="(max-width: 767px)" srcset="images/rumi3-sp.webp">
+            <img class="about__profile-image" src="images/rumi3.webp" alt="秋本るみのプロフィール画像" width="158"height="158" loading="lazy">
+          </picture>          
           <!-- プロフィールテキスト -->
           <div class="about__profile-text">
             <p class="about__profile-role">食欲コンサルタント・Loyell 主宰</p>
@@ -128,8 +133,8 @@
             <ul class="about__profile-list">
               <li class="about__profile-list-item">エステティシャン歴 12年</li>
               <li class="about__profile-list-item">分子栄養学認定カウンセラー</li>
-              <li class="about__profile-list-item">2020年 食欲コンサルタントとして活動開始</li>
-              <li class="about__profile-list-item">延べ100名以上の伴走サポート実績</li>
+              <li class="about__profile-list-item">2020年より食欲コンサルタントとして活動</li>
+              <li class="about__profile-list-item">延べ100名以上をサポート</li>
             </ul>
             <p class="about__profile-note">「ただ痩せる」のではなく、<strong> “食欲に振り回されない心と体”</strong>を整えるサポートをしています。</p>
           </div>
@@ -138,49 +143,37 @@
         <div class="about__story js-fadeup">
           <span class="about__header-title--en common__header-title--en">About me</span>
           <h2 class="about__title common__header-title">
-            私自身も、<br>食に悩み続けていました。
+            私が食欲コントロールを<br>大切にする理由
           </h2>
           <div class="about__text-area">
             <p class="about__text">
-              1990年4月生まれ。兄3人の4兄妹。<br>大阪出身、大阪在住。<br>
-              昔から食べることが大好き。
+              昔から、食べることが大好きでした。<br>
+              でも高校生の頃、ダイエットにハマり、無理な食事制限で10kg減量。<br>
+              体重は落ちたものの、生理が止まり、<strong>食べることや自分の身体に悩むようになりました。</strong>
             </p>
             <p class="about__text">
-              高校生のときにダイエットにハマり、
-              食事制限で10kg減量するも、
-              生理が止まり、摂食障害で
-              過食嘔吐を繰り返すように。
+              セラピーを受けながら少しずつ回復する中で、美容と健康に興味を持ち、エステティシャンの道へ。<br>
+              お客様の身体と向き合う中で、<strong>「施術だけでは、美と健康をサポートできない」</strong>と感じるようになり、栄養学や身体の仕組みを学び始めました。
             </p>
             <p class="about__text">
-              セラピーを受けつつ、徐々に回復しながら、
-              美容と健康に興味を強く持ち、19歳でエステ会社へ就職。
+              その後、ファスティング指導を始め、栄養学や解剖生理学など、身体の内側から整える方法について学びを深めました。<br>
+              一方で私自身も、仕事のプレッシャーや忙しさ、ストレスが重なり、体調を崩した経験があります。
             </p>
             <p class="about__text">
-              ２年目には実績を認められ、チーフの役職につき、そこから副店長、店長と昇格。
+              そうした経験や学びを重ねて気づいたのは、<strong>ただ食事を減らしたり、我慢したりするだけではない</strong>ということ。<br>
+              「なぜ食べたくなるのか」を知り、その時の身体に合った方法を選ぶ。<br>
+              そして、<strong>自分で身体を整えられるようになること</strong>が大切だと考えるようになりました。
             </p>
             <p class="about__text">
-              20歳の頃、仕事をしながらも、『施術だけではお客様の美と健康をサポートできない』と感じ、<strong>栄養学</strong>の勉強を続ける。
+              現在は、全国の方へオンラインで食欲コントロールを中心としたサポートを行っています。<br>
+              目指しているのは、一時的に痩せることではありません。<br>
+              <strong>食欲に振り回されず、自分の身体と上手につき合っていけるようになること。</strong>
             </p>
             <p class="about__text">
-              会社でファスティングを取り扱うことになり、<strong>ファスティング指導</strong>を開始。
-              <br>
-              27歳の頃に、エステティックグランプリ関西部門エリアファイナル出場。解剖生理学を学び、エステ国際ライセンスINFAゴールドマスター取得。
-              <br>
-              30歳の頃、仕事のプレッシャーや、忙しさ、ストレスなどが重なり、体調を崩し、退職。
+              かつての私のように、食べることに悩み、自分を責めてしまう方が、少しでも安心して自分の身体と向き合えるように。<br>
+              <strong>「自分の身体は、自分で整えられる」</strong><br>
+              そんな力を身につけてほしいと思っています。
             </p>
-            <p class="about__text">
-              その年に、オンラインで<strong>ファスティングサポート</strong>を始める。
-              自分自身も改めてファスティングと栄養学の知識を深め、実践することで、
-              ひどい生理痛と肌荒れを改善しながら、－６kg達成。
-            </p>
-            <p class="about__text">
-              現在はこれまでの経験や学びをもとに、全国各地のお客様へオンラインで<strong>ファスティングサポート</strong>や長期的な<strong>食欲コントロールサポート</strong>を行っている。
-            </p>
-              <p class="about__text">かつての私のように、食べることに悩み、自分を責めてしまう女性が、少しでも安心して、自分の体と向き合えるように。</p>
-              <p   class="about__text">そして、体が整うと、<strong>心に余裕が生まれます。</strong>余裕が生まれると、<strong>笑顔が増え、パートナーシップや人間関係も豊かになり、望む未来へのエネルギーが湧いてきます。</strong></p>
-
-              <p class="about__text"><strong>"あなた自身の可能性を、信じてほしい"</strong><br>そんな想いで、Loyellを運営しています。</p>
-            
           </div>
         </div>
       </div>
@@ -195,7 +188,7 @@
         <!-- セクションタイトル -->
         <div class="worries__header common__header js-fadeside">
           <span class="worries__header-title--en common__header-title--en">Check list</span>
-          <h2 class="worries__title common__header-title">こんなお悩みはありませんか？</h2>
+          <h2 class="worries__title common__header-title">こんな毎日になっていませんか？</h2>
         </div>
 
 
@@ -204,41 +197,41 @@
 
           <!-- カード1 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">色んな健康法を試しているのに、<br>体重が変わらない</p>
+            <p class="worries__card-text">忙しい日は食事が適当になり、<br>夜になると食欲が強くなる</p>
           </li>
 
           <!-- カード2 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">病院へ行くほどでもないが、<br>不調が続いている</p>
+            <p class="worries__card-text">仕事中の空腹を、<br>コーヒーや甘いものでごまかしてしまう</p>
           </li>
 
           <!-- カード3 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">PMSの時期になると、<br>体調が安定せず、イライラしてしまう。</p>
+            <p class="worries__card-text">会食の翌日は食事を抜いて、<br>なんとか調整しようとする</p>
           </li>
 
           <!-- カード4 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">我慢しては反動で食べてしまう、<br>を繰り返している</p>
+            <p class="worries__card-text">出張や外食が続くと、<br>どう食事を整えればよいか分からない</p>
           </li>
 
           <!-- カード5 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">朝起きるのがつらく、<br>いつも体が重だるい</p>
+            <p class="worries__card-text">仕事を優先するほど、<br>自分の食事や身体が後回しになる</p>
           </li>
 
           <!-- カード6 -->
           <li class="worries__card js-fadeup">
-            <p class="worries__card-text">肌荒れや不調が続いていて、<br>自分に自信が持てない</p>
+            <p class="worries__card-text">ダイエットの知識はあっても、<br>今の生活に合う方法が分からない</p>
           </li>
 
         </ul>
        
         <div class="worries__footer common__footer js-fadeup">
           <p class="worries__footer-text common__footer-text">
-            それは「意志が弱いから」ではなく<br class="pc">
-            あなたの体が、<br class="pc">
-            <strong>“今のままでは足りない”</strong>とサインを出しているだけかもしれません。
+            こうしたことが続くと、<br>
+            「もっと意志を強くしないと」と思ってしまうかもしれません。<br><br>
+            <strong>でも、食欲が乱れるのには、ちゃんと理由があります。</strong>
           </p>
         </div>
 
@@ -255,9 +248,9 @@
 
         <span class="reason__header-title--en common__header-title--en">Reason</span>
 
-        <h2 class="reason__header-title common__header-title">なぜ、食べたくなってしまうのか</h2>
+        <h2 class="reason__header-title common__header-title">食欲の乱れには、<br>身体からの理由があります</h2>
 
-        <p class="reason__lead common__read">食欲を支配しているのはあなたの「意志」ではなく、脳とホルモンの「防御反応」です。</p>
+        <p class="reason__lead common__read">食欲が乱れる背景には、<br>栄養不足や血糖値の変動、ストレス、睡眠不足など、<br>身体の状態が関係していることがあります。</p>
 
       </div>
   
@@ -272,22 +265,22 @@
       
           <li class="reason__stat-item js-fadeup">
             <div class="reason__stat-body">
-              <h3 class="reason__stat-title common__box-title">隠れ低栄養</h3>
-              <p class="reason__stat-desc">カロリーは摂っていても栄養が不足している</p>
+              <h3 class="reason__stat-title common__box-title">栄養不足</h3>
+              <p class="reason__stat-desc">忙しさで食事が簡単になったり、<br>食事量を減らしすぎたりすると、<br>身体に必要な栄養が不足しやすくなります。</p>
             </div>
           </li>
       
           <li class="reason__stat-item js-fadeup">
             <div class="reason__stat-body">
-              <h3 class="reason__stat-title reason__stat-title--item2 common__box-title">血糖値の乱高下</h3>
-              <p class="reason__stat-desc">血糖値の急激な上昇と低下によるエネルギー不足</p>
+              <h3 class="reason__stat-title reason__stat-title--item2 common__box-title">血糖値の変動</h3>
+              <p class="reason__stat-desc">食事の間隔が空いたり、<br>甘いものだけで空腹をしのいだりすると、<br>食欲が乱れやすくなることがあります。</p>
             </div>
           </li>
       
           <li class="reason__stat-item js-fadeup">
             <div class="reason__stat-body">
-              <h3 class="reason__stat-title reason__stat-title--item3 common__box-title">過剰なストレスホルモン</h3>
-              <p class="reason__stat-desc">脳が「食べる」指令を出すため、根性では抑えられません。</p>
+              <h3 class="reason__stat-title reason__stat-title--item3 common__box-title">ストレス・睡眠不足</h3>
+              <p class="reason__stat-desc">忙しさやストレス、睡眠不足が続くと、<br>食欲や食事のリズムにも影響することがあります。</p>
             </div>
           </li>
       
@@ -297,7 +290,10 @@
   
       <div class="reason__footer common__footer js-fadeup">
         <p class="reason__footer-text common__footer-text">
-          他人と比較せず、自分の体質に合わせたアプローチをすることで、<br class="pc">食欲をコントロールできるようになります。
+          大切なのは、
+          食欲を我慢して抑えることではなく、<br>
+          今の身体の状態を知り、<br>
+          <strong>自分に合った整え方を選ぶこと。</strong>
         </p>
       </div>
     </div>
@@ -312,15 +308,10 @@
       <div class="approach__header common__header js-fadeside">
         <span class="approach__header-title--en common__header-title--en">Approach</span>
         <h2 class="approach__title common__header-title">
-          自分の体質に合う整え方で、<br class="mobile"><strong>望む未来</strong>を手に入れる</h2>
+          食欲コントロールで、<strong>身につけていくこと</strong></h2>
         <p class="approach__lead common__read">
-          「ファスティング＝ただ我慢するもの」<br class="mobile">
-          そんなイメージを持っていませんか？<br>
-          Loyellでは、無理な食事制限ではなく、<br class="mobile">
-          血糖値やホルモンバランスから<br>
-          "なぜ食べたくなってしまうのか"という根本原因にアプローチします。<br>
-          努力や我慢ではなく、自分の体質と仕組みを理解することが、<br class="mobile">
-          体質改善と成功への最短ルートです。
+          我慢するのではなく、自分の身体を知ることから。<br>
+          自分に合った整え方を身につけていきます。
         </p>
       </div>
 
@@ -333,10 +324,12 @@
           <!-- 右：テキスト -->
           <div class="approach__item-body">
             <h3 class="common__box-title approach__flow-card-title approach__flow-card-title--item1">
-              仕組みから整える
+              食欲の仕組みを知り、自分の身体を理解する
             </h3>
             <p class="approach__item-desc">
-              激しい運動や食事制限などの気合いや我慢より、無意識に選んでいる食事の「選択の仕組み」を見直します。
+              食欲が乱れる理由や、
+              栄養・血糖値・睡眠・ストレスなど、
+              自分の身体の状態を知ることから始めます。
             </p>
           </div>
         </li>
@@ -348,10 +341,12 @@
           <!-- 右：テキスト -->
           <div class="approach__item-body">
             <h3 class="common__box-title approach__flow-card-title approach__flow-card-title--item2">
-              血糖値を安定させる
+              我慢ではなく、自分に合う方法を選べるように
             </h3>
             <p class="approach__item-desc">
-              分子栄養学の観点から、貧血や低糖質などの自分の体質を知り、血糖値を安定させることで、意志の力を使わずに食欲を押さえます。
+              外食や会食、出張、忙しい日でも、
+              その時の生活や身体に合った方法を
+              選べるようになることを目指します。
             </p>
           </div>
         </li>
@@ -363,12 +358,12 @@
 
           <div class="approach__item-body">
             <h3 class="common__box-title approach__flow-card-title approach__flow-card-title--item3">
-              徹底した伴走で一生の習慣に
+              崩れても戻せる、自分で整えられる身体へ
             </h3>
             <p class="approach__item-desc">
-              大切にしているのは、一時的に痩せることではなく、
-              "自分で整えられる＝自走できるようになること"。<br>
-              プログラムが終わった後も、一人ひとりに合わせた個別カウンセリングを行い、卒業後も自走できる習慣が身に着きます。
+              食べすぎたり生活リズムが乱れたりしても、
+              失敗と考えず、
+              自分で立て直し、整えられるようになることを目指します。
             </p>
           </div>
         </li>
@@ -384,44 +379,67 @@
         </div>
 
         <!-- 流れの見出し -->
-        <h3 class="approach__flow-title">ファスティングの流れ</h3>
+        <h3 class="approach__flow-title">プログラムの流れ</h3>
 
-        <!-- 流れカード3枚（横並び） -->
+        <!-- 流れカード4枚（横並び） -->
         <div class="approach__flow-cards">
 
-          <!-- カード：準備食 -->
+          <!-- Step 1：ヒアリング -->
           <div class="approach__flow-card js-fadeup">
             <div class="approach__flow-card-image">
-              <img src="images/fasting1.webp" alt="準備食">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/fasting1-sp.webp">
+                <img src="images/fasting1.webp" alt="ヒアリングのイメージ" width="420" height="420" loading="lazy">
+              </picture>
               <div class="approach__flow-card-overlay"></div>
             </div>
             <p class="approach__flow-card-day">Step 1</p>
 
-            <h4 class="approach__flow-card-name">準備食</h4>
-            <p class="approach__flow-card-desc"><strong>"まごはやさしい"</strong>の食事で少しずつ整える</p>
+            <h4 class="approach__flow-card-name">ヒアリング</h4>
+            <p class="approach__flow-card-desc">今のあなたの状態を整理する</p>
           </div>
 
-          <!-- カード：ファスティング -->
+          <!-- Step 2：心と体を整える -->
           <div class="approach__flow-card js-fadeup">
             <div class="approach__flow-card-image">
-              <img src="images/fasting2.webp" alt="ファスティング">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/fasting2-sp.webp">
+                <img src="images/fasting2.webp" alt="心と体を整えるイメージ" width="420" height="420" loading="lazy">
+              </picture>
               <div class="approach__flow-card-overlay"></div>
             </div>
             <p class="approach__flow-card-day">Step 2</p>
-            <h4 class="approach__flow-card-name">ファスティング</h4>
-            <p class="approach__flow-card-desc">専用の酵素ドリンクでしっかりと栄養を</p>
+            <h4 class="approach__flow-card-name">心と体を整える</h4>
+            <p class="approach__flow-card-desc">食欲が乱れる原因を理解する</p>
           </div>
           
-          <!-- カード：回復食 -->
+          <!-- Step 3：習慣化 -->
           <div class="approach__flow-card js-fadeup">
             <div class="approach__flow-card-image">
-              <img src="images/fasting3.webp" alt="回復食">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/fasting3-sp.webp">
+                <img src="images/fasting3.webp" alt="習慣化のイメージ" width="420" height="420" loading="lazy">
+              </picture>
               <div class="approach__flow-card-overlay"></div>
             </div>
             <p class="approach__flow-card-day">Step 3</p>
-            <h4 class="approach__flow-card-name">回復食</h4>
-            <p class="approach__flow-card-desc"><strong>スッキリ大根</strong>で腸に優しく食を戻す</p>
+            <h4 class="approach__flow-card-name">習慣化</h4>
+            <p class="approach__flow-card-desc">毎日の食事添削＆質問無制限</p>
 
+          </div>
+
+          <!-- Step 4：自立 -->
+          <div class="approach__flow-card js-fadeup">
+            <div class="approach__flow-card-image">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/fasting3-sp.webp">
+                <img src="images/fasting3.webp" alt="自分で選び、整えるイメージ" width="420" height="420" loading="lazy">
+              </picture>
+              <div class="approach__flow-card-overlay"></div>
+            </div>
+            <p class="approach__flow-card-day">Step 4</p>
+            <h4 class="approach__flow-card-name">自立</h4>
+            <p class="approach__flow-card-desc">自分で選び、整えられるようになる</p>
           </div>
 
         </div>
@@ -442,7 +460,7 @@
   <div class="faq__header common__header js-fadeside">
     <span class="faq__header-en common__header-title--en">Q&A</span>
     <h2 class="faq__title common__header-title">よくあるご質問</h2>
-    <p class="faq__lead common__read">ファスティングや食欲コントロールについて、よくいただくご質問にお答えします。</p>
+    <p class="faq__lead common__read">食欲コントロール講座について、<br>よくいただくご質問にお答えします。</p>
   </div>
 
   <!-- アコーディオンリスト（共通コンポーネント .c-accordion を使用） -->
@@ -451,13 +469,14 @@
     <!-- Q1 -->
     <li class="c-accordion__item js-fadeup">
       <button class="c-accordion__header" aria-expanded="false">
-        <span class="c-accordion__title">Q. 空腹感に耐えられるか不安です</span>
+        <span class="c-accordion__title">Q. 外食や会食が多くても大丈夫ですか？</span>
         <span class="c-accordion__icon" aria-hidden="true"></span>
       </button>
       <div class="c-accordion__body">
         <div class="c-accordion__content">
           <p class="c-accordion__lead">
-            A.  専用ドリンクで血糖値を安定させながら進めるため、「思っていたより空腹感が少なかった」と感じる方が多いです。
+            A. はい、大丈夫です。<br>
+            外食や会食を避けるのではなく、その日の予定や身体の状態に合わせた食事の選び方や、前後の整え方を一緒に考えていきます。
           </p>
         </div>
       </div>
@@ -466,14 +485,15 @@
     <!-- Q2 -->
     <li class="c-accordion__item js-fadeup">
       <button class="c-accordion__header" aria-expanded="false">
-        <span class="c-accordion__title">Q. 仕事をしながらでもできますか？</span>
+        <span class="c-accordion__title">Q. 忙しくても続けられますか？</span>
         <span class="c-accordion__icon" aria-hidden="true"></span>
       </button>
       <div class="c-accordion__body">
         <div class="c-accordion__content">
           <p class="c-accordion__lead">
-            A. お仕事や家事を続けながら取り組まれている方がほとんどです。<br>
-            「体が軽く感じた」「集中しやすかった」というお声もいただいています。
+            A. はい。<br>
+            無理に自炊を増やしたり、特別な食事を用意したりすることが目的ではありません。<br><br>
+            コンビニや外食も取り入れながら、今の生活の中で続けられる方法を見つけていきます。
           </p>
         </div>
       </div>
@@ -482,14 +502,14 @@
     <!-- Q3 -->
     <li class="c-accordion__item js-fadeup">
       <button class="c-accordion__header" aria-expanded="false">
-        <span class="c-accordion__title">Q. リバウンドしませんか？</span>
+        <span class="c-accordion__title">Q. 食事制限や我慢は必要ですか？</span>
         <span class="c-accordion__icon" aria-hidden="true"></span>
       </button>
       <div class="c-accordion__body">
         <div class="c-accordion__content">
           <p class="c-accordion__lead">
-            A. ファスティングは、準備期間～終了後の食習慣まで含めて整えることが大切です。<br>
-            血糖値を乱しにくい食べ方や、食欲を安定させるコツまでサポートしています。
+            A. 厳しい食事制限や、「これは絶対に食べてはいけない」という方法ではありません。<br><br>
+            食欲が乱れる理由を知り、自分の身体や生活に合った食べ方を選べるようになることを目指します。
           </p>
         </div>
       </div>
@@ -498,14 +518,15 @@
     <!-- Q4 -->
     <li class="c-accordion__item js-fadeup">
       <button class="c-accordion__header" aria-expanded="false">
-        <span class="c-accordion__title">Q. 以前体調を崩したことがあります</span>
+        <span class="c-accordion__title">Q. ファスティングは必ず行いますか？</span>
         <span class="c-accordion__icon" aria-hidden="true"></span>
       </button>
       <div class="c-accordion__body">
         <div class="c-accordion__content">
           <p class="c-accordion__lead">
-            A. 準備不足のまま始めてしまうと、頭痛やだるさが出ることがあります。<br>
-            Loyellでは事前の食事調整や栄養状態を大切にしながら進めていきます。
+            A. いいえ。<br>
+            ファスティングは講座の目的ではなく、必要に応じて取り入れる選択肢のひとつです。<br><br>
+            一人ひとりの身体の状態や生活に合わせて、必要なサポートをご提案します。
           </p>
         </div>
       </div>
@@ -538,7 +559,7 @@
       <li class="results__stat-item js-fadeup">
         <div class="results__stat-body">
           <p class="results__stat-number">6<span class="results__stat-unit">年</span></p>
-          <p class="results__stat-label">学びと経験</p>
+          <p class="results__stat-label">食欲と身体に向き合うサポート</p>
           <p class="results__stat-desc">自身の経験をもとにファスティング指導・食欲コンサルタントとして活動を始めて6年目です。</p>
         </div>
       </li>
@@ -548,7 +569,7 @@
         <div class="results__stat-body">
           <p class="results__stat-number">100<span class="results__stat-unit">名以上</span></p>
           <p class="results__stat-label">サポート・伴走実績</p>
-          <p class="results__stat-desc">食欲や不調のお悩みに寄り添ってきました。</p>
+          <p class="results__stat-desc">食欲やダイエットのお悩みに寄り添ってきました。</p>
         </div>
       </li>
 
@@ -670,7 +691,7 @@
     <span class="voice__header-en common__header-title--en">Voices</span>
     <h2 class="voice__title common__header-title">お客様の声</h2>
     <p class="voice__lead common__read">
-      20代〜40代の女性を中心にご参加いただいています。<br>※オンラインサポートがメインのため、全国どこからでもご参加いただけます
+      実際にサポートを受けられたお客様から、さまざまなお声をいただいています<br>※オンラインサポートがメインのため、全国どこからでもご参加いただけます
     </p>
   </div>
 
@@ -803,7 +824,7 @@
   <!-- セクション見出し -->
   <div class="why__header common__header js-fadeside">
     <span class="why__header-en common__header-title--en">Why Loyell</span>
-    <h2 class="why__title common__header-title">Loyellのこだわり</h2>
+    <h2 class="why__title common__header-title">Loyellが大切にしていること</h2>
   </div>
 
   <!-- 3つの理由カードリスト -->
@@ -820,11 +841,12 @@
       <!-- 右：テキストエリア -->
       <div class="why__card-body js-fadeup">
         <h3 class="common__box-title  why__flow-card-title why__flow-card-title--item1">
-          結果が出る
+          一人ひとりの原因から考える
         </h3>
 
         <p class="why__card-text">
-          ファスティング期間をどのように過ごせば良いのか、ガイドブックやサポートLINEで分かりやすく伴走するため、 挫折することなく最後まで変化を楽しみながら過ごせます。 <br>平均2～4kgの減量、体脂肪率2～4%ダウンの方が続出！
+          食欲が乱れる理由は、人によって異なります。<br>
+          食事だけでなく、栄養・睡眠・ストレス・生活リズムなどを一緒に振り返り、今の身体と生活に合った整え方を考えます。
         </p>
       </div>
 
@@ -843,12 +865,12 @@
       <div class="why__card-body js-fadeup">
 
         <h3 class="common__box-title  why__flow-card-title why__flow-card-title--item3">
-          空腹感を感じにくい
+          忙しい毎日でも実践できる
         </h3>
 
         <p class="why__card-text">
-          専用のドリンクで体と脳に栄養を補いながら行うので、空腹感を感じづらいメソッドです。<br>
-          ご家族のご飯を作らないといけない方や、間食癖のある方でも問題なく取り組んで頂いています。
+          外食や会食、出張、コンビニの日があっても大丈夫。<br>
+          理想的な食生活を押しつけるのではなく、今の生活の中で無理なく続けられる方法を一緒に見つけていきます。
         </p>
       </div>
 
@@ -866,10 +888,11 @@
       <div class="why__card-body js-fadeup">
 
         <h3 class="common__box-title  why__flow-card-title why__flow-card-title--item2">
-          伴走型サポート
+          自分で整えられるまで伴走
         </h3>
         <p class="why__card-text">
-          日常の食習慣やライフスタイル等のアドバイスもさせていただきます。<br>栄養や休息の取り方など、お悩みの不調改善ができるように、ファスティング後の食欲コントロールも一緒に考えていきしょう。       
+          大切にしているのは、一時的に痩せることではなく、自分で身体を整えられるようになること。<br>
+          日々の食事添削や質問サポートを通して、実践しながら自分に合った方法を身につけていきます。       
         </p>
       </div>
 
@@ -891,12 +914,8 @@
   <div class="plan__header common__header js-fadeside">
     <span class="plan__header-en common__header-title--en">Plan</span>
     <h2 class="plan__title common__header-title">
-      あなたに合ったプランを
+      個別サポートプログラム
     </h2>
-    <p class="plan__lead common__read">
-      まずはLINEにて、現在のお悩みやお体の状態をお聞かせください。<br>
-      お一人おひとりに合わせてご提案しています。
-    </p>
   </div>
 
   <!-- 補足バッジエリア（全国対応・Zoom） -->
@@ -905,52 +924,16 @@
     <span class="plan__badge">ZoomカウンセリングOK</span>
   </div>
 
-  <!-- プランカード2枚（横並び） -->
+  <!-- 食欲コントロール講座 -->
   <div class="plan__container">
 
-    <!-- ========== ファスティングプラン（左） ========== -->
-    <div class="plan__card plan__card--personal js-fadeup">
-
-      <!-- カード上部：タイトル・価格 -->
-      <div class="plan__card-header">
-        <p class="plan__card-name">ファスティングプラン</p>
-        <span class="plan__card-en">Fasting Plan</span>
-        <p class="plan__card-sub">3日〜10日間にかけて<br>ファスティングで体質改善を行います。</p>
-
-        <p class="plan__card-price">
-          <span class="plan__card-currency">¥</span>42,800<span class="plan__card-currency">/3日間～（送料別）</span>
-        </p>
-      </div>
-
-      <!-- カード中部：特徴リスト -->
-      <ul class="plan__card-list">
-        <li class="plan__card-item">ファスティング完全ガイドブック
-        </li>
-        <li class="plan__card-item">毎日Lineサポート無制限</li>
-        <li class="plan__card-item">ファスティング専用ドリンク</li>
-        <li class="plan__card-item">ファスティングサポート品（マグマソルト・ミネラル酵素梅干しなど）
-        </li>
-        
-        <!-- <li class="plan__card-item">準備食、回復食のメニュー例、レシピ</li>        
-        <li class="plan__card-item">準備食〜回復食2日目までオンラインにていつでもどこでも丁寧な徹底サポート</li>        
-        <li class="plan__card-item">サポート期間中無制限対応</li>        
-        <li class="plan__card-item">アフターフォロー　ファスティング後も質疑応答対応</li>
-        <li class="plan__card-item">お客様限定ページの永久公開
-        </li>
-        <li class="plan__card-item">2回目以降、特典としてグループファスティングのサポート費用永年</li> -->
-
-      </ul>
-    </div>
-
-
-    <!-- ========== 食欲コントロール講座（右） ========== -->
-    <div class="plan__card plan__card--group js-fadeup">
+    <div class="plan__card js-fadeup">
 
       <!-- カード上部：タイトル・価格 -->
       <div class="plan__card-header">
         <p class="plan__card-name">食欲コントロール講座</p>
         <span class="plan__card-en">Appetite Control Course</span>
-        <p class="plan__card-sub">ファスティングを含め、1ヵ月～半年の長期的な<br>食欲コントロールの伴走を行います。</p>
+        <p class="plan__card-sub">忙しい毎日の中でも、<br>自分に合った食事と整え方を身につけていきます。</p>
       
         <p class="plan__card-price">
           <span class="plan__card-currency">※金額はカウンセリングにて</span></p>
@@ -958,19 +941,23 @@
 
       <!-- カード中部：特徴リスト -->
       <ul class="plan__card-list">
-        <li class="plan__card-item">準備中：個別カウンセリング内容</li>
-        <li class="plan__card-item">準備中：その他のサービス内容</li>
-        <li class="plan__card-item">準備中：サポート体制の詳細</li>
-        <li class="plan__card-item">準備中：教材・特典の内容</li>
-        <li class="plan__card-item">準備中：その他のサービス内容</li>
-        <li class="plan__card-item">準備中：その他のサービス内容</li>
-        <li class="plan__card-item">準備中：その他のサービス内容</li>
-        <li class="plan__card-item">準備中：その他のサービス内容</li>
-
+        <li class="plan__card-item">個別ヒアリング</li>
+        <li class="plan__card-item">分子栄養学に基づく食欲・栄養の学習</li>
+        <li class="plan__card-item">毎日の食事添削</li>
+        <li class="plan__card-item">LINE質問サポート</li>
+        <li class="plan__card-item">月2回Zoomカウンセリング</li>
+        <li class="plan__card-item">外食・会食・忙しい日の実践アドバイス</li>
+        <li class="plan__card-item">睡眠・ストレス・生活習慣のサポート</li>
       </ul>
     </div>
 
   </div>
+
+  <p class="plan__lead common__read js-fadeup">
+    身体の状態や目的に応じて、<br>
+    必要な方にはファスティングをご提案する場合があります。
+  </p>
+  <p class="plan__fasting-link js-fadeup">ファスティングについて詳しくはこちら</p>
 
 </div>
 </section>
