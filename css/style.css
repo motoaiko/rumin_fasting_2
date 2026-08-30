@@ -1777,9 +1777,6 @@ Utilities
     padding-bottom: 120px;
   }
 }
-.plan__title {
-  font-size: 36px;
-}
 @media (max-width: 768px) {
   .plan__title {
     font-size: 22px;
@@ -1791,6 +1788,7 @@ Utilities
   line-height: 2;
 }
 .plan__fasting-link {
+  width: -moz-fit-content;
   width: fit-content;
   margin: 8px auto 0;
   border-bottom: 1px solid #b89a6a;
