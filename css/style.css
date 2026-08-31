@@ -809,13 +809,14 @@ Utilities
 }
 .about__story {
   flex: 1;
-  padding: 24px 32px;
+  padding: 40px;
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d9cfc5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 @media (max-width: 768px) {
   .about__story {
-    padding: 32px 16px;
+    padding: 40px 16px;
   }
 }
 .about__title {
@@ -1219,10 +1220,10 @@ Utilities
   padding: 12px 20px;
   font-family: "Cormorant Garamond", serif;
   font-size: 20px;
-  color: #ffffff;
+  color: #D4A19D;
   letter-spacing: 0.1em;
   line-height: 1;
-  background-color: #D4A19D;
+  background-color: #ffffff;
   border-radius: 50px;
   top: -16px;
   left: -16px;
