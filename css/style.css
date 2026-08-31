@@ -736,7 +736,7 @@ Utilities
 }
 
 .about {
-  background-color: #f3ede6;
+  background-color: #ffffff;
 }
 .about__inner {
   display: flex;
@@ -837,7 +837,7 @@ Utilities
 }
 
 .worries {
-  background-color: #faf8f5;
+  background-color: #f3ede6;
 }
 .worries__inner {
   max-width: 1100px;
@@ -1252,7 +1252,7 @@ Utilities
 }
 
 .faq {
-  background-color: #ffffff;
+  background-color: #f3ede6;
 }
 .faq__lead {
   margin-bottom: 0;
@@ -1666,7 +1666,7 @@ Utilities
 }
 
 .why {
-  background-color: #faf8f5;
+  background-color: #f3ede6;
 }
 .why__title {
   font-family: "Noto Serif JP", serif;

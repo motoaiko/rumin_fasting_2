@@ -510,7 +510,7 @@ body,
 // ========================================
 
 .about {
-	background-color: $color-bg-alt;
+	background-color: $color-white;
 
 	&__inner {
 		display: flex;
@@ -630,7 +630,7 @@ body,
 // ========================================
 
 .worries {
-	background-color: $color-bg;
+	background-color: $color-bg-alt;
 
 	&__inner {
 		max-width: $max-width;
@@ -1098,7 +1098,7 @@ body,
 // ========================================
 
 .faq {
-	background-color: $color-white;
+	background-color: $color-bg-alt;
 
 	&__lead {
 		margin-bottom: 0;
@@ -1573,7 +1573,7 @@ body,
 // ========================================
 
 .why {
-	background-color: $color-bg;
+	background-color: $color-bg-alt;
 
 	&__title {
 		font-family: $font-serif-ja;
