@@ -237,6 +237,16 @@ body,
 
 	}
 
+	.worries,
+	.approach,
+	.faq,
+	.voice,
+	.why {
+		.common__header-title--en {
+			color: rgba($color-white, 0.7);
+		}
+	}
+
 	.strong,
 	strong {
 		color: $color-strong;
@@ -1442,7 +1452,7 @@ body,
 		color: $color-text-sub;
 
 		@include mobile {
-		padding: 0;
+		padding: 0 16px;
 		}
 	}
 
@@ -1475,6 +1485,7 @@ body,
 
 	&__track {
 		display: flex;
+		align-items: flex-start;
 		gap: 24px;
 		transition: transform 0.4s ease;
 
@@ -1496,7 +1507,7 @@ body,
 
 		@include mobile {
 		flex: 0 0 80%;
-		padding: 24px 20px;
+		padding: 32px;
 		}
 
 		&-tag {
@@ -1511,37 +1522,10 @@ body,
 		}
 
 		&-body {
-		flex: 1;
-		margin-bottom: 24px;
 		font-family: $font-sans-ja;
 		font-size: $font-size-mobile;
 		color: $color-text-sub;
 		line-height: 1.9;
-		}
-
-		&-profile {
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		}
-
-		&-avatar {
-		width: 80px;
-		height: 80px;
-		overflow: hidden;
-		flex-shrink: 0;
-		border-radius: 50%;
-
-		img {
-			object-fit: cover;
-		}
-		}
-
-		&-attr {
-		font-family: $font-sans-ja;
-		font-size: $font-size-small;
-		color: $color-text-sub;
-		letter-spacing: 0.05em;
 		}
 	}
 

@@ -476,6 +476,14 @@ sectionの共通設定
   transform: none !important;
 }
 
+.worries .common__header-title--en,
+.approach .common__header-title--en,
+.faq .common__header-title--en,
+.voice .common__header-title--en,
+.why .common__header-title--en {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .strong,
 strong {
   color: #e9967a;
@@ -1550,7 +1558,7 @@ Utilities
 }
 @media (max-width: 768px) {
   .voice__lead {
-    padding: 0;
+    padding: 0 16px;
   }
 }
 .voice__slider-area {
@@ -1582,6 +1590,7 @@ Utilities
 }
 .voice__track {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
   transition: transform 0.4s ease;
 }
@@ -1604,7 +1613,7 @@ Utilities
 @media (max-width: 768px) {
   .voice__card {
     flex: 0 0 80%;
-    padding: 24px 20px;
+    padding: 32px;
   }
 }
 .voice__card-tag {
@@ -1618,34 +1627,10 @@ Utilities
   line-height: 1.6;
 }
 .voice__card-body {
-  flex: 1;
-  margin-bottom: 24px;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 14px;
   color: #7a6a5a;
   line-height: 1.9;
-}
-.voice__card-profile {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.voice__card-avatar {
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  flex-shrink: 0;
-  border-radius: 50%;
-}
-.voice__card-avatar img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.voice__card-attr {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 12px;
-  color: #7a6a5a;
-  letter-spacing: 0.05em;
 }
 @media (max-width: 768px) {
   .voice__btn--next, .voice__btn--prev {
