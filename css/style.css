@@ -1774,6 +1774,7 @@ Utilities
   line-height: 2;
 }
 .plan__fasting-link {
+  display: block;
   width: -moz-fit-content;
   width: fit-content;
   margin: 8px auto 0;
