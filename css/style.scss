@@ -1510,6 +1510,11 @@ body,
 		padding: 32px;
 		}
 
+		/* 受講生の声：タブレット縦表示で次のカードが見えるように調整 */
+		@media (min-width: 600px) and (max-width: 768px) {
+		flex-basis: 52%;
+		}
+
 		&-tag {
 		margin-bottom: 20px;
 		padding-bottom: 20px;

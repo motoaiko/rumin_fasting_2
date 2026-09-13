@@ -1616,6 +1616,12 @@ Utilities
     padding: 32px;
   }
 }
+/* 受講生の声：タブレット縦表示で次のカードが見えるように調整 */
+@media (min-width: 600px) and (max-width: 768px) {
+  .voice__card {
+    flex-basis: 52%;
+  }
+}
 .voice__card-tag {
   margin-bottom: 20px;
   padding-bottom: 20px;
